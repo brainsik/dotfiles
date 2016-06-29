@@ -9,7 +9,7 @@ esac
 
 unset ISVIRTUAL
 if [[ "$OSNAME" = "linux" ]] && command -v lspci >/dev/null; then
-    if lspci | egrep -i 'qemu|virtulabox|vmware' >/dev/null; then
+    if lspci | egrep -i 'qemu|virtualbox|vmware' >/dev/null; then
         export ISVIRTUAL=yes
     fi
 fi
