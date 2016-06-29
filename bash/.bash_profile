@@ -9,7 +9,7 @@ esac
 
 unset VIRTUALIZER
 if [[ "$OSNAME" = "Linux" ]] && command -v lspci >/dev/null; then
-    export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbx|vmware' | head -n1)
+    export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware' | head -n1)
 fi
 
 source ~/.bash_paths
