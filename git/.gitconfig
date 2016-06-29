@@ -1,0 +1,29 @@
+[user]
+    name = jeremy avnet
+[github]
+    user = brainsik
+[core]
+    editor = vim
+[push]
+    default = current
+[pull]
+    rebase = true
+[alias]
+    st = status
+    stat = status
+    br = branch
+    dif = diff
+[difftool]
+    prompt = false
+[color]
+    ui = true
+[diff]
+    color = true
+[color "diff"]
+    new = bold blue
+    whitespace = normal yellow
+[color "status"]
+    changed = magenta
+    untracked = bold yellow
+[transfer]
+    fsckObjects = true

@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# compiling shit
+#export CPATH="/opt/local/include"
+#export LIBRARY_PATH="/opt/local/lib"
+#export LD_RUN_PATH=$LIBRARY_PATH
+
+# for building things needing openssl: e.g. `pip install cryptography`
+#export ARCHFLAGS="-arch x86_64"
+#export LDFLAGS="-L/usr/local/opt/openssl/lib"
+#export CFLAGS="-I/usr/local/opt/openssl/include"
+
+# http://www.zeromq.org/docs:tuning-zeromq
+[[ "$OSNAME" = "Darwin" ]] && ulimit -n 1200
+
+# startup virtualenv-burrito
+_source_if_exists ~/.venvburrito/startup.sh "virtualenv-burrito"
+[[ -n "$WORKON_HOME" ]] && export PROJECT_HOME="$HOME/src"
+
+# setup pyenv/rbenv
+for langenv in pyenv rbenv; do
+    if command -v $langenv >/dev/null; then
+        echo "Loading $langenv …"
+        export $(echo $langenv | perl -ne 'print uc($_)')_ROOT="/usr/local/var/$langenv"
+        eval "$($langenv init -)"
+    fi
+done
+# initial pyenv virtualenv or virtualenvwrapper
+if command -v pyenv >/dev/null; then
+    if command -v pyenv-virtualenv-init >/dev/null; then
+        eval "$(pyenv virtualenv-init -)"
+    else
+        pyenv virtualenvwrapper
+    fi
+fi
+
+# setup rvm
+_source_if_exists ~/.rvm/scripts/rvm
+
+# Homebrew node modules
+if [[ -d /usr/local/share/npm/bin ]]; then
+    export PATH="/usr/local/share/npm/bin:${PATH}"
+fi
+
+# Go workspace
+if [[ -d $HOME/src/go ]]; then
+    export GOPATH="$HOME/src/go"
+    export PATH="$GOPATH/bin:$PATH"
+fi
+
+# GitHub
+_source_if_exists $HOME/.homebrew_github_api_token
+if command -v hub >/dev/null; then
+    eval "$(hub alias -s)"
+fi

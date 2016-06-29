@@ -1,0 +1,49 @@
+#!/bin/bash
+
+export PATH
+export MANPATH
+
+# Darwin
+if [[ -x /usr/libexec/path_helper ]]; then
+    eval `/usr/libexec/path_helper -s`
+elif command -v manpath >/dev/null; then
+    MANPATH=$(manpath)
+fi
+
+# MacPorts paths
+if [[ "$OSNAME" = "Darwin" ]]; then
+    if [[ -d /opt/local/bin ]]; then
+        PATH="/opt/local/bin:/opt/local/sbin:${PATH}"
+    fi
+    if [[ -d /opt/local/share/man ]]; then
+        MANPATH="/opt/local/share/man:${MANPATH}"
+    fi
+
+    # Schily make system
+    if [[ -d /opt/schily/bin ]]; then
+        PATH="/opt/schily/bin:/opt/schily/sbin:${PATH}"
+    fi
+    if [[ -d /opt/schily/share/man ]]; then
+        MANPATH="/opt/schily/share/man:${MANPATH}"
+    fi
+fi
+
+# /usr/local paths (already set by path_helper in Darwin)
+if [[ "$OSNAME" != "Darwin" ]]; then
+    if [[ -d /usr/local/bin ]]; then
+        PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
+    fi
+    if [[ -d /usr/local/share/man ]]; then
+        MANPATH="/usr/local/share/man:${MANPATH}"
+    fi
+fi
+
+# private paths
+for prefix in ~/usr ~; do
+    if [[ -d ${prefix}/bin ]]; then
+        PATH="${prefix}/bin:${PATH}"
+    fi
+    if [[ -d ${prefix}/man ]]; then
+        MANPATH="${prefix}/man:${MANPATH}"
+    fi
+done

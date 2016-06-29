@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export TF_VAR_key_name="brainsik-terraform"
+export TF_VAR_private_key_path="~/.ssh/brainsik-terraform.pem"
