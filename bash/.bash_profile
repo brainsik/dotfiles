@@ -7,6 +7,13 @@ case "$OSNAME" in
     *) echo "Did not recognize OS '$OSNAME'; some things will not be set!" ;;
 esac
 
+unset ISVIRTUAL
+if [[ "$OSNAME" = "linux" ]] && command -v lspci >/dev/null; then
+    if lspci | egrep -i 'qemu|virtulabox|vmware' >/dev/null; then
+        export ISVIRTUAL=yes
+    fi
+fi
+
 source ~/.bash_paths
 
 if [[ "${BASH-no}" != "no" ]]; then
