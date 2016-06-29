@@ -52,7 +52,7 @@ if [[ -d $HOME/src/go ]]; then
 fi
 
 # GitHub
-_source_if_exists $HOME/.homebrew_github_api_token
+_source_if_exists $HOME/.homebrew_github_api_token quiet
 if command -v hub >/dev/null; then
     eval "$(hub alias -s)"
 fi
