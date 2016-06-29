@@ -27,6 +27,10 @@ lesspipe=$(command -v lesspipe || command -v lesspipe.sh)
 export EDITOR="vim"
 export VISUAL="$EDITOR"
 export MANWIDTH=80
+if [[ "$OSNAME" = "Darwin" ]]; then  # color ls
+    export CLICOLOR=yes
+    export LSCOLORS="ExfxcxdxbxEgEdabagacad"
+fi
 
 # load additional profiles
 for profile in ~/.bash_profile-*; do

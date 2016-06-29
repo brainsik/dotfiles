@@ -38,7 +38,6 @@ case "$OSNAME" in
 
     Darwin)
         # color me ls
-        export LSCOLORS="ExfxcxdxbxEgEdabagacad"
         alias ls='/bin/ls -Ghkv'
         alias l='ls -Ghkov'
         alias ll='l -Al'
