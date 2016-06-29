@@ -7,11 +7,9 @@ case "$OSNAME" in
     *) echo "Did not recognize OS '$OSNAME'; some things will not be set!" ;;
 esac
 
-unset ISVIRTUAL
+unset VIRTUALIZER
 if [[ "$OSNAME" = "Linux" ]] && command -v lspci >/dev/null; then
-    if lspci | egrep -i 'qemu|virtualbox|vmware' >/dev/null; then
-        export ISVIRTUAL=yes
-    fi
+    export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbx|vmware' | head -n1)
 fi
 
 source ~/.bash_paths

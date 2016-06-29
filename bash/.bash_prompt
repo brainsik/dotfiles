@@ -30,7 +30,7 @@ case "$OSNAME" in
     Darwin) hostcolor='01;30' ;;
     Linux)
         hostcolor='01;32'
-        [[ "$ISVIRTUAL" = "yes" ]] && hostcolor='38;5;33'
+        [[ -n "$VIRTUALIZER" ]] && hostcolor='38;5;33'
         ;;
     OpenBSD) hostcolor='01;33' ;;
     *) hostcolor='01;31' ;;
