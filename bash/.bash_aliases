@@ -45,8 +45,10 @@ case "$OSNAME" in
         # sysops
         alias brewup="brew up && (brew doctor || read -p '<enter> to continue') && brew upgrade --cleanup"
         alias sshadd="ssh-add -D;ssh-add ~/.ssh/id_{ed25519,rsa}"
+        # open -a
+        alias firefox='open -n -a Firefox --args'
         # deep path apps
-        alias firefox='export -n DYLD_LIBRARY_PATH ; /Applications/Firefox.app/Contents/MacOS/firefox-bin'
+        #alias firefox='export -n DYLD_LIBRARY_PATH ; /Applications/Firefox.app/Contents/MacOS/firefox-bin'
         # OS X system apps
         alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
         alias lsregister='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain system -domain user'
