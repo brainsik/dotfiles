@@ -6,6 +6,7 @@ export MANPATH
 # Darwin
 if [[ -x /usr/libexec/path_helper ]]; then
     eval `/usr/libexec/path_helper -s`
+    PATH="/usr/local/sbin:${PATH}"  # add missing local sbin
 elif command -v manpath >/dev/null; then
     MANPATH=$(manpath)
 fi
