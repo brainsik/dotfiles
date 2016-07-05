@@ -34,10 +34,10 @@ fi
 
 # load additional profiles
 for profile in ~/.bash_profile-*; do
+    header = $(head -c 9 $profile)
     # skip any encrypted files
-    if [[ "$(head -c 9 $profile)" != "$GITCRYPT" ]]; then
-        source $profile
-    fi
+    [[ "$header" = "$GITCRYPT" ]] && continue
+    source $profile
 done
 
 # add SSH keys if they aren't in the agent
