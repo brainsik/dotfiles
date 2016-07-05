@@ -34,7 +34,7 @@ fi
 
 # load additional profiles
 for profile in ~/.bash_profile-*; do
-    header = $(head -c 9 $profile)
+    header=$(head -c 9 $profile)
     # skip any encrypted files
     [[ "$header" = "$GITCRYPT" ]] && continue
     source $profile
