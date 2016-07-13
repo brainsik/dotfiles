@@ -1,19 +1,5 @@
 # Loaded first and only for a login shell
 
-# we key off the OS name to decide what to load
-export OSNAME=$(uname -s)
-case "$OSNAME" in
-    Darwin|Linux|OpenBSD) ;;
-    *) echo "Did not recognize OS '$OSNAME'; some things will not be set!" ;;
-esac
-
-unset VIRTUALIZER
-if [[ "$OSNAME" = "Linux" ]] && command -v lspci >/dev/null; then
-    export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware|xen' | head -n1)
-fi
-
-source ~/.bash_paths
-
 if [[ "${BASH-no}" != "no" ]]; then
     [[ -r /etc/bashrc ]] && . /etc/bashrc
 fi

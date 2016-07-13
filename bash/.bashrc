@@ -23,6 +23,21 @@ _source_if_exists() {
     fi
 }
 
+# we key off the OS name to decide what to load
+export OSNAME=$(uname -s)
+case "$OSNAME" in
+    Darwin|Linux|OpenBSD) ;;
+    *) echo "Did not recognize OS '$OSNAME'; some things will not be set!" ;;
+esac
+
+unset VIRTUALIZER
+if [[ "$OSNAME" = "Linux" ]] && command -v lspci >/dev/null; then
+    export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware|xen' | head -n1)
+fi
+
+source ~/.bash_paths
+
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
