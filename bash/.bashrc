@@ -32,10 +32,10 @@ esac
 
 unset VIRTUALIZER
 if [[ "$OSNAME" = "Linux" ]]; then
-   if command -v lspci >/dev/null; then
-       export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware|xen' | head -n1)
-   elif [[ -d /proc/xen ]]; then
+   if [[ -d /proc/xen ]]; then
        export VIRTUALIZER="Xen"
+   elif command -v lspci >/dev/null; then
+       export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware|xen' | head -n1)
    fi
 fi
 
