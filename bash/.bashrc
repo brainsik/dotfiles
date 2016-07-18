@@ -31,8 +31,12 @@ case "$OSNAME" in
 esac
 
 unset VIRTUALIZER
-if [[ "$OSNAME" = "Linux" ]] && command -v lspci >/dev/null; then
-    export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware|xen' | head -n1)
+if [[ "$OSNAME" = "Linux" ]]; then
+   if command -v lspci >/dev/null; then
+       export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware|xen' | head -n1)
+   elif [[ -d /proc/xen ]]; then
+       export VIRTUALIZER="Xen"
+   fi
 fi
 
 source ~/.bash_paths
