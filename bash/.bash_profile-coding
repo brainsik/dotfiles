@@ -29,6 +29,7 @@ for langenv in pyenv rbenv; do
     fi
 done
 # initial pyenv virtualenv or virtualenvwrapper
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if command -v pyenv >/dev/null; then
     if command -v pyenv-virtualenv-init >/dev/null; then
         eval "$(pyenv virtualenv-init -)"
