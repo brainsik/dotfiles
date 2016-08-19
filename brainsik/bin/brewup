@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+# use system python and get rid of "config" script warnings with pyenv
+if command -v pyenv >/dev/null; then
+    PATH=${PATH//$(pyenv root)\/shims:/}
+fi
+
+brew update
+brew doctor || read -p '<enter> to continue'
+brew upgrade --cleanup

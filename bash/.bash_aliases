@@ -43,7 +43,6 @@ case "$OSNAME" in
         alias ll='l -Al'
         alias lld='ll -dl'
         # sysops
-        alias brewup="brew up && (brew doctor || read -p '<enter> to continue') && brew upgrade --cleanup"
         alias sshadd="ssh-add -D;ssh-add ~/.ssh/id_{ed25519,rsa}"
         # open -a
         alias firefox='open -n -a Firefox --args'
