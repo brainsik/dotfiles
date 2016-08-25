@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
-      *) return;;
+    *) return ;;
 esac
 
 _source_if_exists() {
@@ -32,11 +32,11 @@ esac
 
 unset VIRTUALIZER
 if [[ "$OSNAME" = "Linux" ]]; then
-   if [[ -d /proc/xen ]]; then
-       export VIRTUALIZER="Xen"
-   elif command -v lspci >/dev/null; then
-       export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware|xen' | head -n1)
-   fi
+    if [[ -d /proc/xen ]]; then
+        export VIRTUALIZER="Xen"
+    elif command -v lspci >/dev/null; then
+        export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware|xen' | head -n1)
+    fi
 fi
 
 source ~/.bash_paths
