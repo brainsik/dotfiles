@@ -63,7 +63,9 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-shopt -s globstar
+if [[ ${BASH_VERSINFO[0]} -ge 4 ]]; then
+    shopt -s globstar
+fi
 
 # If set, minor errors in the spelling of a directory component in a cd command
 # will be corrected. The errors checked for are transposed characters, a
