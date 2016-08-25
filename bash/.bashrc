@@ -53,13 +53,29 @@ shopt -s histappend
 HISTSIZE=100000
 HISTFILESIZE=$HISTSIZE
 
+# If set, and readline is being used, a user is given the opportunity to re-
+# edit a failed history substitution.
+shopt -s histreedit
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
+
+# If set, minor errors in the spelling of a directory component in a cd command
+# will be corrected. The errors checked for are transposed characters, a
+# missing character, and one character too many. If a correction is found, the
+# corrected file name is printed, and the command proceeds. This option is only
+# used by interactive shells.
+shopt -s cdspell
+
+# If set, and readline is being used, bash will not attempt to search
+# the PATH for possible completions when completion is attempted on an empty
+# line.
+shopt -s no_empty_cmd_completion
 
 _source_if_exists ~/.bash_prompt quiet
 _source_if_exists ~/.bash_aliases quiet
