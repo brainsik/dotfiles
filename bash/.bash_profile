@@ -17,6 +17,7 @@ if [[ "$OSNAME" = "Darwin" ]]; then  # color ls
     export CLICOLOR=yes
     export LSCOLORS="ExfxcxdxbxEgEdabagacad"
 fi
+export HOMEBREW_NO_ANALYTICS=1
 
 # load additional profiles
 for profile in ~/.bash_profile-*; do
