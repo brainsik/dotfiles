@@ -91,5 +91,4 @@ if ! shopt -oq posix; then
     fi
     _source_if_exists /opt/local/etc/bash_completion quiet
     _source_if_exists /usr/local/etc/bash_completion quiet
-    _source_if_exists /usr/local/sauce/cloud/tools/virsh-bash_completion.sh
 fi
