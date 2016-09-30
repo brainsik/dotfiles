@@ -33,6 +33,9 @@ if [[ "$OSNAME" = "Darwin" ]] && [[ -s ~/.ssh/id_ed25519 ]]; then
     fi
 fi
 
+# https://github.com/keybase/keybase-issues/issues/1712#issuecomment-141226705
+export GPG_TTY=$(tty)
+
 # these often get set with root perms which jacks shit up
 stat="stat -f %u"  # BSD
 [[ "$OSNAME" = "Linux" ]] && stat="stat -c %u"
