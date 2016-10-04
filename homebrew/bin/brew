@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+# use system python and get rid of "config" script warnings with pyenv
+if command -v pyenv >/dev/null; then
+    PATH=${PATH//$(pyenv root)\/shims:/}
+fi
+/usr/local/bin/brew $*
