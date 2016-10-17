@@ -5,7 +5,7 @@ fynd() {
 }
 
 # global aliases
-alias rmpyc='if ! [[ $(pwd) = $HOME ]]; then find . -name \*.pyc -delete; fi'
+alias rmpyc='if ! [[ $(pwd) = $HOME ]]; then find . -name \*.pyc -delete; find . -name __pycache__ -delete; fi'
 alias rmorig='find . -name \*.orig | xargs rm'
 alias egrep='egrep --color=auto --line-buffered'
 alias grep='egrep'
