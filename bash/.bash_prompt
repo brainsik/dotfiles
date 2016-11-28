@@ -29,7 +29,9 @@ fi
 case "$OSNAME" in
     Darwin) hostcolor='01;30' ;;
     Linux)
-        hostcolor='01;32'
+        # scary red for bare metal
+        hostcolor='01;31'
+        # calming blue for vps
         [[ -n "$VIRTUALIZER" ]] && hostcolor='38;5;33'
         ;;
     OpenBSD) hostcolor='01;33' ;;
