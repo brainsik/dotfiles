@@ -34,7 +34,7 @@ unset VIRTUALIZER
 if [[ "$OSNAME" = "Linux" ]]; then
     if [[ -d /proc/xen ]]; then
         export VIRTUALIZER="Xen"
-    elif [[ -d /proc/cpuinfo ]] && grep -i QEMU /proc/cpuinfo >/dev/null; then
+    elif [[ -f /proc/cpuinfo ]] && grep -i QEMU /proc/cpuinfo >/dev/null; then
         export VIRTUALIZER="QEMU"
     elif command -v lspci >/dev/null; then
         export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware|xen|parallels' | head -n1)
