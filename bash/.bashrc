@@ -40,7 +40,7 @@ if [[ "$OSNAME" = "Linux" ]]; then
         export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware|xen|parallels' | head -n1)
     fi
     if [[ -z "$VIRTUALIZER" ]] && command -v lscpu >/dev/null; then
-        export VIRTUALIZER=$(lscpu | grep -io 'KVM|Xen' | head -n1)
+        export VIRTUALIZER=$(lscpu | egrep -io 'KVM|Xen' | head -n1)
     fi
 fi
 
