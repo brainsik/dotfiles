@@ -12,11 +12,13 @@ fi
 
 # Drop encrypted package if unsupported
 if ! command -v git-crypt >/dev/null; then
+    echo "- Skipping encrypted files"
     PACKAGES=$(echo $PACKAGES | sed -e 's/_encrypted//')
 fi
 
 # Drop SSH stuff if we're on host with keys already
-if [[ -e ~/.ssh/id_ed25519.pub ]]; then
+if [[ -f ~/.ssh/id_ed25519.pub ]]; then
+    echo "- Skipping ssh (keys exist)"
     PACKAGES=$(echo $PACKAGES | sed -e 's/ssh//')
 fi
 
