@@ -16,7 +16,7 @@ if ! command -v git-crypt >/dev/null; then
 fi
 
 # Drop SSH stuff if we're on host with keys already
-if [[ -f ~/.ssh/id_ed25519.pub ]]; then
+if test -f ~/.ssh/id_ed25519.pub && ! test -L ~/.ssh/id_ed25519.pub; then
     echo "- Skipping ssh (keys exist)"
     PACKAGES=$(echo $PACKAGES | sed -e 's/ssh//')
 fi
