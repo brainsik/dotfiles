@@ -6,19 +6,19 @@ PACKAGES=$(ls -1d * | grep -Ev 'stow.sh')
  
 # Drop Darwin only packages
 if [[ $(uname -s) != "Darwin" ]]; then
-    PACKAGES=$(echo $PACKAGES | sed -e 's/homebrew//')
+    PACKAGES=$(echo $PACKAGES | sed -e 's/ ?homebrew//')
 fi
 
 # Drop encrypted package if unsupported
 if ! command -v git-crypt >/dev/null; then
     echo "- Skipping encrypted files"
-    PACKAGES=$(echo $PACKAGES | sed -e 's/_encrypted//')
+    PACKAGES=$(echo $PACKAGES | sed -e 's/ ?_encrypted//')
 fi
 
 # Drop SSH stuff if we're on host with keys already
 if test -f ~/.ssh/id_ed25519.pub && ! test -L ~/.ssh/id_ed25519.pub; then
     echo "- Skipping ssh (keys exist)"
-    PACKAGES=$(echo $PACKAGES | sed -e 's/ssh//')
+    PACKAGES=$(echo $PACKAGES | sed -e 's/ ?ssh//')
 fi
 
 stow $* $PACKAGES
