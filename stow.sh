@@ -6,7 +6,6 @@ PACKAGES=$(ls -1d * | grep -Ev 'stow.sh')
  
 # Drop Darwin only packages
 if [[ $(uname -s) != "Darwin" ]]; then
-    echo $PACKAGES | grep -Ev 'homebrew'
     PACKAGES=$(echo $PACKAGES | sed -e 's/homebrew//')
 fi
 
