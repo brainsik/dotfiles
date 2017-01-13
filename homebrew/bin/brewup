@@ -6,6 +6,16 @@ if command -v pyenv >/dev/null; then
     PATH=${PATH//$(pyenv root)\/shims:/}
 fi
 
+restore_curlrc() {
+    if [[ -e ~/.curlrc.make-homebrew-happy ]]; then
+        mv ~/.curlrc.make-homebrew-happy ~/.curlrc
+    fi
+}
+trap restore_curlrc 0
+if [[ -e ~/.curlrc ]]; then
+    mv ~/.curlrc ~/.curlrc.make-homebrew-happy
+fi
+
 brew update
 brew doctor || read -p '<enter> to continue'
 brew upgrade --cleanup
