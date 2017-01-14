@@ -8,6 +8,8 @@ source ~/.bashrc
 # make less more friendly for non-text input files, see lesspipe(1)
 lesspipe=$(command -v lesspipe || command -v lesspipe.sh)
 [[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
+# prevent creation of ~/.lesshst
+LESSHISTFILE="-"
 
 # experience
 export EDITOR="vim"
