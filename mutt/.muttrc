@@ -1,0 +1,21 @@
+set folder="~/Maildir"
+set mbox_type=Maildir
+set mask='^\.'
+
+set abort_nosubject=no
+set edit_headers=yes
+set hidden_host
+set move=no
+set use_domain
+set use_from
+set reverse_name
+unset confirmappend
+
+score ~N 1000
+set sort=threads
+set sort_aux=last-date-received
+
+bind pager ] half-down
+bind pager [ half-up
+
+set index_format="%4C %Z %{%b %d} %-15.15L %-30.30t (%?l?%4l&%4c?) %s"
