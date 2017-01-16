@@ -9,7 +9,7 @@ source ~/.bashrc
 lesspipe=$(command -v lesspipe || command -v lesspipe.sh)
 [[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
 # prevent creation of ~/.lesshst
-LESSHISTFILE="-"
+export LESSHISTFILE="-"
 
 # experience
 export EDITOR="vim"
