@@ -60,5 +60,5 @@ if ! shopt -oq posix; then
     _source_if_exists /usr/local/etc/bash_completion quiet
 fi
 
-_source_if_exists $HOME/.bash_local
-_source_if_exists $HOME/.bash_finale
+_source_if_exists $HOME/.bash_local quiet
+_source_if_exists $HOME/.bash_finale quiet
