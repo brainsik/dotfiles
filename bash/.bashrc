@@ -61,3 +61,4 @@ if ! shopt -oq posix; then
 fi
 
 _source_if_exists $HOME/.bash_local
+_source_if_exists $HOME/.bash_finale

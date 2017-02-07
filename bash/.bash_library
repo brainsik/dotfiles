@@ -114,25 +114,3 @@ fi
 
 export TF_VAR_key_name="brainsik-terraform"
 export TF_VAR_private_key_path="~/.ssh/brainsik-terraform.pem"
-
-# add SSH keys if they aren't in the agent
-if [[ "$OSNAME" = "Darwin" ]] && [[ -s ~/.ssh/id_ed25519 ]]; then
-    if [[ $(ssh-add -l) =~ "no identities" ]]; then
-        ssh-add ~/.ssh/id_{ed25519,rsa}
-    fi
-fi
-
-# these often get set with root perms which jacks shit up
-stat="stat -f %u"  # BSD
-[[ "$OSNAME" = "Linux" ]] && stat="stat -c %u"
-if [[ "$USER" == "brainsik" ]]; then
-    for file in $HOME/.bash_history $HOME/.viminfo; do
-        if [[ -e $file ]] && [[ $($stat $file) != "$UID" ]]; then
-            echo "!! Bad owner for $file"
-        fi
-    done
-fi
-
-# finale
-mesg y  # for a good time, call
-uptime  # curiousness
