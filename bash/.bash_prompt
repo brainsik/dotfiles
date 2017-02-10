@@ -32,7 +32,7 @@ case "$OSNAME" in
         # calming blue for vps
         [[ -n "$VIRTUALIZER" ]] && hostcolor='38;5;33'
         # something cyan for local vms
-        [[ $VIRTUALIZER = "VirtualBox" ]] && hostcolor='01;36'
+        [[ $VIRTUALIZER = "VirtualBox" ]] && hostcolor='36'
         ;;
     OpenBSD) hostcolor='38;5;226' ;;
     *) hostcolor='01;31' ;;
