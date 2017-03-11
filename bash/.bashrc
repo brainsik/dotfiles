@@ -46,9 +46,6 @@ shopt -s cdspell
 # for possible completions when completion is attempted on an empty line.
 shopt -s no_empty_cmd_completion
 
-_source_if_exists ~/.bash_prompt quiet
-_source_if_exists ~/.bash_aliases quiet
-
 # enable programmable completion features
 if ! shopt -oq posix; then
     if [[ -f /usr/share/bash-completion/bash_completion ]]; then
@@ -60,5 +57,7 @@ if ! shopt -oq posix; then
     _source_if_exists /usr/local/etc/bash_completion quiet
 fi
 
+_source_if_exists $HOME/.bash_aliases quiet
+_source_if_exists $HOME/.bash_prompt quiet
 _source_if_exists $HOME/.bash_local quiet
 _source_if_exists $HOME/.bash_finale quiet
