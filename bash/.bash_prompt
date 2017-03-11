@@ -1,9 +1,9 @@
-# User powerline if it's installed in Homebrew python
-if [[ -d /usr/local/lib/python2.7/site-packages/powerline ]]; then
+# use powerline if it's installed locally
+if command -v powerline-daemon >/dev/null; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
-    . /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+    source $(dirname $(which powerline))/../lib/python/site-packages/powerline/bindings/bash/powerline.sh
 else
     # set variable identifying the chroot you work in (used in the prompt below)
     if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then

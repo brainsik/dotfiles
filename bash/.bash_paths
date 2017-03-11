@@ -37,7 +37,7 @@ if [[ "$OSNAME" != "Darwin" ]]; then
 fi
 
 # private paths
-for prefix in ~/usr ~; do
+for prefix in ~/Library/Python/2.7 ~/usr ~; do
     if [[ -d ${prefix}/bin ]]; then
         PATH="${prefix}/bin:${PATH}"
     fi
