@@ -1,8 +1,29 @@
 #!/bin/bash
+#
+#   Caress Homebrew and let it know everything is okay.
+#
 set -e
 
-# use system python and get rid of "config" script warnings with pyenv
+# Ensure pyenv is using the system python.
+export PYENV_VERSION=system
+
+# Get rid of "config" script warnings.
 if command -v pyenv >/dev/null; then
+    # pyenv shims
     PATH=${PATH//$(pyenv root)\/shims:/}
+    # system Python: pip install --user
+    PATH=${PATH//$HOME\/Library\/Python\/?.?\/bin:}
 fi
+
+# Get rid of .curlrc warning.
+restore_curlrc() {
+    if [[ -e ~/.curlrc.keep-homebrew-happy ]]; then
+        mv ~/.curlrc.keep-homebrew-happy ~/.curlrc
+    fi
+}
+trap restore_curlrc EXIT
+if [[ -e ~/.curlrc ]]; then
+    mv ~/.curlrc ~/.curlrc.keep-homebrew-happy
+fi
+
 /usr/local/bin/brew $*

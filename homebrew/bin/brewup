@@ -1,20 +1,7 @@
 #!/bin/bash
 set -e
 
-# use system python and get rid of "config" script warnings with pyenv
-if command -v pyenv >/dev/null; then
-    PATH=${PATH//$(pyenv root)\/shims:/}
-fi
-
-restore_curlrc() {
-    if [[ -e ~/.curlrc.make-homebrew-happy ]]; then
-        mv ~/.curlrc.make-homebrew-happy ~/.curlrc
-    fi
-}
-trap restore_curlrc 0
-if [[ -e ~/.curlrc ]]; then
-    mv ~/.curlrc ~/.curlrc.make-homebrew-happy
-fi
+# See the custom `brew` script that keeps Homebrew happy.
 
 brew update
 brew doctor || read -p '<enter> to continue'
