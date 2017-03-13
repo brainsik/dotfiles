@@ -31,7 +31,7 @@ map Q gq
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   set background=dark
-  colorscheme hybrid
+  colorscheme solarized
   syntax on
   set hlsearch
 endif
