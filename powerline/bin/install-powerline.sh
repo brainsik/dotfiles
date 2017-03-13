@@ -18,6 +18,7 @@ rm -rf $tempd
 
 # Install powerline.
 pip install --upgrade --user powerline-status
+pip install --upgrade --user powerline-gitstatus
 
 # Remove system pip install so we don't accidentally use it.
 for pkg in pip wheel; do
