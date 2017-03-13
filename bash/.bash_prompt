@@ -3,8 +3,13 @@ if command -v powerline-daemon >/dev/null; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
-    source $(dirname $(which powerline))/../lib/python/site-packages/powerline/bindings/bash/powerline.sh
-else
+    powerline_lib=$(dirname $(which powerline))/../lib
+    if [[ -e $powerline_lib/python ]]; then  # Darwin
+        _source_if_exists $powerline_lib/python/site-packages/powerline/bindings/bash/powerline.sh quiet
+    elif [[ -e $powerline_lib/python2.7 ]]; then  # Linux
+        _source_if_exists $powerline_lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh quiet
+    fi
+else  # old school
     # set variable identifying the chroot you work in (used in the prompt below)
     if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
         debian_chroot=$(cat /etc/debian_chroot)
