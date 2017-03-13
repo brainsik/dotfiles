@@ -1,1 +1,18 @@
-default.json
+{
+    "groups": {
+        "gitstatus":                 { "fg": "solarized:base1", "bg": "solarized:base02", "attrs": [] },
+        "gitstatus_branch":          { "fg": "solarized:base1", "bg": "solarized:base02", "attrs": [] },
+        "gitstatus_branch_clean":    { "fg": "solarized:base1", "bg": "solarized:base02", "attrs": [] },
+        "gitstatus_branch_dirty":    { "fg": "solarized:base1", "bg": "solarized:base02", "attrs": [] },
+        "gitstatus_branch_detached": { "fg": "mediumpurple",    "bg": "solarized:base02", "attrs": [] },
+        "gitstatus_tag":             { "fg": "darkcyan",        "bg": "solarized:base02", "attrs": [] },
+        "gitstatus_behind":          { "fg": "gray10",          "bg": "solarized:base02", "attrs": [] },
+        "gitstatus_ahead":           { "fg": "gray10",          "bg": "solarized:base02", "attrs": [] },
+        "gitstatus_staged":          { "fg": "green",           "bg": "solarized:base02", "attrs": [] },
+        "gitstatus_unmerged":        { "fg": "brightred",       "bg": "solarized:base02", "attrs": [] },
+        "gitstatus_changed":         { "fg": "mediumorange",    "bg": "solarized:base02", "attrs": [] },
+        "gitstatus_untracked":       { "fg": "brightestorange", "bg": "solarized:base02", "attrs": [] },
+        "gitstatus_stashed":         { "fg": "darkblue",        "bg": "solarized:base02", "attrs": [] },
+        "gitstatus:divider":         { "fg": "solarized:base1", "bg": "solarized:base02", "attrs": [] }
+    }
+}
