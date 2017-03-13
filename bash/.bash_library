@@ -39,8 +39,13 @@ source ~/.bash_paths
 export GPG_TTY=$(tty)
 
 # make less more friendly for non-text input files, see lesspipe(1)
-lesspipe=$(command -v lesspipe || command -v lesspipe.sh)
-[[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
+if command -v lesspipe; then
+    eval "$(SHELL=/bin/sh lesspipe)"
+elif command -v lesspipe.sh; then
+    export LESSOPEN="|lesspipe.sh %s"
+fi
+# show ANSI colors
+export LESS='-R'
 # prevent creation of ~/.lesshst
 export LESSHISTFILE="/dev/null"
 
