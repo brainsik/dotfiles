@@ -39,9 +39,9 @@ source ~/.bash_paths
 export GPG_TTY=$(tty)
 
 # make less more friendly for non-text input files, see lesspipe(1)
-if command -v lesspipe; then
+if command -v lesspipe >/dev/null; then
     eval "$(SHELL=/bin/sh lesspipe)"
-elif command -v lesspipe.sh; then
+elif command -v lesspipe.sh >/dev/null; then
     export LESSOPEN="|lesspipe.sh %s"
 fi
 # show ANSI colors
