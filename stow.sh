@@ -5,9 +5,10 @@ DEBUG () { false; }
 # Start with all packages
 PACKAGES=$(ls -1d * | grep -Ev 'stow.sh' | perl -pe 's/\n/ /g;')
 DEBUG && echo "PACKAGES=$PACKAGES"
- 
+
 # Drop Darwin only packages
 if [[ $(uname -s) != "Darwin" ]]; then
+    PACKAGES=$(echo $PACKAGES | perl -pe 's/ ?macos//')
     PACKAGES=$(echo $PACKAGES | perl -pe 's/ ?homebrew//')
 fi
 DEBUG && echo "PACKAGES=$PACKAGES"
