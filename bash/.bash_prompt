@@ -3,11 +3,16 @@ if command -v powerline-daemon >/dev/null; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
-    powerline_lib=$(dirname $(which powerline))/../lib
-    if [[ -e $powerline_lib/python ]]; then  # Darwin
-        _source_if_exists $powerline_lib/python/site-packages/powerline/bindings/bash/powerline.sh quiet
-    elif [[ -e $powerline_lib/python2.7 ]]; then  # Linux
-        _source_if_exists $powerline_lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh quiet
+    if [[ -e /usr/share/powerline/bindings/bash/powerline.sh ]]; then
+        # Linux: apt install powerline
+        source /usr/share/powerline/bindings/bash/powerline.sh
+    else  # local install: pip install --user
+        powerline_lib=$(dirname $(which powerline))/../lib
+        if [[ -e $powerline_lib/python ]]; then  # Darwin
+            _source_if_exists $powerline_lib/python/site-packages/powerline/bindings/bash/powerline.sh quiet
+        elif [[ -e $powerline_lib/python2.7 ]]; then  # Linux
+            _source_if_exists $powerline_lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh quiet
+        fi
     fi
 else  # old school
     # set variable identifying the chroot you work in (used in the prompt below)
