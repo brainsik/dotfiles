@@ -15,12 +15,8 @@ use_system_pyenv() {
 
 # Install pip to the system (we'll clean it up later).
 install_pip() {
-    tempd=$(mktemp -d)  # if this isn't cleaned up, meh
-    pushd $tempd >/dev/null
-    curl -O --progress https://bootstrap.pypa.io/get-pip.py
-    sudo -H python get-pip.py
-    popd >/dev/null
-    rm -rf $tempd
+    python -m ensurepip --user
+    pip install --upgrade --user pip
 }
 
 # Install powerline.
@@ -31,13 +27,7 @@ install_powerline() {
 
 # Remove system pip install so we don't accidentally use it.
 remove_pip() {
-    for pkg in pip wheel; do
-        pkg_path=$(dirname $(python -c 'import '$pkg'; print('$pkg'.__file__)'))
-        # ensure we're deleting something sane
-        [[ $pkg_path =~ site-packages ]] || exit 1
-        sudo rm -r $pkg_path*
-    done
-    sudo rm /usr/local/bin/{pip,wheel}*
+    pip uninstall -y pip
 }
 
 # -- main --
