@@ -2,7 +2,8 @@
 #
 #   Caress Homebrew and let it know everything is okay.
 #
-set -e
+set -euo pipefail
+pushd $HOME >/dev/null
 
 # Ensure pyenv is using the system python.
 export PYENV_VERSION=system
@@ -27,3 +28,5 @@ if [[ -e ~/.curlrc ]]; then
 fi
 
 /usr/local/bin/brew $*
+
+popd >/dev/null

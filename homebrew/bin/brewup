@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 # See the custom `brew` script that keeps Homebrew happy.
 
