@@ -81,9 +81,9 @@ _source_if_exists ~/.venvburrito/startup.sh "virtualenv-burrito"
 
 # setup pyenv/rbenv
 for langenv in pyenv rbenv; do
+    export $(echo $langenv | perl -ne 'print uc($_)')_ROOT="/usr/local/var/$langenv"
     if command -v $langenv >/dev/null; then
         echo "Loading $langenv …"
-        export $(echo $langenv | perl -ne 'print uc($_)')_ROOT="/usr/local/var/$langenv"
         eval "$($langenv init -)"
     fi
 done
