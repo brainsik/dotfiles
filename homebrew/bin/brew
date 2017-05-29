@@ -5,16 +5,19 @@
 set -euo pipefail
 pushd $HOME >/dev/null
 
-# Ensure pyenv is using the system python.
+# Ensure using system languages.
 export PYENV_VERSION=system
+export RBENV_VERSION=system
 
 # Get rid of "config" script warnings.
-if command -v pyenv >/dev/null; then
-    # pyenv shims
-    PATH=${PATH//$(pyenv root)\/shims:/}
-    # system Python: pip install --user
-    PATH=${PATH//$HOME\/Library\/Python\/?.?\/bin:}
-fi
+for lang in py rb; do
+    if command -v ${lang}env >/dev/null; then
+        PATH=${PATH//$(${lang}env root)\/shims:/}
+    fi
+done
+
+# system Python: pip install --user
+PATH=${PATH//$HOME\/Library\/Python\/?.?\/bin:}
 
 # Get rid of .curlrc warning.
 restore_curlrc() {
