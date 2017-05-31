@@ -1,6 +1,8 @@
 # use powerline if it's installed locally
 if command -v powerline-daemon >/dev/null; then
-    powerline-daemon -q
+    if [[ -z $SUDO_USER ]]; then  # only run under your regular user
+        powerline-daemon -q
+    fi
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
     if [[ -e /usr/share/powerline/bindings/bash/powerline.sh ]]; then
