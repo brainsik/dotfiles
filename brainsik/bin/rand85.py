@@ -5,11 +5,6 @@ import math
 from base64 import a85encode
 
 
-def parse_args():
-    if len(sys.argv) >= 2:
-        return int(sys.argv[1])
-
-
 def printem(n_bytes):
     msg = "Generating {} bit random ascii85 strings".format(n_bytes * 8)
     print(msg)
@@ -20,13 +15,13 @@ def printem(n_bytes):
 
 
 def main(n_bits=None):
-    if n_bits:
-        printem(math.ceil(n_bits / 8))
-        return
-
-    for n_bits in [64, 80, 96, 128, 256]:
-        printem(math.ceil(n_bits / 8))
+    for bits in ([n_bits] if n_bits else [64, 80, 96, 128, 256]):
+        printem(math.ceil(bits / 8))  # round up to bytes
         print()
+
+
+def parse_args():
+    return int(sys.argv[1]) if len(sys.argv) >= 2 else None
 
 
 if __name__ == '__main__':
