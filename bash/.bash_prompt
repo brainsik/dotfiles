@@ -2,6 +2,7 @@
 if command -v powerline-daemon >/dev/null; then
     if [[ -z $SUDO_USER ]]; then  # only run under your regular user
         powerline-daemon -q
+        chmod 0600 "$HOME/.powerline.log"
     fi
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1

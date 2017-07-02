@@ -1,7 +1,7 @@
 {
      "common": {
         "default_top_theme": "powerline_unicode7",
-        "log_file": "/tmp/powerline-brainsik.log",
+        "log_file": "~/.powerline.log",
         "log_level": "INFO"
      },
      "ext": {
