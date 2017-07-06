@@ -1,0 +1,18 @@
+# only run the darmon under regular users
+if [[ -z $SUDO_USER && $UID -gt 0 ]]; then
+    powerline-daemon -q
+    chmod 0600 "$HOME/.powerline.log"
+fi
+
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+if [[ -e /usr/share/powerline/bindings/bash/powerline.sh ]]; then
+    # Linux system install: apt install powerline
+    source /usr/share/powerline/bindings/bash/powerline.sh
+else
+    # local install: pip install --user
+    powerline_lib=$(dirname $(which powerline))/../lib
+    for python_dir in python python2.7; do
+        _source_if_exists "$powerline_lib/$python_dir"/site-packages/powerline/bindings/bash/powerline.sh quiet
+    done
+fi
