@@ -1,6 +1,6 @@
 if [[ -n $BASH_PROMPT ]]; then
     source ~/.bash_prompt-${BASH_PROMPT}
-elif [[ "$TERM" = Linux ]]; then  # tty login
+elif [[ "$TERM" = linux ]]; then  # tty login
     source ~/.bash_prompt-default
 elif command -v powerline-daemon >/dev/null; then
     source ~/.bash_prompt-powerline
