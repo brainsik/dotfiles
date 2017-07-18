@@ -3,4 +3,8 @@ set -eo pipefail
 usage="
 Usage: $0 <s3_url>"
 s3_url=${1:?"s3_url not set$usage"}
+
+if ! [[ $s3_url =~ "s3://" ]]; then
+    s3_url="s3://$s3_url"
+fi
 aws s3 cp "$s3_url" - | less
