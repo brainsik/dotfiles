@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-brew update
-
 for cask in $(brew cask list); do
     current=$(brew cask info "$cask" | perl -ne 'if (m|/usr/local/Caskroom/\w+/(\S+)|) { print "$1\n"; }')
     latest=$(brew cask info "$cask" | perl -ne 'if (m|'$cask': (\S+)|) { print("$1"); }')
