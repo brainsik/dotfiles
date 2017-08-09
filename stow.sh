@@ -2,6 +2,17 @@
 set -eo pipefail
 DEBUG () { false; }
 
+if ! command -v stow >/dev/null; then
+    echo '💾  Missing the stow command. Installing!'
+    case $(uname -s) in
+        Linux)
+            sudo apt-get -qq update
+            sudo apt-get -qq -y install stow ;;
+        Darwin) brew install stow >/dev/null ;;
+        *) echo "👽  Unrecognized OS." ;;
+    esac
+fi
+
 # Start with all packages
 PACKAGES=$(ls -1d * | grep -Ev 'stow.sh' | perl -pe 's/\n/ /g;')
 DEBUG && echo "PACKAGES=$PACKAGES"
