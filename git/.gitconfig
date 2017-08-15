@@ -28,3 +28,5 @@
 	untracked = bold yellow
 [transfer]
 	fsckObjects = true
+[help]
+	autocorrect = 20
