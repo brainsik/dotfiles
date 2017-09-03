@@ -7,7 +7,7 @@ use_system_pyenv() {
     command -v pyenv >/dev/null || return
 
     pyenv_global=$(pyenv global)
-    restore_pyenv_global() { pyenv global $pyenv_global; }
+    restore_pyenv_global() { pyenv global "$pyenv_global"; }
     trap restore_pyenv_global EXIT
     pyenv global system
     export PYENV_VERSION=system
@@ -22,7 +22,14 @@ install_pip() {
 # Install powerline.
 install_powerline() {
     pip install --upgrade --user powerline-status
-    pip install --upgrade --user powerline-gitstatus
+
+    # Install patched powerline-status module.
+    tmpdir=$(mktemp -d)
+    pushd "$tmpdir"
+    git clone https://github.com/brainsik/powerline-gitstatus.git
+    pip install --upgrade --user ./powerline-gitstatus
+    popd
+    rm -rf "$tmpdir"
 }
 
 # Remove system pip install so we don't accidentally use it.
@@ -40,3 +47,4 @@ if [[ $(uname -s) = Darwin ]]; then
 else
     install_powerline
 fi
+powerline-daemon --replace

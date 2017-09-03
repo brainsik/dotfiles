@@ -15,7 +15,8 @@
 			},
 			{
 				"function": "powerline_gitstatus.gitstatus",
-				"priority": 40
+				"priority": 40,
+				"args": { "use_powerline_symbols": false }
 			},
 			{
 				"function": "powerline.segments.shell.cwd",
