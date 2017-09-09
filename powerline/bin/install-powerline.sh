@@ -39,12 +39,19 @@ remove_pip() {
 
 # -- main --
 
+# We do this manually to handle the case where you've uninstalled the system
+# powerline and are moving to a local installation.
+for pid in $(pgrep -f powerline-daemon); do
+    kill "$pid" || true
+done
+
 if [[ $(uname -s) = Darwin ]]; then
     use_system_pyenv
     install_pip
     install_powerline
+    "$HOME/Library/Python/2.7/bin/powerline-daemon"
     remove_pip
 else
     install_powerline
+    "$HOME/.local/bin/powerline-daemon"
 fi
-powerline-daemon --replace
