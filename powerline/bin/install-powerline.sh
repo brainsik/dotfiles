@@ -58,6 +58,7 @@ fi
 
 set +x
 if command -v powerline | grep '/usr/bin/powerline'; then
+    echo
     echo "Your PATH is finding a system-wide powerline install. Either you need"
     echo "to logout and in again to pick up the local PATH or you need to"
     echo "update your shell to have the local bin directory earlier on the PATH."
