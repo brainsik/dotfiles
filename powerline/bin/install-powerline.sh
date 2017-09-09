@@ -56,6 +56,7 @@ else
     "$HOME/.local/bin/powerline-daemon"
 fi
 
+set +x
 if command -v powerline | grep '/usr/bin/powerline'; then
     echo "Your PATH is finding a system-wide powerline install. Either you need"
     echo "to logout and in again to pick up the local PATH or you need to"
