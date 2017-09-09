@@ -41,8 +41,8 @@ remove_pip() {
 
 # We do this manually to handle the case where you've uninstalled the system
 # powerline and are moving to a local installation.
-for pid in $(pgrep -f powerline-daemon); do
-    kill "$pid" || true
+for pid in $(pgrep -u $USER -f powerline-daemon); do
+    kill "$pid"
 done
 
 if [[ $(uname -s) = Darwin ]]; then
@@ -54,4 +54,10 @@ if [[ $(uname -s) = Darwin ]]; then
 else
     install_powerline
     "$HOME/.local/bin/powerline-daemon"
+fi
+
+if command -v powerline | grep '/usr/bin/powerline'; then
+    echo "Your PATH is finding a system-wide powerline install. Either you need"
+    echo "to logout and in again to pick up the local PATH or you need to"
+    echo "update your shell to have the local bin directory earlier on the PATH."
 fi
