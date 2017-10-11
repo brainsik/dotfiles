@@ -9,3 +9,4 @@ for cask in $(brew cask list); do
         brew cask reinstall "$cask"
     fi
 done
+brew cask cleanup
