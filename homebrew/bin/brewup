@@ -5,6 +5,7 @@ set -euo pipefail
 
 brew update
 brew doctor || read -p '<enter> to continue'
+brew missing || read -p '<enter> to continue'
 brew-upgrade-casks
 brew upgrade --cleanup
 brew cleanup -s
