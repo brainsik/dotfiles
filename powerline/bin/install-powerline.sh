@@ -16,6 +16,8 @@ use_system_pyenv() {
 # Install pip to the system (we'll clean it up later).
 install_pip() {
     python -m ensurepip --user
+    py_user_dir=$(python -c 'import site; print(site.USER_BASE)')
+    export PATH="$py_user_dir/bin:$PATH"
     pip install --upgrade --user pip
 }
 
