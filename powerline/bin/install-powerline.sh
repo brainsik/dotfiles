@@ -4,7 +4,7 @@ set -exo pipefail
 # Default to system Python to prevent weird stuff happening.
 use_system_pyenv() {
     # skip if pyenv isn't installed
-    command -v pyenv >/dev/null || return
+    command -v pyenv >/dev/null || return 0
 
     pyenv_global=$(pyenv global)
     restore_pyenv_global() { pyenv global "$pyenv_global"; }
