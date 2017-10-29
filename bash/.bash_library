@@ -92,8 +92,6 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if command -v pyenv >/dev/null; then
     if command -v pyenv-virtualenv-init >/dev/null; then
         eval "$(pyenv virtualenv-init -)"
-    else
-        pyenv virtualenvwrapper
     fi
 fi
 
