@@ -9,15 +9,18 @@ pushd $HOME >/dev/null
 export PYENV_VERSION=system
 export RBENV_VERSION=system
 
-# Get rid of "config" script warnings.
+# Get rid of "config" script warnings in …
+# … *env lang managers
 for lang in py rb; do
     if command -v ${lang}env >/dev/null; then
         PATH=${PATH//$(${lang}env root)\/shims:/}
     fi
 done
-
-# system Python: pip install --user
+# … Python --user scripts
+PATH=${PATH//$HOME\/.local\/bin:}
+# … macOS system Python --user scripts
 PATH=${PATH//$HOME\/Library\/Python\/?.?\/bin:}
+
 
 # Get rid of .curlrc warning.
 restore_curlrc() {
