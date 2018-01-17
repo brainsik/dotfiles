@@ -14,6 +14,7 @@
 	stat = status
 	br = branch
 	dif = diff
+	co = checkout
 [difftool]
 	prompt = false
 [color]
