@@ -7,3 +7,8 @@ elif command -v powerline-daemon >/dev/null; then
 else
     source ~/.bash_prompt-default
 fi
+
+# Direnv must be configured after the prompt is configured above
+if command -v direnv >/dev/null; then
+    eval "$(direnv hook bash)"
+fi
