@@ -1,7 +1,7 @@
 #!/bin/bash
 
 fynd() {
-    find . -iname '*'$1'*'
+    find . -iname '*'"$1"'*'
 }
 
 # global aliases
@@ -62,8 +62,8 @@ case "$OSNAME" in
         alias madplay='madplay -v --tty-control'
         # dev
         gittouch() {
-            for file in `git status | grep ': ' | perl -ne 'chomp; m/[^:]+: *(.+)/; print "$1\n";'`; do
-                touch $file
+            for file in $(git status | grep ': ' | perl -ne 'chomp; m/[^:]+: *(.+)/; print "$1\n";'); do
+                touch "$file"
             done
         }
         alias gitpull="git stash && git pull --rebase && git stash pop"
