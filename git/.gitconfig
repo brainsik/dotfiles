@@ -11,11 +11,13 @@
 [pull]
 	rebase = true
 [alias]
+	amend = commit --amend
+	br = --no-pager branch
+	branch = --no-pager branch
+	co = checkout
+	dif = diff
 	st = status
 	stat = status
-	br = branch
-	dif = diff
-	co = checkout
 [difftool]
 	prompt = false
 [color]

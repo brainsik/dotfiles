@@ -10,6 +10,7 @@ alias rmorig='find . -name \*.orig | xargs rm'
 alias egrep='egrep --color=auto --line-buffered'
 alias grep='egrep'
 alias gitprune='git branch -d $(git branch --merged master | egrep -v "(^\\*|master)") && git remote prune origin'
+alias gitlanded='git checkout master && git pull && gitprune'
 
 case "$OSNAME" in
     Linux)
