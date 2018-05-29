@@ -9,6 +9,7 @@ alias rmpyc='if ! [[ $(pwd) = $HOME ]]; then find . -name \*.pyc -delete; find .
 alias rmorig='find . -name \*.orig | xargs rm'
 alias egrep='egrep --color=auto --line-buffered'
 alias grep='egrep'
+alias gitnp='git --no-pager'
 alias gitprune='git branch -d $(git branch --merged master | egrep -v "(^\\*|master)") && git remote prune origin'
 alias gitlanded='git checkout master && git pull && gitprune'
 
