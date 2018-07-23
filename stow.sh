@@ -13,6 +13,10 @@ if ! command -v stow >/dev/null; then
     esac
 fi
 
+# Ensure some directories already exist so we don't just get symlinks
+mkdir -p ~/bin
+mkdir -p -m 0700 ~/.gnupg
+
 # Start with all packages
 PACKAGES=$(for f in *; do echo "$f"; done | grep -Ev 'stow.sh' | perl -pe 's/\n/ /g;')
 DEBUG && echo "PACKAGES=$PACKAGES"
