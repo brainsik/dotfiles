@@ -104,10 +104,8 @@ if [[ -d /usr/local/share/npm/bin ]]; then
 fi
 
 # Go workspace
-if [[ -d $HOME/src/go ]]; then
-    export GOPATH="$HOME/src/go"
-    export PATH="$GOPATH/bin:$PATH"
-fi
+export GOPATH="$HOME/src/go"
+export PATH="$GOPATH/bin:$PATH"
 
 # GitHub
 _source_if_exists $HOME/.homebrew_github_api_token quiet
