@@ -112,6 +112,3 @@ _source_if_exists $HOME/.homebrew_github_api_token quiet
 if command -v hub >/dev/null; then
     eval "$(hub alias -s)"
 fi
-
-export TF_VAR_key_name="brainsik-terraform"
-export TF_VAR_private_key_path="~/.ssh/brainsik-terraform.pem"
