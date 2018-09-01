@@ -15,6 +15,7 @@ fi
 
 # Ensure some directories already exist so we don't just get symlinks
 mkdir -p ~/.config
+mkdir -p ~/.vim
 mkdir -p ~/bin
 mkdir -p -m 0700 ~/.gnupg
 
