@@ -17,14 +17,18 @@ fi
 mkdir -p ~/.config
 mkdir -p ~/.vim
 mkdir -p ~/bin
+# shellcheck disable=SC2174
 mkdir -p -m 0700 ~/.gnupg
+if [[ $(uname -s) = Darwin ]]; then
+	mkdir -p ~/"Library/Application Support/Sublime Text 3/Packages"
+fi
 
 # Start with all packages
 PACKAGES=$(for f in *; do echo "$f"; done | grep -Ev 'stow.sh' | perl -pe 's/\n/ /g;')
 DEBUG && echo "PACKAGES=$PACKAGES"
 
 # Drop Darwin only packages
-if [[ $(uname -s) != "Darwin" ]]; then
+if [[ $(uname -s) != Darwin ]]; then
     PACKAGES=$(echo "$PACKAGES" | perl -pe 's/ ?macos//')
     PACKAGES=$(echo "$PACKAGES" | perl -pe 's/ ?homebrew//')
 fi

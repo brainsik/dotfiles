@@ -1,1 +1,8 @@
 *.swp
+sublime-text/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/GoSublime
+sublime-text/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/GoSublime-aux.sublime-settings
+sublime-text/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package Control.cache
+sublime-text/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package Control.last-run
+sublime-text/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package Control.merged-ca-bundle
+sublime-text/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package Control.user-ca-bundle
+sublime-text/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/oscrypto-ca-bundle.crt

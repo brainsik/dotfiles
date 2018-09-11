@@ -1,0 +1,15 @@
+{
+    "color_scheme": "Packages/MarkdownEditing/MarkdownEditor-Dark.tmTheme",
+    "trim_trailing_white_space_on_save": true,
+
+    // Auto increments ordered list number. Set to false if you want always "1".
+    "mde.auto_increment_ordered_list_number": false,
+
+    // List bullets to be used for automatically switching. In their order.
+    "mde.list_indent_bullets": ["*", "*", "*"],
+
+    "mde.lint": {
+        "md003": "atx",
+        "md004": "asterisk",
+    }
+}

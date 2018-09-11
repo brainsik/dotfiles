@@ -1,0 +1,5 @@
+{
+    "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+    "selector": "source.terraform",
+    "shell_cmd": "terraform fmt -no-color"
+}

@@ -1,0 +1,46 @@
+{
+	"always_show_minimap_viewport": true,
+	"auto_complete_commit_on_tab": true,
+	"bold_folder_labels": true,
+	"caret_extra_bottom": 1,
+	"caret_extra_top": 1,
+	"caret_style": "solid",
+	"color_scheme": "Packages/Solarized Color Scheme/Solarized (dark).sublime-color-scheme",
+	"create_window_at_startup": false,
+	"ensure_newline_at_eof_on_save": true,
+	"fade_fold_buttons": true,
+	"folder_exclude_patterns":
+	[
+		".git",
+		".terraform",
+		".vagrant",
+		".venv",
+		"node_modules",
+		"vendor"
+	],
+	"font_face": "Fira Code",
+	"font_size": 14,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Markdown",
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
+	"remember_full_screen": true,
+	"rulers":
+	[
+		80
+	],
+	"show_encoding": true,
+	"show_line_endings": true,
+	"theme": "Adaptive.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
+}

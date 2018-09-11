@@ -2,6 +2,8 @@
 	name = jeremy avnet
 	email = brainsik@users.noreply.github.com
 	signingkey = 19A1D1424FE98E13
+[commit]
+	gpgsign = false
 [github]
 	user = brainsik
 [core]
@@ -12,8 +14,8 @@
 	rebase = true
 [alias]
 	amend = commit --amend
-	br = --no-pager branch
-	branch = --no-pager branch
+	br = !git --no-pager branch
+	branch = !git --no-pager branch
 	co = checkout
 	dif = diff
 	st = status

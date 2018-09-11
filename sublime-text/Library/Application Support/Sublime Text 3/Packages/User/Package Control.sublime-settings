@@ -1,0 +1,25 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"AutoPEP8",
+		"Dockerfile Syntax Highlighting",
+		"Git",
+		"GitGutter",
+		"GoSublime",
+		"INI",
+		"MarkdownEditing",
+		"MarkdownPreview",
+		"nginx",
+		"Package Control",
+		"Solarized Color Scheme",
+		"SublimeLinter",
+		"SublimeLinter-shellcheck",
+		"Terraform",
+		"WordCount"
+	]
+}
