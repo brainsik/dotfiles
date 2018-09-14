@@ -1,0 +1,19 @@
+repos:
+  - repo: git://github.com/pre-commit/pre-commit-hooks
+    rev: v1.4.0
+    hooks:
+      - id: check-json
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: trailing-whitespace
+
+  - repo: git://github.com/detailyang/pre-commit-shell
+    rev: 1.0.4
+    hooks:
+      - id: shell-lint
+
+  - repo: git://github.com/igorshubovych/markdownlint-cli
+    rev: v0.13.0
+    hooks:
+      - id: markdownlint
