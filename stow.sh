@@ -20,7 +20,7 @@ mkdir -p ~/bin
 # shellcheck disable=SC2174
 mkdir -p -m 0700 ~/.gnupg
 if [[ $(uname -s) = Darwin ]]; then
-	mkdir -p ~/"Library/Application Support/Sublime Text 3/Packages"
+    mkdir -p ~/"Library/Application Support/Sublime Text 3/Packages"
 fi
 
 # Start with all packages
