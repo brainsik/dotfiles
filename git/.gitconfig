@@ -12,6 +12,8 @@
 	default = current
 [pull]
 	rebase = true
+[rebase]
+	autoStash = true
 [alias]
 	amend = commit --amend
 	br = !git --no-pager branch
