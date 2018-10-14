@@ -59,6 +59,7 @@ if [[ "$OSNAME" = "Darwin" ]]; then  # color ls
 fi
 if [[ "$OSNAME" = "Linux" ]]; then
     export MAILDIR="$HOME/Maildir"
+    export MAIL=$MAILDIR
 fi
 export HOMEBREW_NO_ANALYTICS=1
 
