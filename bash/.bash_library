@@ -57,6 +57,9 @@ if [[ "$OSNAME" = "Darwin" ]]; then  # color ls
     export CLICOLOR=yes
     export LSCOLORS="ExfxcxdxbxEgEdabagacad"
 fi
+if [[ "$OSNAME" = "Linux" ]]; then
+    export MAILDIR="$HOME/Maildir"
+fi
 export HOMEBREW_NO_ANALYTICS=1
 
 # colored GCC warnings and errors
