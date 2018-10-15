@@ -6,8 +6,6 @@
 	gpgsign = false
 [github]
 	user = brainsik
-[core]
-	editor = vim
 [push]
 	default = current
 [pull]

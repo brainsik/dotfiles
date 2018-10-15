@@ -47,7 +47,7 @@ case "$OSNAME" in
         # open -a
         alias firefox='open -n -a Firefox --args'
         # deep path apps
-        alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+        #alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
         #alias firefox='export -n DYLD_LIBRARY_PATH ; /Applications/Firefox.app/Contents/MacOS/firefox-bin'
         # OS X system apps
         alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'

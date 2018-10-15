@@ -52,6 +52,7 @@ export LESSHISTFILE="/dev/null"
 # experience
 export EDITOR="vim"
 export VISUAL="$EDITOR"
+[[ $OSNAME = Darwin ]] && export GIT_EDITOR="subl -w"
 export MANWIDTH=80
 if [[ "$OSNAME" = "Darwin" ]]; then  # color ls
     export CLICOLOR=yes
