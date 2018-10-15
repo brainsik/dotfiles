@@ -14,29 +14,31 @@ _source_if_exists() {
 }
 
 # we key off the OS name to decide what to load
-export OSNAME=$(uname -s)
-case "$OSNAME" in
+OSNAME=$(uname -s)
+case $OSNAME in
     Darwin|Linux|OpenBSD) ;;
     *) echo "Did not recognize OS '$OSNAME'; some things will not be set!" ;;
 esac
+export OSNAME
 
 unset VIRTUALIZER
-if [[ "$OSNAME" = "Linux" ]]; then
+if [[ $OSNAME = Linux ]]; then
     if [[ -d /proc/xen ]]; then
-        export VIRTUALIZER="Xen"
+        VIRTUALIZER=Xen
     elif command -v lspci >/dev/null; then
-        export VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware|xen|parallels' | head -n1)
+        VIRTUALIZER=$(lspci | egrep -io 'qemu|virtualbox|vmware|xen|parallels' | head -n1)
     fi
     if [[ -z "$VIRTUALIZER" ]] && command -v lscpu >/dev/null; then
-        export VIRTUALIZER=$(lscpu | egrep -io 'kvm|xen')
+        VIRTUALIZER=$(lscpu | egrep -io 'kvm|xen')
     fi
 fi
+export VIRTUALIZER
 
 # load PATH and MANPATH
 source ~/.bash_paths
 
 # https://github.com/keybase/keybase-issues/issues/1712#issuecomment-141226705
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty); export GPG_TTY
 
 # make less more friendly for non-text input files, see lesspipe(1)
 if command -v lesspipe >/dev/null; then
@@ -54,11 +56,11 @@ export EDITOR="vim"
 export VISUAL="$EDITOR"
 [[ $OSNAME = Darwin ]] && export GIT_EDITOR="subl -w"
 export MANWIDTH=80
-if [[ "$OSNAME" = "Darwin" ]]; then  # color ls
+if [[ $OSNAME = Darwin ]]; then  # color ls
     export CLICOLOR=yes
-    export LSCOLORS="ExfxcxdxbxEgEdabagacad"
+    export LSCOLORS=ExfxcxdxbxEgEdabagacad
 fi
-if [[ "$OSNAME" = "Linux" ]]; then
+if [[ $OSNAME = Linux ]]; then
     export MAILDIR="$HOME/Maildir"
     export MAIL=$MAILDIR
 fi
@@ -78,15 +80,16 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 #export CFLAGS="-I/usr/local/opt/openssl/include"
 
 # http://www.zeromq.org/docs:tuning-zeromq
-[[ "$OSNAME" = "Darwin" ]] && ulimit -n 1200
+[[ $OSNAME = Darwin ]] && ulimit -n 1200
 
 # startup virtualenv-burrito
 _source_if_exists ~/.venvburrito/startup.sh "virtualenv-burrito"
-[[ -n "$WORKON_HOME" ]] && export PROJECT_HOME="$HOME/src"
+[[ -n $WORKON_HOME ]] && export PROJECT_HOME="$HOME/src"
 
 # setup pyenv/rbenv
 for langenv in pyenv rbenv; do
-    export $(echo $langenv | perl -ne 'print uc($_)')_ROOT="/usr/local/var/$langenv"
+    langenv_uc="$(echo $langenv | perl -ne 'print uc($_)')"
+    export "${langenv_uc}_ROOT=/usr/local/var/$langenv"
     if command -v $langenv >/dev/null; then
         echo "Loading $langenv …"
         eval "$($langenv init -)"
@@ -113,7 +116,7 @@ export GOPATH="$HOME/src/go"
 export PATH="$GOPATH/bin:$PATH"
 
 # GitHub
-_source_if_exists $HOME/.homebrew_github_api_token quiet
+_source_if_exists "$HOME/.homebrew_github_api_token" quiet
 if command -v hub >/dev/null; then
     eval "$(hub alias -s)"
 fi
