@@ -44,8 +44,6 @@ case "$OSNAME" in
         alias l='ls -Ghkov'
         alias ll='l -Al'
         alias lld='ll -dl'
-        # sysops
-        alias sshadd="ssh-add -D;ssh-add ~/.ssh/id_{ed25519,rsa}"
         # open -a
         alias firefox='open -n -a Firefox --args'
         # deep path apps
