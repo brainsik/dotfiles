@@ -17,9 +17,11 @@
 	br = !git --no-pager branch
 	branch = !git --no-pager branch
 	co = checkout
+	dc = diff --cached
 	dif = diff
 	st = status
 	stat = status
+	who = blame
 [difftool]
 	prompt = false
 [color]
