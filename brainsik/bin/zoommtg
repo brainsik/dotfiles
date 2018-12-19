@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e -o pipefail
+
+BASE_URL='zoommtg://zoom.us/join?confno='
+
+conf_url=${1?-Usage: $0 <conf_url>}
+set -u
+
+conf_num=$(echo "$conf_url" | perl -ne 'm|([^/]+)$|;print $1')
+open "$BASE_URL$conf_num"
