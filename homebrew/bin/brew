@@ -3,7 +3,7 @@
 #   Caress Homebrew and let it know everything is okay.
 #
 set -euo pipefail
-pushd $HOME >/dev/null
+pushd "$HOME" >/dev/null
 
 # Ensure using system languages.
 export PYENV_VERSION=system
@@ -33,6 +33,6 @@ if [[ -e ~/.curlrc ]]; then
     mv ~/.curlrc ~/.curlrc.keep-homebrew-happy
 fi
 
-/usr/local/bin/brew $*
+/usr/local/bin/brew "$@"
 
 popd >/dev/null
