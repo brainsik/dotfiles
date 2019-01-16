@@ -9,4 +9,3 @@ brew missing || read -p '<enter> to continue'
 brew-upgrade-casks
 brew upgrade
 brew cleanup -s
-brew prune
