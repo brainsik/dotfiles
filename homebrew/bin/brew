@@ -5,6 +5,9 @@
 set -euo pipefail
 pushd "$HOME" >/dev/null
 
+# remove previously installed versions of formulae
+export HOMEBREW_INSTALL_CLEANUP=yeah
+
 # Ensure using system languages.
 export PYENV_VERSION=system
 export RBENV_VERSION=system
