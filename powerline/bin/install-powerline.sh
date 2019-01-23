@@ -28,7 +28,7 @@ install_powerline() {
     # Install patched powerline-status module.
     tmpdir=$(mktemp -d)
     pushd "$tmpdir"
-    git clone https://github.com/brainsik/powerline-gitstatus.git
+    git clone https://github.com/jaspernbrouwer/powerline-gitstatus.git
     pip install --upgrade --user ./powerline-gitstatus
     popd
     rm -rf "$tmpdir"
@@ -43,7 +43,7 @@ remove_pip() {
 
 # We do this manually to handle the case where you've uninstalled the system
 # powerline and are moving to a local installation.
-for pid in $(pgrep -u $USER -f powerline-daemon); do
+for pid in $(pgrep -u "$USER" -f powerline-daemon); do
     kill "$pid"
 done
 
