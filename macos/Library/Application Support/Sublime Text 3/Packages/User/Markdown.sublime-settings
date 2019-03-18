@@ -1,5 +1,6 @@
 {
     "color_scheme": "Packages/MarkdownEditing/MarkdownEditor-Dark.tmTheme",
+    "spell_check": true,
     "trim_trailing_white_space_on_save": true,
 
     // Auto increments ordered list number. Set to false if you want always "1".
