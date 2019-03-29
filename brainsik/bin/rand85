@@ -1,4 +1,3 @@
 #!/bin/bash
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-export PYENV_VERSION=3.6.4
 python3 "$basedir/rand85.py" "$@"
