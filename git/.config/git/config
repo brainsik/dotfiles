@@ -19,6 +19,7 @@
 	co = checkout
 	dc = diff --cached
 	dif = diff
+	pf = push --force-with-lease
 	st = status
 	stat = status
 	who = blame
