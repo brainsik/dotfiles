@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Interactive pieces or output we want at the end
 
 # these often get set with root perms which jacks shit up
@@ -5,14 +6,14 @@ stat="stat -f %u"  # BSD
 [[ "$OSNAME" = "Linux" ]] && stat="stat -c %u"
 if [[ "$USER" == "brainsik" ]]; then
     for file in $HOME/.bash_history $HOME/.viminfo; do
-        if [[ -e $file ]] && [[ $($stat $file) != "$UID" ]]; then
+        if [[ -e $file ]] && [[ $($stat "$file") != "$UID" ]]; then
             echo "!! Bad owner for $file"
         fi
     done
 fi
 
-# add SSH keys if they aren't in the agent
-if [[ "$OSNAME" = "Darwin" ]] && [[ -s ~/.ssh/id_ed25519 ]]; then
+# add SSH keys if needed
+if [[ "$OSNAME" = "Darwin" ]] && [[ -s ~/.ssh/id_ed25519 ]] && ! [[ -s ~/.ssh/id_krypton.pub ]]; then
     if [[ $(ssh-add -l) =~ "no identities" ]]; then
         ssh-add -A || ssh-add ~/.ssh/id_{ed25519,rsa}
     fi
