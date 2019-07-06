@@ -2,7 +2,9 @@
 	"added_words":
 	[
 		"Sebastopol",
-		"Terraform"
+		"Terraform",
+		"whitelist",
+		"whitelists"
 	],
 	"always_show_minimap_viewport": true,
 	"auto_complete_commit_on_tab": true,
