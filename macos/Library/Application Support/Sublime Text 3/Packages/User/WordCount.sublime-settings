@@ -1,4 +1,4 @@
 {
     "words_per_page": 250,
-    "whitelist_syntaxes": ["Markdown", "MultiMarkdown", "Markdown Extended", "Plain Text"]
+    "whitelist_syntaxes": ["Markdown", "Markdown Extended", "Markdown GFM", "MultiMarkdown", "Plain Text"]
 }
