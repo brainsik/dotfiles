@@ -1,9 +1,6 @@
 [user]
 	name = jeremy avnet
 	email = brainsik@users.noreply.github.com
-	signingkey = 19A1D1424FE98E13
-[commit]
-	gpgsign = false
 [github]
 	user = brainsik
 [push]
