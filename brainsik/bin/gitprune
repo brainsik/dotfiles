@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eu -o pipefail
 
-branches=$(git branch --merged master | egrep -v "(^\\*|master)" || true)
-[[ -z $branches ]] && { echo Nothing to prune.; exit 0; }
+IFS=" " read -ra branches <<< "$(git branch --merged master | grep -Ev "(^\\*|master)" || true)"
+[[ ${#branches[*]} -le 0 ]] && { echo Nothing to prune.; exit 0; }
 
-git branch -d $branches
+git branch -d "${branches[@]}"
 git remote prune origin

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 #   Caress Homebrew and let it know everything is okay.
 #
@@ -23,7 +23,6 @@ done
 PATH=${PATH//$HOME\/.local\/bin:}
 # … macOS system Python --user scripts
 PATH=${PATH//$HOME\/Library\/Python\/?.?\/bin:}
-
 
 # Get rid of .curlrc warning.
 restore_curlrc() {
