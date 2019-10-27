@@ -27,6 +27,10 @@
 		"venv"
 	],
 	"font_face": "Fira Code",
+	"font_options":
+	[
+		"subpixel_antialias"
+	],
 	"font_size": 14,
 	"highlight_line": true,
 	"ignored_packages":
