@@ -41,12 +41,5 @@ if ! command -v git-crypt >/dev/null; then
 fi
 DEBUG && echo "PACKAGES=$PACKAGES"
 
-# Drop SSH stuff if we're on host with keys already
-if test -f ~/.ssh/id_ed25519.pub && ! test -L ~/.ssh/id_ed25519.pub; then
-    echo "- Skipping ssh (keys exist)"
-    PACKAGES=$(echo "$PACKAGES" | perl -pe 's/ ?ssh//')
-fi
-DEBUG && echo "PACKAGES=$PACKAGES"
-
 # shellcheck disable=SC2086
 stow "$@" $PACKAGES
