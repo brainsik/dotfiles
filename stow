@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail
-DEBUG () { false; }
+DEBUG () { [[ -n $DEBUG ]]; }
 
 if ! command -v stow >/dev/null; then
     echo '💾  Missing the stow command. Installing!'
@@ -24,7 +24,7 @@ if [[ $(uname -s) = Darwin ]]; then
 fi
 
 # Start with all packages
-PACKAGES=$(for f in *; do echo "$f"; done | grep -Ev '^stow$' | perl -pe 's/\n/ /g;')
+PACKAGES=$(for f in *; do [[ -d $f ]] && echo "$f"; done | perl -pe 's/\n/ /g;')
 DEBUG && echo "PACKAGES=$PACKAGES"
 
 # Drop Darwin only packages
