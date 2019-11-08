@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -eu -o pipefail
+
+# Clone prezto if we need it.
+if ! [[ -d ~/.zprezto ]]; then
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
+fi
+
+# Set hardlinks to our dotfiles so we get updates from the prezto repo.
+for zfile in zlogin zlogout zpreztorc zprofile zshenv zshrc; do
+    rm -vf ~/.zprezto/runcoms/$zfile
+    ln -v ~/.$zfile ~/.zprezto/runcoms/$zfile
+done
