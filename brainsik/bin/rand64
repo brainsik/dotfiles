@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -eu -o pipefail
+[[ -z ${1:-} ]] && { echo "Usage: $(basename "$0") <bytes>"; exit; }
+echo -n "$(openssl rand -base64 "$1")" | tee /dev/stderr | pbcopy; echo
