@@ -8,4 +8,6 @@ brew doctor || read -rp '<enter> to continue'
 brew missing || read -rp '<enter> to continue'
 brew-upgrade-casks
 brew upgrade
+brew missing
+brew doctor
 brew cleanup -s
