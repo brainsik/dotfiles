@@ -11,3 +11,5 @@ brew upgrade
 brew missing
 brew doctor
 brew cleanup -s
+brew missing
+brew doctor
