@@ -7,6 +7,7 @@ repos:
       - id: check-merge-conflict
       - id: detect-private-key
       - id: trailing-whitespace
+        exclude: ".p10k.zsh"
 
   - repo: git://github.com/detailyang/pre-commit-shell
     rev: 1.0.5
