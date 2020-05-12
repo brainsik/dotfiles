@@ -12,6 +12,7 @@ repos:
     rev: 1.0.5
     hooks:
       - id: shell-lint
+        exclude: ".p10k.zsh"
 
   - repo: git://github.com/igorshubovych/markdownlint-cli
     rev: v0.23.0
