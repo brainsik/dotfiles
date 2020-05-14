@@ -6,8 +6,7 @@ if ! [[ -d ~/.zprezto ]]; then
     git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
 fi
 
-# Set hardlinks to our dotfiles so we get updates from the prezto repo.
+# Copy our dotfiles in so we can compare to the prezto repo.
 for zfile in zlogin zlogout zpreztorc zprofile zshenv zshrc; do
-    rm -vf ~/.zprezto/runcoms/$zfile
-    ln -v ~/.$zfile ~/.zprezto/runcoms/$zfile
+    cp  ~/.$zfile ~/.zprezto/runcoms/$zfile
 done
