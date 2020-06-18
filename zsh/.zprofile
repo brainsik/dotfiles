@@ -93,6 +93,13 @@ path=(
   $path
 )
 
+# Rust
+[[ -d $HOME/.cargo/bin ]] && path=(
+  $HOME/.cargo/bin
+  $path
+)
+
+
 #
 # Homebrew
 #

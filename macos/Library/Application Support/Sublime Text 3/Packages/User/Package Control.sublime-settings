@@ -14,10 +14,13 @@
 		"nginx",
 		"Package Control",
 		"Pretty JSON",
+		"Rust Enhanced",
+		"RustFmt",
 		"Solarized Color Scheme",
 		"SublimeLinter",
 		"SublimeLinter-shellcheck",
 		"Terraform",
+		"TOML",
 		"WordCount"
 	]
 }
