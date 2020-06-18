@@ -49,7 +49,6 @@ path=(
   $HOME/bin
   $HOME/.local/bin
   $HOME/usr/bin
-  /usr/local/share/npm/bin
   /usr/local/{bin,sbin}
   $path
 )
@@ -80,6 +79,12 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
+
+# Node
+[[ -d /usr/local/share/npm/bin ]] && path=(
+  /usr/local/share/npm/bin
+  $path
+)
 
 # Golang
 export GOPATH="$HOME/src/go"
