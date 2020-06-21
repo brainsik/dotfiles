@@ -5,6 +5,10 @@ for cask in $(brew cask list); do
     current=$(brew cask info "$cask" | perl -ne 'if (m|/usr/local/Caskroom/[^/]+/(\S+)|) { print "$1\n"; }')
     latest=$(brew cask info "$cask" | perl -ne 'if (m|'"$cask"': (\S+)|) { print("$1"); }')
     if [[ $current != "$latest" ]]; then
+        if [[ "$cask" == "arq" ]]; then
+            echo "⛔️  Skipping $cask $latest"
+            continue
+        fi
         echo "🤡  Upgrading $cask from $current to $latest:"
         brew cask reinstall "$cask"
     fi
