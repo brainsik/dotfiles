@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eux
+
+update() { command -v "$1" && "$@"; }
+
+update brewup
+update rustup update
+
+# update prezto
+if [ -d "$HOME/.zprezto" ]; then
+    zsh -i -c 'zprezto-update'
+fi
