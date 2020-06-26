@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+#   Update the local tooling.
+#
 set -eux
 
 update() { command -v "$1" && "$@"; }
