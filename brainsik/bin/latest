@@ -4,9 +4,11 @@
 #
 set -eux
 
-update() { command -v "$1" && "$@"; }
+dashes() { python3 -c 'print("=" * 40);'; }
+update() { command -v "$1" && "$@" && dashes; }
 
 update brewup
+
 update rustup update
 
 # update prezto
