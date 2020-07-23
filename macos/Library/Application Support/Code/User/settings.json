@@ -1,0 +1,12 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "workbench.colorTheme": "Better Solarized Dark",
+    "editor.fontFamily": "FiraCode-Retina",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "editor.formatOnSave": true,
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "workbench.activityBar.visible": true,
+    "diffEditor.ignoreTrimWhitespace": true,
+}
