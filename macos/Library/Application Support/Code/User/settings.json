@@ -1,12 +1,13 @@
 {
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-    "workbench.colorTheme": "Better Solarized Dark",
+    "diffEditor.ignoreTrimWhitespace": true,
     "editor.fontFamily": "FiraCode-Retina",
-    "editor.fontSize": 14,
     "editor.fontLigatures": true,
+    "editor.fontSize": 14,
     "editor.formatOnSave": true,
     "rust-analyzer.checkOnSave.command": "clippy",
-    "workbench.activityBar.visible": true,
-    "diffEditor.ignoreTrimWhitespace": true,
+    "rust-analyzer.inlayHints.parameterHints": false,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "window.autoDetectColorScheme": true,
+    "workbench.colorTheme": "Better Solarized Dark"
 }
