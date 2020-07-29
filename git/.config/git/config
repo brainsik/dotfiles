@@ -38,3 +38,9 @@
 	autocorrect = 20
 #[url "git@github.com:"]
 #	insteadOf = https://github.com/
+[gpg]
+	program = /usr/local/bin/krgpg
+[commit]
+	gpgSign = true
+[tag]
+	forceSignAnnotated = true
