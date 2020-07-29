@@ -20,9 +20,9 @@ fi
 export EDITOR='vim'
 export VISUAL=$EDITOR
 export PAGER='less'
-if [[ "$OSTYPE" == darwin* ]]; then
-  export GIT_EDITOR="subl -n -w"
-fi
+#if [[ "$OSTYPE" == darwin* ]]; then
+#  export GIT_EDITOR="subl -n -w"
+#fi
 
 #
 # Language
