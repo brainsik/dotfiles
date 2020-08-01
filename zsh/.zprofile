@@ -107,6 +107,9 @@ path=(
 export HOMEBREW_NO_ANALYTICS=1
 
 # brew install zsh-completions
-if [[ -d /usr/local/share/zsh-completions ]]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
 fi
