@@ -3,6 +3,8 @@
 	email = brainsik@users.noreply.github.com
 [github]
 	user = brainsik
+[init]
+	defaultBranch = main
 [push]
 	default = current
 [pull]
