@@ -21,6 +21,7 @@
 		".vagrant",
 		".venv",
 		"node_modules",
+		"target",
 		"vendor",
 		"venv"
 	],
