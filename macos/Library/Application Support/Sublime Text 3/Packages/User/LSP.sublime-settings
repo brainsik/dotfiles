@@ -1,0 +1,13 @@
+{
+	"clients":
+	{
+		"rls":
+		{
+			"enabled": false
+		},
+		"rust-analyzer":
+		{
+			"enabled": true
+		}
+	}
+}
