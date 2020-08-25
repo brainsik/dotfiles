@@ -44,17 +44,14 @@ alias l1a='ls -1A'       # Single column, hidden files.
 alias gitnp='git --no-pager'
 alias gitlanded='git checkout master && git pull && gitprune'
 
-if whence hub >/dev/null; then
-  eval "$(hub alias -s)"
-fi
-
 #
 # Misc aliases
 #
+
 if [[ "$OSTYPE" == darwin* ]]; then
   alias dnsflush='dscacheutil -flushcache'
 fi
 
-# finale
+# Finale
 mesg y  # for a good time, call
 uptime  # awareness
