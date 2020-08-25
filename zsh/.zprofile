@@ -79,26 +79,41 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
-
+#
 # Node
+#
+
 [[ -d /usr/local/share/npm/bin ]] && path=(
   /usr/local/share/npm/bin
   $path
 )
 
+#
 # Golang
+#
+
 export GOPATH="$HOME/src/go"
 path=(
   $GOPATH/bin
   $path
 )
 
+#
 # Rust
+#
+
 [[ -d $HOME/.cargo/bin ]] && path=(
   $HOME/.cargo/bin
   $path
 )
 
+#
+# Direnv
+#
+
+if whence direnv >/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
 
 #
 # Homebrew
