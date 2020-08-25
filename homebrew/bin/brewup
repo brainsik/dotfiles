@@ -3,14 +3,12 @@ set -euo pipefail
 
 # See the custom `brew` script that keeps Homebrew happy.
 
-brew cleanup
 brew update
+brew cleanup
 brew doctor || read -rp '<enter> to continue'
 brew missing || read -rp '<enter> to continue'
 brew-upgrade-casks
 brew upgrade
-brew missing
 brew cleanup -s
-brew doctor
 brew missing
 brew doctor
