@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 set -eu -o pipefail
 
-IFS=" " read -ra branches <<< "$(git branch --merged master | grep -Ev "(^\\*|master)" || true)"
-[[ ${#branches[*]} -le 0 ]] && { echo Nothing to prune.; exit 0; }
+if git branch | grep main >/dev/null; then
+    default_branch=main
+else
+    default_branch=master
+fi
+
+IFS=" " read -ra branches <<<"$(git branch --merged $default_branch | grep -Ev "(^\\*|$default_branch)" || true)"
+[[ ${#branches[*]} -le 0 ]] && {
+    echo Nothing to prune.
+    exit 0
+}
 
 git branch -d "${branches[@]}"
 git remote prune origin
