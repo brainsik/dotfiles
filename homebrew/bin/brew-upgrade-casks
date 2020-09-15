@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-for cask in $(brew cask list); do
+for cask in $(brew list --cask); do
     current=$(brew cask info "$cask" | perl -ne 'if (m|/usr/local/Caskroom/[^/]+/(\S+)|) { print "$1\n"; }')
     latest=$(brew cask info "$cask" | perl -ne 'if (m|'"$cask"': (\S+)|) { print("$1"); }')
     if [[ $current != "$latest" ]]; then
@@ -10,6 +10,6 @@ for cask in $(brew cask list); do
             continue
         fi
         echo "🤡  Upgrading $cask from $current to $latest:"
-        brew cask reinstall "$cask"
+        brew reinstall homebrew/cask/"$cask"
     fi
 done
