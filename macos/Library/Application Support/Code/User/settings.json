@@ -8,7 +8,7 @@
     "rust-analyzer.inlayHints.parameterHints": false,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
-    "window.autoDetectColorScheme": true,
-    "workbench.colorTheme": "Better Solarized Dark",
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "editor.formatOnSaveMode": "modifications",
+    "workbench.colorTheme": "Better Solarized Dark"
 }
