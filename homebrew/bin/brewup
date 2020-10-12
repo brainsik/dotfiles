@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -x -eu -o pipefail
 
 # See the custom `brew` script that keeps Homebrew happy.
 
 brew update
-brew cleanup
+brew cleanup 2>&1 | grep -v 'Warning: Skipping' || true
 brew doctor || read -rp '<enter> to continue'
 brew missing || read -rp '<enter> to continue'
 brew-upgrade-casks
