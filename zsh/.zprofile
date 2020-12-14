@@ -1,9 +1,6 @@
 #
 # Executes commands at login pre-zshrc.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
 
 #
 # Browser
@@ -89,6 +86,26 @@ fi
 )
 
 #
+# Homebrew
+#
+
+export HOMEBREW_NO_ANALYTICS=1
+
+# arm64 location
+[[ -d /opt/homebrew/bin ]] && path=(
+  /opt/homebrew/bin
+  $path
+)
+
+# brew install zsh-completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+#
 # Golang
 #
 
@@ -115,16 +132,3 @@ if whence direnv >/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
-#
-# Homebrew
-#
-
-export HOMEBREW_NO_ANALYTICS=1
-
-# brew install zsh-completions
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
