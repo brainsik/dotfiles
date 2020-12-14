@@ -21,6 +21,15 @@ fi
 HISTSIZE=110000
 SAVEHIST=100000
 
+
+#
+# Secretive SecretAgent
+#
+#
+if [[ -d $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent ]]; then
+  export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+fi
+
 #
 # gpg-agent
 #
