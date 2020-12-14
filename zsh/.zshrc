@@ -2,10 +2,17 @@
 # Executes commands at the start of an interactive session.
 #
 
-# Source Prezto.
+#
+# Prezto
+#
+
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+#
+# Powerlevel10k
+#
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f $HOME/.p10k.zsh ]] && source "$HOME/.p10k.zsh"
@@ -14,7 +21,10 @@ fi
 HISTSIZE=110000
 SAVEHIST=100000
 
-# https://github.com/keybase/keybase-issues/issues/1712#issuecomment-141226705
+#
+# gpg-agent
+#
+# https://linux.die.net/man/1/gpg-agent
 GPG_TTY=$(tty); export GPG_TTY
 
 #
