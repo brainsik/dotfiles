@@ -91,13 +91,15 @@ fi
 
 export HOMEBREW_NO_ANALYTICS=1
 
-# arm64 location
-[[ -d /opt/homebrew/bin ]] && path=(
-  /opt/homebrew/bin
-  $path
-)
+# Export shell environment variables
+for homebrew_prefix in /opt/homebrew /usr/local; do
+  if [[ -x $homebrew_prefix/bin/brew ]]; then
+    eval $($homebrew_prefix/bin/brew shellenv)
+    break
+  fi
+done
 
-# brew install zsh-completions
+# Use completions from `brew install zsh-completions`
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
