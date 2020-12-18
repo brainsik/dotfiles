@@ -35,6 +35,6 @@ if [[ -e ~/.curlrc ]]; then
     mv ~/.curlrc ~/.curlrc.keep-homebrew-happy
 fi
 
-/usr/local/bin/brew "$@"
+"$HOMEBREW_PREFIX/bin/brew" "$@"
 
 popd >/dev/null
