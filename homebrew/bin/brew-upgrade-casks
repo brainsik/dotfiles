@@ -10,6 +10,6 @@ for cask in $(brew list --cask); do
             continue
         fi
         echo "🤡  Upgrading $cask from $current to $latest:"
-        brew upgrade homebrew/cask/"$cask"
+        brew upgrade --cask "$cask"
     fi
 done
