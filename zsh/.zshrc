@@ -14,18 +14,14 @@ fi
 # Powerlevel10k
 #
 
+GITSTATUS_DAEMON="${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/external/powerlevel10k/gitstatus/usrbin/gitstatusd.tmp"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f $HOME/.p10k.zsh ]] && source "$HOME/.p10k.zsh"
-
-# Save a lot of command history
-HISTSIZE=110000
-SAVEHIST=100000
-
 
 #
 # Secretive SecretAgent
 #
-#
+
 if [[ -d $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent ]]; then
   export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 fi
@@ -71,6 +67,14 @@ if [[ "$OSTYPE" == darwin* ]]; then
   alias dnsflush='dscacheutil -flushcache'
 fi
 
-# Finale
+#
+# finale
+#
+
+# Save a lot of command history
+HISTSIZE=110000
+SAVEHIST=100000
+
+# old school
 mesg y  # for a good time, call
 uptime  # awareness
