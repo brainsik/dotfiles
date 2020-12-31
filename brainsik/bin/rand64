@@ -1,4 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 set -eu -o pipefail
 [[ -z ${1:-} ]] && { echo "Usage: $(basename "$0") <bytes>"; exit; }
-echo -n "$(openssl rand -base64 "$1")" | tee /dev/stderr | pbcopy; echo
+
+if whence dd >/dev/null && whence base64 >/dev/null; then
+    output=$(dd if=/dev/urandom count=1 bs="$1" | base64)
+else
+    output=$(openssl rand -base64 "$1")
+fi
+echo -n "$output" | tr -d = | tee /dev/stderr | pbcopy; echo
