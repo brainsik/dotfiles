@@ -1,0 +1,61 @@
+#!/usr/bin/env zsh
+# 
+#   write-mp - Write your Morning Pages
+#
+set -eu
+
+#
+# Metadata
+#
+
+date="0$(date +%Y%m%d)"
+title="mp.${date}.md"
+location="$*"
+
+#
+# Where to put it
+#
+
+folder=""
+[[ -d ~/Docs/mp ]] && folder=~/Docs/mp
+if [[ -z $folder ]]; then
+    folder="."
+    echo "* Dropping file in current directory."
+fi 
+file="$folder/$title"
+
+#
+# With what to write
+#
+
+# default
+cmd=$EDITOR
+
+# decide whether to use an Application
+known_apps=(
+    'iA Writer'
+    'Sublime Text'
+)
+app=""
+for try in $known_apps; do
+    [[ -d "/Applications/$try.app" ]] && app=$try && break
+done
+[[ -n $app ]] && cmd="open -a '$app'"
+
+#
+# Stub
+#
+
+# add our standard header
+if ! [[ -s "$file" ]]; then
+    [[ -z $location ]] && echo -n "Location: " && read -r location
+    echo -n "$(date) @ $location" >> "$file"
+fi
+
+#
+# Edit
+#
+
+PS4='$ '
+set -x
+eval $cmd "$file"
