@@ -78,14 +78,6 @@ for homebrew_prefix in /opt/homebrew /usr/local; do
   fi
 done
 
-# Use completions from `brew install zsh-completions`
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
-
 #
 # Golang
 #
