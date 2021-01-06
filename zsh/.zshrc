@@ -10,15 +10,23 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+
 #
+# Shell prompt
+#
+
+# Starship
+if whence starship >/dev/null; then
+  eval "$(starship init zsh)"
+
 # Powerlevel10k
-#
+else
+  # Support our own compiled gistatusd (e.g., arm64 macOS)
+  [[ -x "$HOME/bin/gitstatusd" ]] && GITSTATUS_DAEMON="$HOME/bin/gitstatusd"
 
-# Support our own compiled gistatusd (e.g., arm64 macOS)
-[[ -x "$HOME/bin/gitstatusd" ]] && GITSTATUS_DAEMON="$HOME/bin/gitstatusd"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f $HOME/.p10k.zsh ]] && source "$HOME/.p10k.zsh"
+  # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+  [[ -f $HOME/.p10k.zsh ]] && source "$HOME/.p10k.zsh"
+fi
 
 #
 # Secretive SecretAgent

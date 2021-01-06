@@ -37,10 +37,14 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt' \
   'syntax-highlighting' \
   'history-substring-search' \
   'osx' \
+
+# Load the prompt module if Starship is not installed
+if ! whence starship >/dev/null; then
+    zstyle ':prezto:load' pmodule 'prompt'
+fi
 
 #
 # Autosuggestions
