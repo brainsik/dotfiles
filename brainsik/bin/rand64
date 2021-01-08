@@ -2,9 +2,12 @@
 set -eu -o pipefail
 [[ -z ${1:-} ]] && { echo "Usage: $(basename "$0") <bytes>"; exit; }
 
-if whence dd >/dev/null && whence base64 >/dev/null; then
-    output=$(dd if=/dev/urandom count=1 bs="$1" | base64)
+if whence xdd >/dev/null && whence base64 >/dev/null; then
+    entropy=$(dd if=/dev/urandom count=1 bs="$1" | base64)
+elif whence xopenssl >/dev/null; then
+    entropy=$(openssl rand -base64 "$1")
 else
-    output=$(openssl rand -base64 "$1")
+    echo 'Need either `dd` and `base64` or `openssl` installed.'
+    exit 1
 fi
-echo -n "$output" | tr -d = | tee /dev/stderr | pbcopy; echo
+echo -n "$entropy" | tr -d = | tee /dev/stderr | pbcopy; echo
