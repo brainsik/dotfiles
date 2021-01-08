@@ -78,6 +78,10 @@ for homebrew_prefix in /opt/homebrew /usr/local; do
   fi
 done
 
+if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
+    fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+fi
+
 #
 # Golang
 #
