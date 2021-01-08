@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+set -eu
+
+cmd=$1
+cask=${2:-}
+
+if [[ $1 = zap ]]; then
+    cmd="uninstall --zap"
+fi
+
+PS4='$ '
+set -x
+brew $cmd --cask $cask
