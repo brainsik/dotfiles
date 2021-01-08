@@ -19,6 +19,7 @@ mkdir -p ~/.vim
 mkdir -p ~/bin
 # shellcheck disable=SC2174
 mkdir -p -m 0700 ~/.gnupg
+mkdir -p -m 0700 ~/.ssh
 if [[ $(uname -s) = Darwin ]]; then
     mkdir -p ~/"Library/Application Support/Code/User"
     mkdir -p ~/"Library/Application Support/Sublime Text 3/Packages"
@@ -40,6 +41,10 @@ if ! command -v git-crypt >/dev/null; then
     echo "- Skipping encrypted files"
     PACKAGES=$(echo "$PACKAGES" | perl -pe 's/ ?_encrypted//')
 fi
+DEBUG && echo "PACKAGES=$PACKAGES"
+
+# Drop classic packages; they can be manually stowed
+PACKAGES=$(echo "$PACKAGES" | perl -pe 's/ ?bash//')
 DEBUG && echo "PACKAGES=$PACKAGES"
 
 # shellcheck disable=SC2086
