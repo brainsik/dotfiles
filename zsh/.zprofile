@@ -14,12 +14,9 @@ fi
 # Editors
 #
 
-export EDITOR='vim'
+export EDITOR=vim
 export VISUAL=$EDITOR
-export PAGER='less'
-#if [[ "$OSTYPE" == darwin* ]]; then
-#  export GIT_EDITOR="subl -n -w"
-#fi
+export PAGER=less
 
 #
 # Language
@@ -72,34 +69,35 @@ export HOMEBREW_NO_ANALYTICS=1
 
 # Export shell environment variables
 for homebrew_prefix in /opt/homebrew /usr/local; do
-  if [[ -x $homebrew_prefix/bin/brew ]]; then
-    eval $($homebrew_prefix/bin/brew shellenv)
+  if [[ -x "$homebrew_prefix/bin/brew" ]]; then
+    eval "$($homebrew_prefix/bin/brew shellenv)"
     break
   fi
 done
 
 if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
-    fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+  fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 fi
 
 #
 # Golang
 #
 
-export GOPATH="$HOME/src/go"
-path=(
-  $GOPATH/bin
-  $path
-)
+if [[ -d "$HOME/src/go" ]]; then
+  export GOPATH="$HOME/src/go"
+  path=(
+    $GOPATH/bin
+    $path
+  )
+fi
 
 #
 # Rust
 #
 
-[[ -d $HOME/.cargo/bin ]] && path=(
-  $HOME/.cargo/bin
-  $path
-)
+if [[ -s "$HOME/.cargo/env" ]]; then
+  source "$HOME/.cargo/env"
+fi
 
 #
 # Direnv
@@ -123,9 +121,6 @@ typeset -gU cdpath fpath mailpath path
 # )
 
 # Final directories Zsh searches for programs.
-path=(
-  $HOME/bin
-  $HOME/.local/bin
-  $HOME/usr/bin
-  $path
-)
+for homebin in "$HOME/usr/bin" "$HOME/.local/bin" "$HOME/bin"; do
+  [[ -d $homebin ]] && path=($homebin $path)
+done
