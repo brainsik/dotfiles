@@ -4,11 +4,11 @@
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
     "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modifications",
+    "files.insertFinalNewline": true,
     "rust-analyzer.checkOnSave.command": "clippy",
     "rust-analyzer.inlayHints.parameterHints": false,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
-    "files.insertFinalNewline": true,
-    "editor.formatOnSaveMode": "modifications",
     "workbench.colorTheme": "Better Solarized Dark"
 }
