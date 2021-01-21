@@ -14,3 +14,6 @@ behind = "⇣${count}"
 
 [terraform]
 format = "TF[$version]($style)"
+
+[python]
+python_binary = ["python3", "python"]
