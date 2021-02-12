@@ -63,14 +63,20 @@ alias l1='ls -1'         # Single column.
 alias l1a='ls -1A'       # Single column, hidden files.
 
 #
-# Git
+# git
 #
 
 alias gitnp='git --no-pager'
 alias gitlanded='git checkout master && git pull && gitprune'
 
 #
-# Misc aliases
+# terraform
+#
+
+alias tf=terraform
+
+#
+# macOS
 #
 
 if [[ "$OSTYPE" == darwin* ]]; then
