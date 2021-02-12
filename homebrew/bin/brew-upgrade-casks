@@ -7,6 +7,8 @@ for cask in $(brew list --cask); do
     latest=$(brew info --cask $cask | perl -ne 'if (m|'$cask': (\S+)|) { print("$1"); }')
     if [[ $current != $latest ]]; then
         echo "🤡  Upgrading $cask from $current to $latest:"
+        echo "Bombing out so we can experiment with \`brew outdated --cask\`"
+        exit 1
         brew upgrade --cask $cask
     fi
 done
