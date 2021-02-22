@@ -7,7 +7,7 @@ brew update
 brew cleanup 2>&1 | grep -Ev 'Warning: Skipping .+ most recent version .+ not installed' || true
 brew doctor || read -rp '<enter> to continue'
 brew missing || read -rp '<enter> to continue'
-brew-upgrade-casks
+brew upgrade --cask --greedy
 brew upgrade
 brew cleanup -s
 brew missing
