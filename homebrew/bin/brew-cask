@@ -5,7 +5,7 @@ cmd=$1
 cask=${2:-}
 
 if [[ $1 = zap ]]; then
-    cmd="uninstall --zap"
+    cmd=("uninstall" "--zap")
 fi
 
 PS4='$ '
