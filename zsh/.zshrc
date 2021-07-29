@@ -46,21 +46,27 @@ GPG_TTY=$(tty); export GPG_TTY
 # ls
 #
 
-alias l='ls -oh'         # Lists human readable sizes.
-alias lr='l -R'          # Lists human readable sizes, recursively.
-alias la='l -A'          # Lists human readable sizes, hidden files.
-alias lm='la | "$PAGER"' # Lists human readable sizes, hidden files through pager.
-alias lx='l -XB'         # Lists sorted by extension (GNU only).
-alias lk='l -Sr'         # Lists sorted by size, largest last.
-alias lt='l -tr'         # Lists sorted by date, most recent last.
-alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
-alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
+if whence lsd >/dev/null; then
+  alias l='lsd -l'
+  alias ll='lsd -Al'
+  alias lo='ls -oh'         # Lists human readable sizes.
+else
+  alias l='ls -oh'         # Lists human readable sizes.
+  alias lr='l -R'          # Lists human readable sizes, recursively.
+  alias la='l -A'          # Lists human readable sizes, hidden files.
+  alias lm='la | "$PAGER"' # Lists human readable sizes, hidden files through pager.
+  alias lx='l -XB'         # Lists sorted by extension (GNU only).
+  alias lk='l -Sr'         # Lists sorted by size, largest last.
+  alias lt='l -tr'         # Lists sorted by date, most recent last.
+  alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
+  alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
 
-alias ll='ls -lAh'       # Longer.
-alias lll='ls -lOAhe'    # Longest.
+  alias ll='ls -lAh'       # Longer.
+  alias lll='ls -lOAhe'    # Longest.
 
-alias l1='ls -1'         # Single column.
-alias l1a='ls -1A'       # Single column, hidden files.
+  alias l1='ls -1'         # Single column.
+  alias l1a='ls -1A'       # Single column, hidden files.
+fi
 
 #
 # git
