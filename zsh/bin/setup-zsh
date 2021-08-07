@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -eu -o pipefail
 
+# Install interface improvements.
+if [[ $(uname -s) = Darwin ]]; then
+    brew tap homebrew/cask-fonts
+    brew install --cask font-fira-code
+    brew install starship lsd
+fi
+
 # Clone prezto if we need it.
 if ! [[ -d ~/.zprezto ]]; then
     git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
