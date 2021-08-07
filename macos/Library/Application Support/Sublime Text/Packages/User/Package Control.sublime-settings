@@ -1,0 +1,14 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"LSP",
+		"Package Control",
+		"Pretty JSON",
+		"Rust Enhanced",
+		"TOML",
+	],
+}

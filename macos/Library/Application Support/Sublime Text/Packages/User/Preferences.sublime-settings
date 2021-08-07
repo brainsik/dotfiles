@@ -1,0 +1,26 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+    "font_face": "FiraCode Nerd Font",
+    "font_options":
+    [
+        "ss02"
+    ],
+    "folder_exclude_patterns":
+    [
+        ".git",
+        ".terraform",
+        ".vagrant",
+        ".venv",
+        "node_modules",
+        "target",
+        "vendor",
+        "venv"
+    ],
+   "ignored_packages":
+    [
+        "Rust",
+        "Vintage",
+    ],
+    "font_size": 14,
+}

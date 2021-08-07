@@ -23,6 +23,7 @@ mkdir -p -m 0700 ~/.ssh
 if [[ $(uname -s) = Darwin ]]; then
     mkdir -p ~/"Library/Application Support/Code/User"
     mkdir -p ~/"Library/Application Support/Sublime Text 3/Packages"
+    mkdir -p ~/"Library/Application Support/Sublime Text/Packages"
 fi
 
 # Start with all packages

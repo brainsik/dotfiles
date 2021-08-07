@@ -1,0 +1,10 @@
+{
+	"lsp_format_on_save": true,
+	"clients":
+	{
+		"rust-analyzer":
+		{
+			"enabled": true
+		}
+	}
+}
