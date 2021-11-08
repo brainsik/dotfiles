@@ -4,7 +4,7 @@ set -eu -o pipefail
 # Install interface improvements.
 if [[ $(uname -s) = Darwin ]]; then
     brew tap homebrew/cask-fonts
-    brew install --cask font-fira-code
+    brew install --cask font-fira-code-nerd-font
     brew install starship lsd
 fi
 
