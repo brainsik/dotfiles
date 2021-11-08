@@ -36,12 +36,6 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
 endif
-if has("gui_running")
-  colorscheme torte
-  set guifont=Monaco:h14
-  set columns=100
-  set lines=40
-endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
