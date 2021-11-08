@@ -1,12 +1,10 @@
-#!/bin/sh
-set -eu -o pipefail
-
-cmd='open -a "iA Writer"'
+#!/bin/bash
+set -eu
 file=${1:-}
 
 # Create a new file if none exists.
-if [[ -n $file && ! -e $file ]]; then
-    touch $file
+if [[ -n "$file" && ! -e "$file" ]]; then
+    touch "$file"
 fi
 
-open -a 'iA Writer' $file
+open -a 'iA Writer' "$file"

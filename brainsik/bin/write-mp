@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
-# 
+# HACK: Disable shellcheck for zsh (not supported)
+# shellcheck shell=sh
+# shellcheck disable=all
+#
 #   write-mp - Write your Morning Pages
 #
 set -eu
@@ -21,7 +24,7 @@ folder=""
 if [[ -z $folder ]]; then
     folder="."
     echo "* Dropping file in current directory."
-fi 
+fi
 file="$folder/$title"
 
 #
