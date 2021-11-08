@@ -1,6 +1,6 @@
 repos:
   - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v2.5.0
+    rev: v4.0.1
     hooks:
       - id: check-json
       - id: check-yaml
@@ -16,6 +16,6 @@ repos:
         exclude: ".p10k.zsh"
 
   - repo: git://github.com/igorshubovych/markdownlint-cli
-    rev: v0.23.0
+    rev: v0.29.0
     hooks:
       - id: markdownlint
