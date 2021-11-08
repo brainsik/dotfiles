@@ -31,7 +31,8 @@ map Q gq
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   set background=dark
-  colorscheme solarized
+  colorscheme snazzy
+  let g:SnazzyTransparent = 1
   syntax on
   set hlsearch
 endif
