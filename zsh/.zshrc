@@ -1,6 +1,11 @@
+
 #
 # Executes commands at the start of an interactive session.
 #
+
+# HACK: Disable shellcheck for zsh (not supported)
+# shellcheck shell=sh
+# shellcheck disable=all
 
 #
 # Prezto
@@ -47,9 +52,9 @@ GPG_TTY=$(tty); export GPG_TTY
 #
 
 if whence lsd >/dev/null; then
-  alias l='lsd -l'
-  alias ll='lsd -Al'
-  alias lo='ls -oh'         # Lists human readable sizes.
+  alias l='lsd -l --date relative --group-dirs first'
+  alias ll='l -A'
+  alias lo='l --blocks permission,user,size,date,name'
 else
   alias l='ls -oh'         # Lists human readable sizes.
   alias lr='l -R'          # Lists human readable sizes, recursively.
