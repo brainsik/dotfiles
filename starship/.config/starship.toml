@@ -15,5 +15,8 @@ behind = "⇣${count}"
 [terraform]
 format = "🪐[$version]($style) "
 
+[sudo]
+disabled = false
+
 [python]
 python_binary = ["python3", "python"]
