@@ -6,10 +6,15 @@
 	"installed_packages":
 	[
 		"LSP",
+		"LSP-rust-analyzer",
+		"LSP-terraform",
 		"Package Control",
 		"Pretty JSON",
 		"SublimeLinter",
+		"SublimeLinter-contrib-terraform",
 		"SublimeLinter-shellcheck",
+		"Terminus",
+		"Terraform",
 		"TOML",
 	],
 }
