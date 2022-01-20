@@ -4,7 +4,6 @@ set -x -eu -o pipefail
 # See the custom `brew` script that keeps Homebrew happy.
 
 brew update
-brew cleanup 2>&1 | grep -Ev 'Warning: Skipping .+ most recent version .+ not installed' || true
 brew doctor || read -rp '<enter> to continue'
 brew missing || read -rp '<enter> to continue'
 brew upgrade --cask --greedy
