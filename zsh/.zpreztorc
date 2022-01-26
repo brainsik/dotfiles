@@ -29,26 +29,29 @@ zstyle ':prezto:*:*' color 'yes'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
-zstyle ':prezto:load' pmodule \
-  'environment' \
-  'terminal' \
-  'history' \
-  'directory' \
-  'spectrum' \
-  'utility' \
-  'completion' \
-  'syntax-highlighting' \
-  'history-substring-search' \
+local pmodules=(
+    'environment'
+    'terminal'
+    'history'
+    'directory'
+    'spectrum'
+    'utility'
+    'completion'
+    'syntax-highlighting'
+    'history-substring-search'
+)
 
 # Load osx module on macOS
 if [[ $(uname -s) = Darwin ]]; then
-    zstyle ':prezto:load' pmodule 'osx'
+    pmodules=($pmodules 'osx')
 fi
 
 # Load the prompt module if no Starship
 if ! whence starship >/dev/null; then
-    zstyle ':prezto:load' pmodule 'prompt'
+    pmodules=($pmodules 'prompt')
 fi
+
+zstyle ':prezto:load' pmodule $pmodules
 
 #
 # Autosuggestions
