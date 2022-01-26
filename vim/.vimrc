@@ -1,71 +1,102 @@
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
+" Don't try to be vi compatible
 set nocompatible
 
-" Allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+" Helps force plugins to load correctly when it is turned back on below
+filetype off
 
-set history=50      " Keep 50 lines of command line history
-set ruler           " Show the cursor position all the time
-set showcmd         " Display incomplete commands
-set incsearch       " Do incremental searching
-set autowrite       " Automatically save before commands like :next and :make
+" TODO: Load plugins here (pathogen or vundle)
 
-" Default editing options
+" Turn on syntax highlighting
+syntax on
+
+" For plugins to load correctly
+filetype plugin indent on
+
+" TODO: Pick a leader key
+" let mapleader = ","
+
+" Security
+set modelines=0
+
+" Show line numbers
+set number
+
+" Show file stats
+set ruler
+
+" Blink cursor on error instead of beeping (grr)
+set visualbell
+
+" Encoding
 set encoding=utf-8
-set et sw=4 ts=4    " Use 4 spaces for indentation
 
-let c_comment_strings=1
+" Whitespace
+set wrap
+set textwidth=79
+set formatoptions=tcqrn1
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set noshiftround
+
+" Cursor motion
+set scrolloff=3
+set backspace=indent,eol,start
+set matchpairs+=<:> " use % to jump between pairs
+runtime! macros/matchit.vim
+
+" Move up/down editor lines
+nnoremap j gj
+nnoremap k gk
+
+" Allow hidden buffers
+set hidden
+
+" Rendering
+set ttyfast
+
+" Status bar
 set laststatus=2
-hi StatusLine cterm=bold
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
+" Last line
+set showmode
+set showcmd
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  set background=dark
-  colorscheme snazzy
-  let g:SnazzyTransparent = 1
-  syntax on
-  set hlsearch
-endif
+" Searching
+nnoremap / /\v
+vnoremap / /\v
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+map <leader><space> :let @/=''<cr> " clear search
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-  " Enable file type detection.
-  filetype on
-  filetype plugin on
-  filetype plugin indent on
+" Remap help key.
+inoremap <F1> <ESC>:set invfullscreen<CR>a
+nnoremap <F1> :set invfullscreen<CR>
+vnoremap <F1> :set invfullscreen<CR>
 
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
+" Textmate holdouts
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+" Formatting
+map <leader>q gqip
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+" Visualize tabs and newlines
+set listchars=tab:▸\ ,eol:¬
+" Uncomment this to enable by default:
+" set list " To enable by default
+" Or use your leader key + l to toggle on/off
+map <leader>l :set list!<CR> " Toggle tabs and EOL
 
-  autocmd BufRead,BufNewFile /etc/apache2/* set filetype=apache
-  autocmd BufRead,BufNewFile *.xsl set ts=2 sw=2
-  autocmd BufRead,BufNewFile *.py  set et ts=4 sw=4 sts=4 ai nosi
-  autocmd BufRead,BufNewFile .git/COMMIT_EDITMSG set tw=0
+" Color scheme (terminal)
+set t_Co=256
+set background=dark
 
-  augroup END
-else
-  set autoindent    " Always set autoindenting on
-endif " has("autocmd")
+let g:SnazzyTransparent=1
+colorscheme snazzy
 
+" let g:solarized_termcolors=256
+" let g:solarized_termtrans=1
+" colorscheme solarized
