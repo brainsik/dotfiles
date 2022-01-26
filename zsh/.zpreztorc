@@ -39,9 +39,13 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'syntax-highlighting' \
   'history-substring-search' \
-  'osx' \
 
-# Load the prompt module if Starship is not installed
+# Load osx module on macOS
+if [[ $(uname -s) = Darwin ]]; then
+    zstyle ':prezto:load' pmodule 'osx'
+fi
+
+# Load the prompt module if no Starship
 if ! whence starship >/dev/null; then
     zstyle ':prezto:load' pmodule 'prompt'
 fi
