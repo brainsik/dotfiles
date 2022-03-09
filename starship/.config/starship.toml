@@ -1,7 +1,3 @@
-[time]
-disabled = false
-format = "[$time]($style) "
-
 [git_branch]
 symbol = " "
 
@@ -12,11 +8,15 @@ ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
 
-[terraform]
-format = "🪐[$version]($style) "
+[python]
+python_binary = ["python3", "python"]
 
 [sudo]
 disabled = false
 
-[python]
-python_binary = ["python3", "python"]
+[terraform]
+format = "🪐[$version]($style) "
+
+[time]
+disabled = false
+format = "[$time]($style) "
