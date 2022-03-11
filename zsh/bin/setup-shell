@@ -17,3 +17,8 @@ fi
 for zfile in zlogin zlogout zpreztorc zprofile zshenv zshrc; do
     cp  ~/.$zfile ~/.zprezto/runcoms/$zfile
 done
+
+# Create iCloud Drive symlink
+if [[ $(uname -s) = Darwin ]] && ! [[ -e ~/iCloud ]]; then
+    ln -s Library/Mobile\ Documents/com\~apple\~CloudDocs ~/iCloud
+fi
