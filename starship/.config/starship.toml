@@ -1,11 +1,11 @@
 [[battery.display]]
-threshold = 20
+threshold = 10
 style = "red"
 [[battery.display]]
-threshold = 40
+threshold = 20
 style = "purple"
 [[battery.display]]
-threshold = 60
+threshold = 40
 style = "yellow"
 
 [git_branch]
