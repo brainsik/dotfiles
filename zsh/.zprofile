@@ -2,11 +2,15 @@
 # Executes commands at login pre-zshrc.
 #
 
+# HACK: Disable shellcheck for zsh (not supported)
+# shellcheck shell=sh
+# shellcheck disable=all
+
 #
 # Browser
 #
 
-if [[ "$OSTYPE" == darwin* ]]; then
+if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
 fi
 
