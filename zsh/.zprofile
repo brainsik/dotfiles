@@ -109,10 +109,13 @@ typeset -gU cdpath fpath mailpath path
 #   $cdpath
 # )
 
-# Final directories Zsh searches for programs.
-for homebin in "$HOME/usr/bin" "$HOME/.local/bin" "$HOME/bin"; do
-  [[ -d $homebin ]] && path=($homebin $path)
-done
+# Set the list of directories that Zsh searches for programs.
+path=(
+  $HOME/{,s}bin(N)
+  /opt/{homebrew,local}/{,s}bin(N)
+  /usr/local/{,s}bin(N)
+  $path
+)
 
 #
 # Less
