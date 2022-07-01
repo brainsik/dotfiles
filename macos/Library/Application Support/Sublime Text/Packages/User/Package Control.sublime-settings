@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"LSP",
+		"LSP-file-watcher-chokidar",
 		"LSP-rust-analyzer",
 		"LSP-terraform",
 		"Package Control",
