@@ -51,12 +51,12 @@ GPG_TTY=$(tty); export GPG_TTY
 # ls
 #
 
+# `l` is in ~/bin
+unalias l
 if whence lsd >/dev/null; then
-  alias l='lsd -l --date relative --group-dirs first'
   alias ll='l -A'
   alias lo='l --blocks permission,user,size,date,name'
 else
-  alias l='ls -oh'         # Lists human readable sizes.
   alias lr='l -R'          # Lists human readable sizes, recursively.
   alias la='l -A'          # Lists human readable sizes, hidden files.
   alias lm='la | "$PAGER"' # Lists human readable sizes, hidden files through pager.

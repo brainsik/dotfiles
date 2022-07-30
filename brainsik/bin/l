@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+if command -v lsd >/dev/null; then
+  lsd -l --date relative --group-dirs first "$@"
+else
+  ls -oh "$@"
+fi
