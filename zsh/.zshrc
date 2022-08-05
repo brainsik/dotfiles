@@ -84,6 +84,12 @@ alias gitlanded='git checkout master && git pull && gitprune'
 # terraform
 #
 
+# Have tfenv use a local directory for config (instead of the place the binary
+# is installed). This let's us drop a .dotfile to tell it to use gpg
+# (instead of Keybase). For better or worse, this is also where the terraform
+# versions will be installed.
+export TFENV_CONFIG_DIR="$HOME/.tfenv"
+
 alias tf=terraform
 
 #
