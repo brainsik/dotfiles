@@ -15,11 +15,10 @@ fi
 
 # Ensure some directories already exist so we don't just get symlinks
 mkdir -p ~/.config
+mkdir -p ~/.gnupg; chmod 0700 ~/.gnupg
+mkdir -p ~/.ssh; chmod 0700 ~/.ssh
 mkdir -p ~/.vim
 mkdir -p ~/bin
-# shellcheck disable=SC2174
-mkdir -p -m 0700 ~/.gnupg
-mkdir -p -m 0700 ~/.ssh
 if [[ $(uname -s) = Darwin ]]; then
     mkdir -p ~/"Library/Application Support/Code/User"
     mkdir -p ~/"Library/Application Support/Sublime Text 3/Packages"
