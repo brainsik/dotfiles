@@ -5,12 +5,14 @@
 	],
 	"installed_packages":
 	[
+		"Git",
 		"LSP",
 		"LSP-file-watcher-chokidar",
 		"LSP-rust-analyzer",
 		"LSP-terraform",
 		"Package Control",
 		"Pretty JSON",
+		"python-black",
 		"SublimeLinter",
 		"SublimeLinter-contrib-terraform",
 		"SublimeLinter-shellcheck",
