@@ -13,6 +13,7 @@
 		"LSP-rust-analyzer",
 		"LSP-terraform",
 		"LSP-yaml",
+		"MarkdownPreview",
 		"Package Control",
 		"Pretty JSON",
 		"python-black",
