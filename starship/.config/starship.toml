@@ -36,7 +36,8 @@ python_binary = ["python3", "python"]
 disabled = false
 
 [terraform]
-format = "🪐[$version]($style) "
+symbol = "🌎"
+format = "${symbol}[$version]($style) "
 
 [time]
 disabled = false
