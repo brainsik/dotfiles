@@ -2,7 +2,7 @@
 set -e
 
 if command -v lsd >/dev/null; then
-  lsd -l --date relative --group-dirs first "$@"
+    lsd --group-dirs first --date relative -l "$@"
 else
-  ls --color -oh "$@"
+    ls --group-directories-first --color=auto -oh "$@"
 fi
