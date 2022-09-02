@@ -1,19 +1,19 @@
+set read_only
+
 set folder="~/Maildir"
 set mbox_type=Maildir
 set mask='^\.'
 
-set abort_nosubject=no
-set edit_headers=yes
-set hidden_host
 set move=no
-set use_domain
-set use_from
-set reverse_name
 unset confirmappend
 
-score ~N 1000
+set edit_headers=yes
+set abort_nosubject=no
+set reverse_name
+set use_from
+
 set sort=threads
-set sort_aux=last-date-received
+set sort_aux=reverse-last-date-received
 
 bind pager ] half-down
 bind pager [ half-up
