@@ -2,12 +2,10 @@
 // and are overridden in turn by syntax-specific settings.
 {
     "font_face": "FiraCode Nerd Font",
-    "font_options":
-    [
+    "font_options": [
         "ss02"
     ],
-    "folder_exclude_patterns":
-    [
+    "folder_exclude_patterns": [
         ".git",
         ".terraform",
         ".vagrant",
@@ -17,8 +15,7 @@
         "vendor",
         "venv"
     ],
-   "ignored_packages":
-    [
+    "ignored_packages": [
         "Vintage",
     ],
     "font_size": 13,
