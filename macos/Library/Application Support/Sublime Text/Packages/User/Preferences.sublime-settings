@@ -15,6 +15,9 @@
         "vendor",
         "venv"
     ],
+    "file_exclude_patterns": [
+        "*.tfstate*"
+    ],
     "ignored_packages": [
         "Vintage",
     ],
