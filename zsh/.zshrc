@@ -55,6 +55,7 @@ GPG_TTY=$(tty); export GPG_TTY
 unalias l
 if whence lsd >/dev/null; then
   alias ll='l -A'
+  alias la='l -a'
   alias lo='l --blocks permission,user,size,date,name'
 else
   alias lr='l -R'          # Lists human readable sizes, recursively.
