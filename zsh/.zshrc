@@ -26,9 +26,6 @@ if whence starship >/dev/null; then
 
 # Powerlevel10k
 else
-  # Support our own compiled gistatusd (e.g., arm64 macOS)
-  [[ -x "$HOME/bin/gitstatusd" ]] && GITSTATUS_DAEMON="$HOME/bin/gitstatusd"
-
   # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
   [[ -f $HOME/.p10k.zsh ]] && source "$HOME/.p10k.zsh"
 fi
