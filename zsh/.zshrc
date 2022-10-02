@@ -109,7 +109,7 @@ alias tf=terraform
 #
 
 if [[ "$OSTYPE" == darwin* ]]; then
-  alias dnsflush='dscacheutil -flushcache'
+  alias dnsflush='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 fi
 
 #
