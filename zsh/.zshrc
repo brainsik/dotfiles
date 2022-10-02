@@ -79,6 +79,11 @@ alias gitnp='git --no-pager'
 alias gitlanded='git checkout master && git pull && gitprune'
 
 #
+# tar
+#
+alias tarnm="tar --no-mac-metadata --no-xattrs"
+
+#
 # terraform
 #
 
