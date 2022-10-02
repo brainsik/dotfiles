@@ -87,6 +87,15 @@ alias tarnm="tar --no-mac-metadata --no-xattrs"
 # terraform
 #
 
+# Configure a Provider Plugin Cache
+#   This directory must already exist before Terraform will cache plugins;
+#   Terraform will not create the directory itself.
+#   https://www.terraform.io/cli/config/config-file#provider-plugin-cache
+export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform"
+if ! [[ -d $TF_PLUGIN_CACHE_DIR ]]; then
+  mkdir -p $TF_PLUGIN_CACHE_DIR
+fi
+
 # Have tfenv use a local directory for config (instead of the place the binary
 # is installed). This let's us drop a .dotfile to tell it to use gpg
 # (instead of Keybase). For better or worse, this is also where the terraform
