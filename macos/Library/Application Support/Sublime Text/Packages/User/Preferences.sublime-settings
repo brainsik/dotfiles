@@ -1,9 +1,10 @@
 // Settings in here override those in "Default/Preferences.sublime-settings",
 // and are overridden in turn by syntax-specific settings.
 {
+    "font_size": 13,
     "font_face": "FiraCode Nerd Font",
     "font_options": [
-        "ss02"
+        "ss02",
     ],
     "folder_exclude_patterns": [
         ".git",
@@ -13,13 +14,14 @@
         "node_modules",
         "target",
         "vendor",
-        "venv"
+        "venv",
     ],
     "file_exclude_patterns": [
-        "*.tfstate*"
+        "*.tfstate*",
+        ".terraform.lock.hcl",
     ],
     "ignored_packages": [
         "Vintage",
     ],
-    "font_size": 13,
+    "create_window_at_startup": false,
 }
