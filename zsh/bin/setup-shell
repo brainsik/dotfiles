@@ -1,11 +1,24 @@
 #!/usr/bin/env bash
 set -eu -o pipefail
 
+brew_install() {
+    for pkg in "$@"; do
+        if ! brew list "$pkg" >/dev/null; then
+            brew install "${brew_type:=--formula}" "$pkg"
+        fi
+    done
+}
+
 # Install interface improvements.
 if [[ $(uname -s) = Darwin ]]; then
     brew tap homebrew/cask-fonts
-    brew install --cask font-fira-code-nerd-font
-    brew install starship lsd
+    brew_type="--cask" brew_install font-fira-code-nerd-font
+    brew_install starship lsd
+fi
+
+# Install core shell tooling.
+if [[ $(uname -s) = Darwin ]]; then
+    brew_install bash tree fd ripgrep
 fi
 
 # Clone prezto if we need it.
