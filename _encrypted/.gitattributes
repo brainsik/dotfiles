@@ -1,1 +1,6 @@
-.homebrew_github_api_token filter=git-crypt diff=git-crypt
+# Encrypt everything in this directory tree.
+*     filter=git-crypt diff=git-crypt
+*/**  filter=git-crypt diff=git-crypt
+
+# This must be last so the .gitattributes file doesn't get encrypted. :)
+.gitattributes  filter= diff=
