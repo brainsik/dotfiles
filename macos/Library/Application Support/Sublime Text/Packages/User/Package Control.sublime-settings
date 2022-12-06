@@ -7,7 +7,6 @@
 	[
 		"Git",
 		"LSP",
-		"LSP-file-watcher-chokidar",
 		"LSP-json",
 		"LSP-pyright",
 		"LSP-rust-analyzer",
