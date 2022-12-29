@@ -2,16 +2,37 @@
 #
 #   Update the local tooling.
 #
-set -eux
+set -eu
 
 dashes() { python3 -c 'print("=" * 40);'; }
-update() { command -v "$1" && "$@" && dashes; }
+update() { if command -v "$1"; then "$@" && dashes; fi; }
+
+if [ "${1:-}" != "nomail" ]; then
+    # sync mail
+    if [ -x "$HOME/Docs/Mail/mailsik/sync" ]; then
+        echo "🤖 Syncing mail"
+        "$HOME/Docs/Mail/mailsik/sync"
+    fi
+    dashes
+fi
+
+# update prezto
+if [ -d "$HOME/.zprezto" ]; then
+    echo "🤖 Updating zprezto"
+    zsh -i -c 'zprezto-update'
+
+    CWD=$PWD
+    echo "🤖 Checking for changes to zfiles"
+    cd "$HOME/.zprezto/runcoms"
+    for zfile in z*; do
+        diff -q "$zfile" "$HOME/.$zfile"
+    done
+    cd "$CWD"
+fi
+dashes
 
 update brewup
 
 update rustup update
 
-# update prezto
-if [ -d "$HOME/.zprezto" ]; then
-    zsh -i -c 'zprezto-update'
-fi
+update check_nvidia_driver.sh
