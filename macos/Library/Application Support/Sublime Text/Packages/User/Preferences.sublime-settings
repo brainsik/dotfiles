@@ -1,6 +1,7 @@
 // Settings in here override those in "Default/Preferences.sublime-settings",
 // and are overridden in turn by syntax-specific settings.
 {
+    "trim_trailing_white_space_on_save": "all",
     "font_size": 13,
     "font_face": "FiraCode Nerd Font",
     "font_options": [
@@ -17,8 +18,9 @@
         "venv",
     ],
     "file_exclude_patterns": [
-        "*.tfstate*",
+        ".hugo_build.lock",
         ".terraform.lock.hcl",
+        "*.tfstate*",
     ],
     "ignored_packages": [
         "Vintage",
