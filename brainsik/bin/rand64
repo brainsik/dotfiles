@@ -14,4 +14,6 @@ else
     echo "Need either \`dd\` and \`base64\` or \`openssl\` installed."
     exit 1
 fi
-echo -n "$entropy" | tr -d = | tee /dev/stderr | pbcopy; echo
+entropy=$(echo -n "$entropy" | tr -d =)
+echo -n "$entropy" | pbcopy
+echo "$entropy"
