@@ -7,7 +7,7 @@ exists() {
 }
 
 if exists dd && exists base64; then
-    entropy=$(dd if=/dev/urandom count=1 bs="$1" | base64)
+    entropy=$(dd if=/dev/urandom count=1 bs="$1" 2>/dev/null | base64)
 elif exists openssl; then
     entropy=$(openssl rand -base64 "$1")
 else
