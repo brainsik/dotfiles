@@ -5,15 +5,21 @@
 set -eu
 
 dashes() { python3 -c 'print("=" * 40);'; }
+
 update() { if command -v "$1"; then "$@" && dashes; fi; }
 
-if [ "${1:-}" != "nomail" ]; then
-    # sync mail
-    if [ -x "$HOME/Docs/Mail/mailsik/sync" ]; then
-        echo "🤖 Syncing mail"
-        "$HOME/Docs/Mail/mailsik/sync"
+sync() {
+    if [ -x "$1/sync" ]; then
+        echo "🤖 Syncing $(basename "$1")"
+        "$1/sync"
+        dashes
     fi
-    dashes
+}
+
+
+if [ "${1:-}" != "nosync" ]; then
+    sync "$HOME/Documents/recovery-codes"
+    sync "$HOME/Docs/Mail/mailsik"
 fi
 
 # update prezto
