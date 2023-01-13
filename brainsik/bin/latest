@@ -22,10 +22,15 @@ if [ -d "$HOME/.zprezto" ]; then
     zsh -i -c 'zprezto-update'
 
     CWD=$PWD
-    echo "🤖 Checking for changes to zfiles"
     cd "$HOME/.zprezto/runcoms"
     for zfile in z*; do
-        diff -q "$zfile" "$HOME/.$zfile"
+        errno=0
+        diff -q "$zfile" "$HOME/.$zfile" >/dev/null || errno=$?
+        if [ $errno -eq 1 ]; then
+            echo "👀 Files $zfile and $HOME/.$zfile differ"
+        elif [ $errno -gt 1 ]; then
+            exit $errno
+        fi
     done
     cd "$CWD"
 fi
