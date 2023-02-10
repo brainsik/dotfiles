@@ -13,8 +13,8 @@
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+  ZSH_HIGHLIGHT_STYLES[comment]='fg=white'
 fi
-
 
 #
 # Shell prompt
