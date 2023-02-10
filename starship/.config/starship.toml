@@ -5,12 +5,12 @@ error_symbol = '[❯](red) '
 [localip]
 disabled = false
 ssh_only = false
-style = "103"
+style = "60"
 
 [time]
 disabled = false
 format = "[$time]($style) "
-style = "103"
+style = "60"
 
 [[battery.display]]
 threshold = 10

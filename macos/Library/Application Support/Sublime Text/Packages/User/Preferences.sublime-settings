@@ -26,4 +26,5 @@
         "Vintage",
     ],
     "create_window_at_startup": false,
+    "color_scheme": "Packages/Dracula Color Scheme/Dracula.tmTheme",
 }

@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"Dracula Color Scheme",
 		"Git",
 		"LSP",
 		"LSP-json",

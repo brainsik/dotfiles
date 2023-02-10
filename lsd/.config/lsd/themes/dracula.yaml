@@ -1,0 +1,31 @@
+#
+# https://github.com/tasonosenshi/dracula-lsdeluxe/blob/master/dracula.yaml
+#
+
+user: [139, 233, 253] # Cyan
+group: 187
+permission:
+  read: [189, 147, 249] # Purple
+  write: [255, 121, 198] # Pink
+  exec: [139, 233, 253] # Cyan
+  exec-sticky: [80, 250, 123] # Green
+  no-access: [255, 85, 85] # Red
+  #octal: 6
+  #acl: dark_cyan
+  #context: cyan
+date:
+  hour-old: [149, 165, 215] # Comment - 20% lighter
+  day-old: [98, 114, 164] # Comment
+  older: [68, 71, 90] # Current Line
+size:
+  none: [98, 114, 164] # Comment
+  small: [80, 250, 123] # Green
+  medium: [255, 184, 108] # Orange
+  large: [255, 85, 85] # Red
+inode:
+  valid: [139, 233, 253] # Cyan
+  invalid: [255, 85, 85] # Red
+links:
+  valid: [139, 233, 253] # Cyan
+  invalid: [255, 85, 85] # Red
+tree-edge: [68, 71, 90] # Current Line
