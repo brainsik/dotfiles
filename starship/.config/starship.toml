@@ -1,3 +1,17 @@
+[character]
+success_symbol = '[❯](blue) '
+error_symbol = '[❯](red) '
+
+[localip]
+disabled = false
+ssh_only = false
+style = "103"
+
+[time]
+disabled = false
+format = "[$time]($style) "
+style = "103"
+
 [[battery.display]]
 threshold = 10
 style = "red"
@@ -18,10 +32,6 @@ ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
 
-[localip]
-disabled = false
-ssh_only = false
-
 [memory_usage]
 symbol = " "
 disabled = false
@@ -38,10 +48,6 @@ disabled = false
 [terraform]
 symbol = "🌎"
 format = "${symbol}[$version]($style) "
-
-[time]
-disabled = false
-format = "[$time]($style) "
 
 [aws]
 symbol = "  "
