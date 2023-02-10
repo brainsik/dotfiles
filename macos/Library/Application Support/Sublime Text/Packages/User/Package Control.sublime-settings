@@ -20,7 +20,6 @@
 		"SublimeLinter",
 		"SublimeLinter-contrib-terraform",
 		"SublimeLinter-shellcheck",
-		"Terminus",
 		"Terraform",
 		"TOML",
 	],
