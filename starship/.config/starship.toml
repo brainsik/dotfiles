@@ -46,11 +46,11 @@ python_binary = ["python3", "python"]
 disabled = false
 
 [terraform]
-symbol = "🌎"
+symbol = " "
 format = "${symbol}[$version]($style) "
 
 [aws]
-symbol = "  "
+symbol = "󰸏 "
 
 [buf]
 symbol = " "
@@ -101,7 +101,7 @@ symbol = " "
 symbol = " "
 
 [package]
-symbol = " "
+symbol = ""
 
 [spack]
 symbol = "🅢 "
