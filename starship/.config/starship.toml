@@ -2,6 +2,9 @@
 success_symbol = '[❯](blue) '
 error_symbol = '[❯](red) '
 
+[username]
+style_user = "60"
+
 [localip]
 disabled = false
 ssh_only = false
