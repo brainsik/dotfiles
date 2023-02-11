@@ -42,15 +42,6 @@ fi
 export MANPATH="$HOME/man:$HOME/.local/man:$HOME/usr/man:$MANPATH"
 
 #
-# Node
-#
-
-[[ -d /usr/local/share/npm/bin ]] && path=(
-  /usr/local/share/npm/bin
-  $path
-)
-
-#
 # Homebrew
 #
 
@@ -67,6 +58,21 @@ done
 if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
   fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 fi
+
+# Set the list of directories that Zsh searches for programs.
+path=(
+  /opt/homebrew/{,s}bin(N)
+  $path
+)
+
+#
+# Node
+#
+
+[[ -d /usr/local/share/npm/bin ]] && path=(
+  /usr/local/share/npm/bin
+  $path
+)
 
 #
 # Golang
@@ -96,7 +102,6 @@ if whence direnv >/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
-
 #
 # Paths
 #
@@ -109,10 +114,9 @@ typeset -gU cdpath fpath mailpath path
 #   $cdpath
 # )
 
-# Set the list of directories that Zsh searches for programs.
+# Set the first directories that Zsh searches for programs.
 path=(
   $HOME/{,s}bin(N)
-  /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $path
 )
