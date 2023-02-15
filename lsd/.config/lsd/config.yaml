@@ -1,6 +1,3 @@
-color:
-  theme: dracula
-
 # lsd --date relative --group-dirs first
 date: relative
 sorting:
