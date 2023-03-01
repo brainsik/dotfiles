@@ -1,5 +1,5 @@
 [character]
-success_symbol = '[❯](cyan) '
+success_symbol = '[❯](cyan)'
 
 [localip]
 disabled = false
