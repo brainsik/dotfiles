@@ -39,6 +39,9 @@ format = '''via [${symbol}${pyenv_prefix}(${version} )(
 symbol = " "
 python_binary = ["python3", "python"]
 
+[shlvl]
+disabled = false
+
 [sudo]
 disabled = false
 
@@ -63,6 +66,7 @@ symbol = " "
 
 [directory]
 read_only = " "
+repo_root_style = 'bold'
 
 [docker_context]
 symbol = " "
