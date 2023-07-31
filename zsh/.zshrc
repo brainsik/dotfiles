@@ -39,6 +39,12 @@ if [[ -d $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent ]]; then
 fi
 
 #
+# bat
+#
+
+export BAT_THEME='Dracula'
+
+#
 # gpg-agent
 #
 

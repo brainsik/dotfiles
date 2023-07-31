@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -eu -o pipefail
+
+# https://github.com/sharkdp/bat#git-diff
+git diff --name-only --relative --diff-filter=d "$@" | xargs bat --diff
+
