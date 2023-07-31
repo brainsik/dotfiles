@@ -9,6 +9,13 @@ ssh_only = false
 disabled = false
 format = "[$time]($style) "
 
+[battery]
+full_symbol = '󱊣 '
+charging_symbol = '󰂄 '
+discharging_symbol = '󱊡 '
+unknown_symbol = '󰂑 '
+empty_symbol = '󰂎 '
+
 [[battery.display]]
 threshold = 10
 style = "red"
