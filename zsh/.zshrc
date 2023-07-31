@@ -35,12 +35,13 @@ fi
 #
 
 if [[ -d $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent ]]; then
-  export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+  export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
 fi
 
 #
 # gpg-agent
 #
+
 # https://linux.die.net/man/1/gpg-agent
 GPG_TTY=$(tty); export GPG_TTY
 
@@ -81,7 +82,7 @@ alias gitlanded='git checkout master && git pull && gitprune'
 #
 # tar
 #
-alias tarnm="tar --no-mac-metadata --no-xattrs"
+alias tarnm='tar --no-mac-metadata --no-xattrs'
 
 #
 # terraform
