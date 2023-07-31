@@ -45,8 +45,6 @@ export MANPATH="$HOME/man:$HOME/.local/man:$HOME/usr/man:$MANPATH"
 # Homebrew
 #
 
-export HOMEBREW_NO_ANALYTICS=1
-
 # Export shell environment variables
 for homebrew_prefix in /opt/homebrew /usr/local; do
   if [[ -x "$homebrew_prefix/bin/brew" ]]; then
