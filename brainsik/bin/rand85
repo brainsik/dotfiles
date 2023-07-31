@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 set -eu -o pipefail
 [[ -z ${1:-} ]] && { echo "Usage: $(basename "$0") <bytes>"; exit; }
-echo -n "$(rand85.py "$1")" | tee /dev/stderr | pbcopy; echo
+entropy=$(rand85.py "$1")
+echo -n "$entropy" | pbcopy
+echo "$entropy"
