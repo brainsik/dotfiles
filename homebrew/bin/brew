@@ -36,5 +36,6 @@ if [[ -e ~/.curlrc ]]; then
 fi
 
 "$HOMEBREW_PREFIX/bin/brew" "$@"
+restore_curlrc
 
 popd >/dev/null
