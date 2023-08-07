@@ -9,6 +9,7 @@
 		"Git",
 		"Gomod",
 		"LSP",
+		"LSP-file-watcher-chokidar",
 		"LSP-gopls",
 		"LSP-json",
 		"LSP-pyright",

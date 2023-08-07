@@ -18,12 +18,10 @@
         "venv",
     ],
     "file_exclude_patterns": [
+        ".DS_Store",
         ".hugo_build.lock",
         ".terraform.lock.hcl",
         "*.tfstate*",
-    ],
-    "ignored_packages": [
-        "Vintage",
     ],
     "create_window_at_startup": false,
     "color_scheme": "Packages/Dracula Color Scheme/Dracula.tmTheme",
