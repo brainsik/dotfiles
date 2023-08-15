@@ -54,8 +54,8 @@ fi
 export PAGER=less
 
 # Prefer bat.
-if command -v bat >/dev/null; then
-  export PAGER=bat
+if (( $#commands[(i)bat(|cat)] )); then
+  export PAGER=$commands[(i)bat(|cat)]
   export BAT_THEME='Dracula'
 fi
 
