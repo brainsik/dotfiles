@@ -21,16 +21,6 @@ if [[ $(uname -s) = Darwin ]]; then
     brew_install bash tree fd ripgrep
 fi
 
-# Clone prezto if we need it.
-if ! [[ -d ~/.zprezto ]]; then
-    git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
-fi
-
-# Copy our dotfiles in so we can compare to the prezto repo.
-for zfile in zlogin zlogout zpreztorc zprofile zshenv zshrc; do
-    cp  ~/.$zfile ~/.zprezto/runcoms/$zfile
-done
-
 # Create iCloud Drive symlink
 if [[ $(uname -s) = Darwin ]] && ! [[ -e ~/iCloud ]]; then
     ln -s Library/Mobile\ Documents/com\~apple\~CloudDocs ~/iCloud

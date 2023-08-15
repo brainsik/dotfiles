@@ -1,4 +1,3 @@
-
 #
 # Executes commands at the start of an interactive session.
 #
@@ -8,26 +7,35 @@
 # shellcheck disable=all
 
 #
-# Prezto
+# Zim
 #
 
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-  ZSH_HIGHLIGHT_STYLES[comment]='fg=white'
+source $HOME/.zshrc_zim
+export HISTORY_SUBSTRING_SEARCH_PREFIXED=yep
+
+#
+# Zsh / Shell
+#
+
+# Save a lot of command history
+HISTSIZE=110000
+SAVEHIST=100000
+
+export EDITOR=vim
+export VISUAL=$EDITOR
+
+export MANWIDTH=80
+
+if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
+  export BROWSER='open'
 fi
 
 #
-# Shell prompt
+# Starship
 #
 
-# Starship
 if whence starship >/dev/null; then
   eval "$(starship init zsh)"
-
-# Powerlevel10k
-else
-  # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-  [[ -f $HOME/.p10k.zsh ]] && source "$HOME/.p10k.zsh"
 fi
 
 #
@@ -39,10 +47,30 @@ if [[ -d $HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent ]]; then
 fi
 
 #
-# bat
+# PAGER
 #
 
-export BAT_THEME='Dracula'
+# Default to less.
+export PAGER=less
+
+# Prefer bat.
+if command -v bat >/dev/null; then
+  export PAGER=bat
+  export BAT_THEME='Dracula'
+fi
+
+# Set the default Less options.
+# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
+# Remove -X to enable it.
+if [[ -z "$LESS" ]]; then
+  export LESS='-g -i -M -R -S -w -X -z-4'
+fi
+
+# Set the Less input preprocessor.
+# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
+if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
+  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
 
 #
 # gpg-agent
@@ -56,7 +84,10 @@ GPG_TTY=$(tty); export GPG_TTY
 #
 
 # `l` is in ~/bin
-unalias l
+if whence -w l | grep alias >/dev/null; then
+  unalias l
+fi
+
 if whence lsd >/dev/null; then
   alias ll='l -A'
   alias la='l -a'
@@ -88,26 +119,12 @@ alias gitlanded='git checkout master && git pull && gitprune'
 #
 # tar
 #
+
 alias tarnm='tar --no-mac-metadata --no-xattrs'
 
 #
 # terraform
 #
-
-# Configure a Provider Plugin Cache
-#   This directory must already exist before Terraform will cache plugins;
-#   Terraform will not create the directory itself.
-#   https://www.terraform.io/cli/config/config-file#provider-plugin-cache
-export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform"
-if ! [[ -d $TF_PLUGIN_CACHE_DIR ]]; then
-  mkdir -p $TF_PLUGIN_CACHE_DIR
-fi
-
-# Have tfenv use a local directory for config (instead of the place the binary
-# is installed). This let's us drop a .dotfile to tell it to use gpg
-# (instead of Keybase). For better or worse, this is also where the terraform
-# versions will be installed.
-export TFENV_CONFIG_DIR="$HOME/.tfenv"
 
 alias tf=terraform
 
@@ -127,10 +144,6 @@ fi
 # finale
 #
 
-# Save a lot of command history
-HISTSIZE=110000
-SAVEHIST=100000
-
-# old school
+# The dream of the 90's.
 mesg y  # for a good time, call
 uptime  # awareness

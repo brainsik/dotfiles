@@ -7,22 +7,6 @@
 # shellcheck disable=all
 
 #
-# Browser
-#
-
-if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
-fi
-
-#
-# Editors
-#
-
-export EDITOR=vim
-export VISUAL=$EDITOR
-export PAGER=less
-
-#
 # Language
 #
 
@@ -33,8 +17,6 @@ fi
 #
 # Man
 #
-
-export MANWIDTH=80
 
 if [[ -z "$MANPATH" ]] && whence manpath >/dev/null; then
     export MANPATH=$(manpath)
@@ -93,6 +75,25 @@ if [[ -s "$HOME/.cargo/env" ]]; then
 fi
 
 #
+# Terraform
+#
+
+# Configure a Provider Plugin Cache
+#   This directory must already exist before Terraform will cache plugins;
+#   Terraform will not create the directory itself.
+#   https://www.terraform.io/cli/config/config-file#provider-plugin-cache
+export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform"
+if ! [[ -d $TF_PLUGIN_CACHE_DIR ]]; then
+  mkdir -p $TF_PLUGIN_CACHE_DIR
+fi
+
+# Have tfenv use a local directory for config (instead of the place the binary
+# is installed). This let's us drop a .dotfile to tell it to use gpg
+# (instead of Keybase). For better or worse, this is also where the terraform
+# versions will be installed.
+export TFENV_CONFIG_DIR="$HOME/.tfenv"
+
+#
 # Direnv
 #
 
@@ -118,21 +119,3 @@ path=(
   /usr/local/{,s}bin(N)
   $path
 )
-
-#
-# Less
-#
-
-# Set the default Less options.
-# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
-# Remove -X to enable it.
-if [[ -z "$LESS" ]]; then
-  export LESS='-g -i -M -R -S -w -X -z-4'
-fi
-
-
-# Set the Less input preprocessor.
-# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
-if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
-  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
-fi
