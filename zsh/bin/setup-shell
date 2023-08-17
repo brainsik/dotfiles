@@ -16,8 +16,7 @@ if [[ $os = Darwin ]]; then
 
 elif [[ $os = Linux ]]; then
     if ! command -v jq >/dev/null; then
-        echo "💾 Installing jq …"
-        sudo apt install curl tree fd-find ripgrep jq
+        sudo apt install curl tree fd-find ripgrep
     fi
 fi
 
