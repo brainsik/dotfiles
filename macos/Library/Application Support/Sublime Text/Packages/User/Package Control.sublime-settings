@@ -23,6 +23,7 @@
 		"Sass",
 		"SublimeLinter",
 		"SublimeLinter-contrib-terraform",
+		"SublimeLinter-golangcilint",
 		"SublimeLinter-shellcheck",
 		"Terraform",
 		"TOML",

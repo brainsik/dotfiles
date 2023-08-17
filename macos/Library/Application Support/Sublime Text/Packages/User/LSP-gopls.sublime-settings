@@ -1,3 +1,6 @@
 {
 	"enabled": true,
+	"settings": {
+		"gopls.gofumpt": true,
+	}
 }
