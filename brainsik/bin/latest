@@ -22,28 +22,11 @@ if [ "${1:-}" != "nosync" ]; then
     sync "$HOME/Docs/Mail/mailsik"
 fi
 
-# update prezto
-if [ -d "$HOME/.zprezto" ]; then
-    echo "🤖 Updating zprezto"
-    zsh -i -c 'zprezto-update'
+update rustup update
 
-    CWD=$PWD
-    cd "$HOME/.zprezto/runcoms"
-    for zfile in z*; do
-        errno=0
-        diff -q "$zfile" "$HOME/.$zfile" >/dev/null || errno=$?
-        if [ $errno -eq 1 ]; then
-            echo "👀 Files $zfile and $HOME/.$zfile differ"
-        elif [ $errno -gt 1 ]; then
-            exit $errno
-        fi
-    done
-    cd "$CWD"
-fi
-dashes
+update zimfw update
+update zimfw upgrade
 
 update brewup
-
-update rustup update
 
 update check-nvidia-driver.sh
