@@ -28,10 +28,10 @@ if [[ $os = Darwin ]]; then
 
 elif [[ $os = Linux ]]; then
     if ! command -v starship >/dev/null; then
-        "$HOME/bin/linux-install-starship.sh"
+        "$HOME/bin/linux-install-starship"
     fi
     if ! command -v lsd >/dev/null; then
-        "$HOME/bin/linux-install-lsd.sh"
+        "$HOME/bin/linux-install-lsd"
     fi
 fi
 
