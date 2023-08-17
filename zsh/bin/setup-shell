@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -eu -o pipefail
+os=$(uname -s)
 
 brew_install() {
     for pkg in "$@"; do
@@ -9,19 +10,33 @@ brew_install() {
     done
 }
 
+# Install core shell tooling.
+if [[ $os = Darwin ]]; then
+    brew_install bash tree fd ripgrep jq
+
+elif [[ $os = Linux ]]; then
+    if ! command -v jq >/dev/null; then
+        echo "💾 Installing jq …"
+        sudo apt install curl tree fd-find ripgrep jq
+    fi
+fi
+
 # Install interface improvements.
-if [[ $(uname -s) = Darwin ]]; then
+if [[ $os = Darwin ]]; then
     brew tap homebrew/cask-fonts
     brew_type="--cask" brew_install font-fira-code-nerd-font
     brew_install starship lsd
-fi
 
-# Install core shell tooling.
-if [[ $(uname -s) = Darwin ]]; then
-    brew_install bash tree fd ripgrep
+elif [[ $os = Linux ]]; then
+    if ! command -v starship >/dev/null; then
+        "$HOME/bin/linux-install-starship.sh"
+    fi
+    if ! command -v lsd >/dev/null; then
+        "$HOME/bin/linux-install-lsd.sh"
+    fi
 fi
 
 # Create iCloud Drive symlink
-if [[ $(uname -s) = Darwin ]] && ! [[ -e ~/iCloud ]]; then
+if [[ $os = Darwin ]] && ! [[ -e ~/iCloud ]]; then
     ln -s Library/Mobile\ Documents/com\~apple\~CloudDocs ~/iCloud
 fi

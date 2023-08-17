@@ -46,4 +46,4 @@ update brewup
 
 update rustup update
 
-update check_nvidia_driver.sh
+update check-nvidia-driver.sh
