@@ -52,8 +52,9 @@ fi
 
 # Default to less.
 export PAGER=less
+export MANPAGER=$PAGER
 
-# Prefer bat.
+# Prefer bat (but not for `man`).
 if (( $#commands[(i)bat(|cat)] )); then
   export PAGER=$commands[(i)bat(|cat)]
   export BAT_THEME='Dracula'
