@@ -1,13 +1,46 @@
 #!/usr/bin/env bash
-set -x -eu -o pipefail
+set -eu -o pipefail
 
 # See the custom `brew` script that keeps Homebrew happy.
 
+upgrade_casks() {
+	set +x
+
+	# librewolf
+	if [[ -n $(brew outdated --cask --greedy librewolf) ]]; then
+		set -x
+		brew reinstall --no-quarantine --cask librewolf
+		set +x
+	fi
+
+	# everything else
+	set -x
+	brew upgrade --cask --greedy
+}
+
+upgrade_formulas() {
+	set +x
+
+	# tailscale
+	if [[ -n $(brew outdated --formula tailscale) ]]; then
+		set -x
+		sudo chown -R "$USER": /opt/homebrew/Cellar/tailscale
+		brew upgrade --formula tailscale
+		sudo -E brew services restart tailscale
+		set +x
+	fi
+
+	# everything else
+	set -x
+	brew upgrade
+}
+
+set -x
 brew update
 brew doctor || read -rp '<enter> to continue'
 brew missing || read -rp '<enter> to continue'
-brew upgrade --cask --greedy
-brew upgrade
+upgrade_casks
+upgrade_formulas
 brew cleanup -s
 brew missing
 brew doctor
