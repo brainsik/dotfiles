@@ -135,7 +135,7 @@ alias tf=terraform
 
 if [[ "$OSTYPE" == darwin* ]]; then
   alias dnsflush='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
-  alias firefox='/Applications/Firefox.app/Contents/MacOS/firefox-bin'
+  alias firefox='/Applications/Firefox.app/Contents/MacOS/firefox'
   if ! whence tailscale >/dev/null; then
     alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
   fi
