@@ -101,6 +101,16 @@ if whence direnv >/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
+
+#
+# OrbStack
+#
+
+if [[ -s ~/.orbstack/shell/init.zsh ]]; then
+  # Added by OrbStack: command-line tools and integration
+  source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+fi
+
 #
 # Paths
 #
