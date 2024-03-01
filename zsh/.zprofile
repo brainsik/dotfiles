@@ -27,23 +27,9 @@ export MANPATH="$HOME/man:$HOME/.local/man:$HOME/usr/man:$MANPATH"
 # Homebrew
 #
 
-# Export shell environment variables
-for homebrew_prefix in /opt/homebrew /usr/local; do
-  if [[ -x "$homebrew_prefix/bin/brew" ]]; then
-    eval "$($homebrew_prefix/bin/brew shellenv)"
-    break
-  fi
-done
-
 if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
   fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 fi
-
-# Set the list of directories that Zsh searches for programs.
-path=(
-  /opt/homebrew/{,s}bin(N)
-  $path
-)
 
 #
 # Node
