@@ -27,6 +27,17 @@ export MANPATH="$HOME/man:$HOME/.local/man:$HOME/usr/man:$MANPATH"
 # Homebrew
 #
 
+# Even though we do this in .zshenv, we need to do it again in .zprofile to
+# ensure Homebrew is before paths like /usr/bin. On macOS, /etc/zprofile
+# will eval `/usr/libexec/path_helper -s` which results in Homebrew coming
+# after. This will fix things up.
+for homebrew_prefix in /opt/homebrew /usr/local; do
+  if [[ -x "$homebrew_prefix/bin/brew" ]]; then
+    eval "$($homebrew_prefix/bin/brew shellenv)"
+    break
+  fi
+done
+
 if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
   fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 fi
