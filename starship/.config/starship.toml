@@ -16,6 +16,9 @@ ssh_only = false
 disabled = false
 format = "[$time]($style) "
 
+[direnv]
+disabled = false
+
 [battery]
 full_symbol = '󱊣 '
 charging_symbol = '󰂄 '
