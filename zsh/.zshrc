@@ -118,6 +118,16 @@ alias gitnp='git --no-pager'
 alias gitlanded='git checkout master && git pull && gitprune'
 
 #
+# mosh / et
+#
+
+# Prevent mosh from fully breaking scrolling since it uses the terminal alternative screen
+alias mosh='mosh --no-init'
+
+# Disable et telemetry
+export ET_NO_TELEMETRY=1
+
+#
 # tar
 #
 
