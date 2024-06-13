@@ -4,7 +4,7 @@ This assumes a remote shell running bash where we don't need the encrypted files
 
 ```sh
 sudo apt install git stow zsh
-git clone git@github.com:brainsik/dotfiles.git .dotfiles
+git clone https://github.com/brainsik/dotfiles.git .dotfiles
 cd .dotfiles
 ./stow
 cd ..
