@@ -5,11 +5,11 @@ success_symbol = '[❯](cyan)'
 
 [username]
 style_user = "bold green"
-detect_env_vars = ['!SSH_CONNECTION']
+detect_env_vars = ['!SSH_CONNECTION', 'SUDO_USER']
 
 [hostname]
 ssh_symbol = "📞 "
-style = "bold"
+style = "bold bright-purple"
 format = '[$ssh_symbol$hostname]($style) ← '
 
 [localip]
