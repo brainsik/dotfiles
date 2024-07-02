@@ -19,4 +19,12 @@ echo "🤖 [caddy] Installing apt packages"
 sudo apt update
 sudo apt install caddy
 
+sysctl_conf=/etc/sysctl.d/local-caddy.conf
+echo "⚙️ [caddy] Creating sysctl config: $sysctl_conf"
+cat <<EOF | sudo tee "$sysctl_conf"
+# https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes
+net.core.rmem_max = 7500000
+net.core.wmem_max = 7500000
+EOF
+
 echo "✅ Caddy installed"
