@@ -5,6 +5,8 @@
 	],
 	"installed_packages":
 	[
+		"AutoSetSyntax",
+		"Caddyfile Syntax",
 		"Dracula Color Scheme",
 		"Git",
 		"Gomod",
@@ -18,6 +20,7 @@
 		"LSP-terraform",
 		"LSP-yaml",
 		"MarkdownPreview",
+		"nginx",
 		"Package Control",
 		"Pretty JSON",
 		"python-black",

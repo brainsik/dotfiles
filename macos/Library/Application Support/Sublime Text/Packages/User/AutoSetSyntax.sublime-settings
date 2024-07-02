@@ -1,0 +1,16 @@
+{
+	"user_syntax_rules": [
+		{
+			"comment": "Caddy config",
+			"syntaxes": "scope:source.Caddyfile",
+			"rules": [
+				{
+					"constraint": "path_contains",
+					"args": [
+						"/caddy/sites/"
+					],
+				}
+			],
+		},
+	],
+}
