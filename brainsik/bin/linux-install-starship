@@ -14,3 +14,5 @@ curl -fL --progress-bar --output "$file" "$url"
 
 tar -xzof "$file" -C "$HOME/bin"
 rm -f "$file"
+
+starship --version

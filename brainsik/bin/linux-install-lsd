@@ -16,3 +16,5 @@ curl -fL --progress-bar --output "$file" "$url"
 tar -xzof "$file" -C "$tmpdir"
 mv "$tmpdir/lsd-$tag-$arch-unknown-linux-musl/lsd" "$HOME/bin/lsd"
 rm -rf "$tmpdir"
+
+lsd --version
