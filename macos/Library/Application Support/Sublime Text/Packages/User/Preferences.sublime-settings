@@ -5,6 +5,7 @@
     "font_size": 13,
     "font_face": "FiraCode Nerd Font",
     "font_options": [
+        "subpixel_antialias",
         "ss02",
     ],
     "folder_exclude_patterns": [
