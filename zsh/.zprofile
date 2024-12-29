@@ -64,6 +64,15 @@ if [[ -d "$HOME/src/go" ]]; then
 fi
 
 #
+# Lua
+#
+
+[[ -d "$HOME/.luarocks/bin" ]] && path=(
+  "$HOME/.luarocks/bin"
+  $path
+)
+
+#
 # Rust
 #
 
