@@ -29,4 +29,5 @@ update zimfw upgrade
 
 update brewup
 
+update check-mcworlds-backup.sh
 update check-nvidia-driver.sh
