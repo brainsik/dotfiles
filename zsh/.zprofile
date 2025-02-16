@@ -43,15 +43,6 @@ if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
 fi
 
 #
-# Node
-#
-
-[[ -d /usr/local/share/npm/bin ]] && path=(
-  /usr/local/share/npm/bin
-  $path
-)
-
-#
 # Golang
 #
 
@@ -69,6 +60,15 @@ fi
 
 [[ -d "$HOME/.luarocks/bin" ]] && path=(
   "$HOME/.luarocks/bin"
+  $path
+)
+
+#
+# Node
+#
+
+[[ -d /usr/local/share/npm/bin ]] && path=(
+  /usr/local/share/npm/bin
   $path
 )
 
