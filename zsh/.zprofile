@@ -107,7 +107,6 @@ if whence direnv >/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
-
 #
 # OrbStack
 #
@@ -132,6 +131,7 @@ typeset -gU cdpath fpath mailpath path
 # Set the first directories that Zsh searches for programs.
 path=(
   $HOME/{,s}bin(N)
+  $HOME/.local/bin
   /usr/local/{,s}bin(N)
   $path
 )
