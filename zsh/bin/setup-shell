@@ -22,9 +22,8 @@ fi
 
 # Install interface improvements.
 if [[ $os = Darwin ]]; then
-    brew tap homebrew/cask-fonts
-    brew_type="--cask" brew_install font-fira-code-nerd-font
-    brew_install ghostty starship lsd
+    brew_type="--cask" brew_install font-fira-code-nerd-font ghostty
+    brew_install starship lsd
 
 elif [[ $os = Linux ]]; then
     if ! command -v starship >/dev/null; then
