@@ -1,6 +1,9 @@
 [user]
 	name = jeremy avnet
 	email = brainsik@users.noreply.github.com
+	signingkey = ~/.ssh/GitHub.pub
+[gpg]
+	format = ssh
 [github]
 	user = brainsik
 [init]
