@@ -1,3 +1,4 @@
+auto-update = check
 theme = Dracula
 font-family = "FiraCode Nerd Font"
 font-feature = "zero"
