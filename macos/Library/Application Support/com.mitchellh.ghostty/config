@@ -1,9 +1,9 @@
 auto-update = check
-theme = Dracula
+theme = Dracula+
 font-family = "FiraCode Nerd Font"
 font-feature = "zero"
 font-feature = "ss02"
 background-opacity = 0.9
 background-blur-radius = 12
 window-height = 50
-window-width = 100
+window-width = 105
