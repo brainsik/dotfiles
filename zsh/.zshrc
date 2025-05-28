@@ -134,10 +134,11 @@ export ET_NO_TELEMETRY=1
 alias tarnm='tar --no-mac-metadata --no-xattrs'
 
 #
-# terraform
+# OpenTofu (terraform)
 #
 
-alias tf=terraform
+alias tf=tofu
+alias terraform=tofu
 
 #
 # macOS
