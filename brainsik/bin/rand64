@@ -16,4 +16,4 @@ else
 fi
 entropy=$(echo -n "$entropy" | tr -d =)
 echo -n "$entropy" | pbcopy
-echo "$entropy"
+echo -n "$entropy"
