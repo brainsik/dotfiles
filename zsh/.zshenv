@@ -10,7 +10,7 @@
 #
 
 # Export shell environment variables
-for homebrew_prefix in /opt/homebrew /usr/local; do
+for homebrew_prefix in /opt/homebrew /home/linuxbrew/.linuxbrew; do
   if [[ -x "$homebrew_prefix/bin/brew" ]]; then
     eval "$($homebrew_prefix/bin/brew shellenv)"
     break
