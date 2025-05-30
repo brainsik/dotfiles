@@ -12,7 +12,7 @@ brew_install() {
 
 # Install core shell tooling.
 if [[ $os = Darwin ]]; then
-    brew_install bash tree fd ripgrep jq
+    brew_install git bash curl tree fd ripgrep jq
 
 elif [[ $os = Linux ]]; then
     if ! command -v jq >/dev/null; then
