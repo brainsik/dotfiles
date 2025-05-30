@@ -31,6 +31,7 @@
 	ui = true
 [diff]
 	color = true
+	colorMoved = default
 [color "diff"]
 	new = bold blue
 	whitespace = normal yellow
