@@ -69,7 +69,6 @@ disabled = false
 
 [terraform]
 symbol = " "
-format = "${symbol}[$version]($style) "
 
 [aws]
 symbol = "󰸏 "
