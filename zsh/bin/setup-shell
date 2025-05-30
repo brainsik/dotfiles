@@ -23,7 +23,7 @@ fi
 # Install interface improvements.
 if [[ $os = Darwin ]]; then
     brew_type="--cask" brew_install font-fira-code-nerd-font ghostty
-    brew_install starship lsd
+    brew_install starship lsd less git-delta
 
 elif [[ $os = Linux ]]; then
     if ! command -v starship >/dev/null; then
@@ -31,6 +31,9 @@ elif [[ $os = Linux ]]; then
     fi
     if ! command -v lsd >/dev/null; then
         "$HOME/bin/linux-install-lsd"
+    fi
+    if ! command -v lsd >/dev/null; then
+        "$HOME/bin/linux-install-delta"
     fi
 fi
 
