@@ -151,11 +151,3 @@ if [[ "$OSTYPE" == darwin* ]]; then
     alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
   fi
 fi
-
-#
-# finale
-#
-
-# The dream of the 90's.
-mesg y  # for a good time, call
-uptime  # awareness
