@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Installs the latest version of delta on Linux.
+# - https://github.com/dandavison/delta
+#
+set -eu -o pipefail
+repo="dandavison/delta"
+exec "$HOME/bin/linux-install-github-musl" "$repo"

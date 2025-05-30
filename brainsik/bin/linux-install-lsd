@@ -1,20 +1,8 @@
 #!/usr/bin/env bash
 #
 # Installs the latest version of LSDeluxe on Linux.
+# - https://github.com/lsd-rs/lsd
 #
 set -eu -o pipefail
-arch=$(uname -m)
-
-echo "💾 Installing lsd …"
-tmpdir=$(mktemp -d)
-file="$tmpdir/lsd.tar.gz"
-
-tag=$(curl -fsSL https://api.github.com/repos/lsd-rs/lsd/releases/latest | python3 -c "import json,sys;obj=json.load(sys.stdin);print(obj['tag_name']) if 'tag_name' in obj else sys.exit(f\"Error: {obj['message']}\");")
-url="https://github.com/lsd-rs/lsd/releases/download/$tag/lsd-$tag-$arch-unknown-linux-musl.tar.gz"
-curl -fL --progress-bar --output "$file" "$url"
-
-tar -xzof "$file" -C "$tmpdir"
-mv "$tmpdir/lsd-$tag-$arch-unknown-linux-musl/lsd" "$HOME/bin/lsd"
-rm -rf "$tmpdir"
-
-"$HOME/bin/lsd" --version
+repo="lsd-rs/lsd"
+exec "$HOME/bin/linux-install-github-musl" "$repo"
