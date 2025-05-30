@@ -24,8 +24,11 @@ fi
 
 update rustup update
 
-update zimfw update
-update zimfw upgrade
+# zimfw
+if [ -d "$HOME/.zim" ] && [ -n "$(zsh -i -c 'zimfw check')" ]; then
+    zsh -i -c 'zimfw upgrade'
+    zsh -i -c 'zimfw update'
+fi
 
 update brewup
 
