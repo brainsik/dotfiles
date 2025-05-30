@@ -55,3 +55,36 @@
 [color "status"]
 	changed = magenta
 	untracked = bold yellow
+
+
+# git-delta
+# https://github.com/dandavison/delta
+[core]
+		pager = delta
+
+[interactive]
+		diffFilter = delta --color-only
+
+[delta]
+		navigate     = true  # use n and N to move between diff sections
+		line-numbers = true
+
+		dark         = true
+		syntax-theme = Dracula
+
+		# make default red a little brighter
+		minus-style                   = normal "#492a2a"
+		minus-non-emph-style          = normal "#492a2a"
+		minus-emph-style              = normal "#804646"
+		minus-empty-line-marker-style = normal "#492a2a"
+		line-numbers-minus-style      = "#e09060"
+
+		# change plus greens to blues
+		plus-style                   = normal "#2a2a50"
+		plus-non-emph-style          = normal "#2a2a50"
+		plus-emph-style              = normal "#46468a"
+		plus-empty-line-marker-style = normal "#2a2a50"
+		line-numbers-plus-style      = "#6090e9"
+
+[merge]
+		conflictstyle = zdiff3
