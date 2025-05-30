@@ -1,11 +1,20 @@
+# user settings
 [user]
 	name = jeremy avnet
 	email = brainsik@users.noreply.github.com
 	signingkey = ~/.ssh/GitHub.pub
-[gpg]
-	format = ssh
 [github]
 	user = brainsik
+
+# signing
+[gpg]
+	format = ssh
+[commit]
+	gpgSign = true
+[tag]
+	forceSignAnnotated = true
+
+# behavior defaults
 [init]
 	defaultBranch = main
 [push]
@@ -14,6 +23,14 @@
 	rebase = true
 [rebase]
 	autoStash = true
+[transfer]
+	fsckObjects = true
+[difftool]
+	prompt = false
+[help]
+	autocorrect = 20
+
+# commands
 [alias]
 	amend = commit --amend
 	br = !git --no-pager branch
@@ -25,8 +42,8 @@
 	st = status
 	stat = status
 	who = blame
-[difftool]
-	prompt = false
+
+# interface
 [color]
 	ui = true
 [diff]
@@ -38,11 +55,3 @@
 [color "status"]
 	changed = magenta
 	untracked = bold yellow
-[transfer]
-	fsckObjects = true
-[help]
-	autocorrect = 20
-[commit]
-	gpgSign = true
-[tag]
-	forceSignAnnotated = true
