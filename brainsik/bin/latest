@@ -31,9 +31,11 @@ if [ -d "$HOME/.zim" ] && [ -n "$(zsh -i -c 'zimfw check')" ]; then
 fi
 
 update brewup
-if [ "$(uname -s)" = "Linux" ]; then
-    echo "⛭ running apt-get update"
-    sudo apt-get autoremove --purge && sudo apt-get update && sudo apt-get full-upgrade
+if [ "$(uname -s)" = "Linux" ] && command -v apt-get >/dev/null; then
+    echo "⚙️ running apt-get update"
+    sudo apt-get autoremove --purge
+    sudo apt-get update
+    sudo apt-get full-upgrade
 fi
 
 update check-mcworlds-backup.sh
