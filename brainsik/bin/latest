@@ -22,8 +22,6 @@ if [ "${1:-}" != "nosync" ]; then
     sync "$HOME/Docs/Mail/mailsik"
 fi
 
-update rustup update
-
 # zimfw
 if [ -d "$HOME/.zim" ] && [ -n "$(zsh -i -c 'zimfw check')" ]; then
     zsh -i -c 'zimfw upgrade'
@@ -37,6 +35,8 @@ if [ "$(uname -s)" = "Linux" ] && command -v apt-get >/dev/null; then
     sudo apt-get update
     sudo apt-get full-upgrade
 fi
+
+update rustup update
 
 update check-mcworlds-backup.sh
 update check-nvidia-driver.sh
