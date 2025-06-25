@@ -72,6 +72,18 @@ fi
   $path
 )
 
+if command -v nodenv >/dev/null; then
+  eval "$(nodenv init -)"
+fi
+
+#
+# Ruby
+#
+
+if command -v rbenv >/dev/null; then
+  eval "$(rbenv init -)"
+fi
+
 #
 # Rust
 #

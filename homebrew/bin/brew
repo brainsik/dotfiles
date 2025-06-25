@@ -14,7 +14,7 @@ export RBENV_VERSION=system
 
 # Get rid of "config" script warnings in …
 # … *env lang managers
-for lang in py rb; do
+for lang in nod py rb; do
     if command -v ${lang}env >/dev/null; then
         PATH=${PATH//$(${lang}env root)\/shims:/}
     fi
