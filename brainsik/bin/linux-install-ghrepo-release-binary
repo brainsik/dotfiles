@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Installs the latest unknown-linux-musl binary from the give GitHub repo.
+# Installs the latest unknown-linux binary from the give GitHub repo.
 #
 set -eu -o pipefail
 
@@ -9,6 +9,7 @@ if [[ -z "${1:-}" ]]; then
 	exit 1
 fi
 repo="$1"
+libc="$2"
 
 arch=$(uname -m)
 name=$(basename "$repo")
@@ -18,11 +19,11 @@ tmpdir=$(mktemp -d)
 file="$tmpdir/$name.tar.gz"
 
 tag=$(curl -fsSL "https://api.github.com/repos/$repo/releases/latest" | python3 -c "import json,sys;obj=json.load(sys.stdin);print(obj['tag_name']) if 'tag_name' in obj else sys.exit(f\"Error: {obj['message']}\");")
-url="https://github.com/$repo/releases/download/$tag/$name-$tag-$arch-unknown-linux-musl.tar.gz"
+url="https://github.com/$repo/releases/download/$tag/$name-$tag-$arch-unknown-linux-$libc.tar.gz"
 curl -fL --progress-bar --output "$file" "$url"
 
 tar -xzof "$file" -C "$tmpdir"
-mv "$tmpdir/$name-$tag-$arch-unknown-linux-musl/$name" "$HOME/bin/$name"
+mv "$tmpdir/$name-$tag-$arch-unknown-linux-$libc/$name" "$HOME/bin/$name"
 rm -rf "$tmpdir"
 
 "$HOME/bin/$name" --version

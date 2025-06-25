@@ -5,4 +5,5 @@
 #
 set -eu -o pipefail
 repo="dandavison/delta"
-exec "$HOME/bin/linux-install-github-musl" "$repo"
+libc="gnu"
+exec "$HOME/bin/linux-install-ghrepo-release-binary" "$repo" "$libc"
