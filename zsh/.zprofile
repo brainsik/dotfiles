@@ -72,6 +72,11 @@ fi
   $path
 )
 
+[[ -d "$HOME/.npm-global/bin" ]] && path=(
+  "$HOME/.npm-global/bin"
+  $path
+)
+
 if command -v nodenv >/dev/null; then
   eval "$(nodenv init -)"
 fi
