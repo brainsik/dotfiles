@@ -4,6 +4,9 @@
 #
 set -eu
 
+os=$(uname -s)
+arch=$(uname -m)
+
 dashes() { python3 -c 'print("=" * 40);'; }
 
 update() { if command -v "$1"; then "$@" && dashes; fi; }
@@ -28,8 +31,14 @@ if [ -d "$HOME/.zim" ] && [ -n "$(zsh -i -c 'zimfw check')" ]; then
     zsh -i -c 'zimfw update'
 fi
 
-update brewup
-if [ "$(uname -s)" = "Linux" ] && command -v apt-get >/dev/null; then
+if [ "$os" = "Linux" ] && [ "$arch" = "aarch64" ]; then
+    # Tier 2 config; brew doctor always gives error
+    brewup || true
+else
+    brewup
+fi
+
+if [ "$os" = "Linux" ] && command -v apt-get >/dev/null; then
     echo "⚙️ running apt-get update"
     sudo apt-get autoremove --purge
     sudo apt-get update
