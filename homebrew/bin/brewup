@@ -18,17 +18,23 @@ upgrade_casks() {
 	brew upgrade --cask --greedy
 }
 
-upgrade_formulas() {
-	set +x
+update_formula_service() {
+  formula=$1
 
-	# tailscale
-	if [[ -n $(brew outdated --formula tailscale) ]]; then
+	if [[ -n $(brew outdated --formula "$formula") ]]; then
 		set -x
-		sudo chown -R "$USER": "$HOMEBREW_PREFIX/Cellar/tailscale"
-		brew upgrade --formula tailscale
-		sudo -E brew services restart tailscale
+		sudo chown -R "$USER": "$HOMEBREW_PREFIX/Cellar/$formula"
+		brew upgrade --formula "$formula"
+		sudo -E brew services restart "$formula"
 		set +x
 	fi
+}
+
+upgrade_formulas() {
+  set +x
+
+  update_formula_service tailscale
+  update_formula_service et
 
 	# everything else
 	set -x
