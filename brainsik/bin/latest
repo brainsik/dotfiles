@@ -33,9 +33,9 @@ fi
 
 if [ "$os" = "Linux" ] && [ "$arch" = "aarch64" ]; then
     # Tier 2 config; brew doctor always gives error
-    brewup || true
+    update brewup || true
 else
-    brewup
+    update brewup
 fi
 
 if [ "$os" = "Linux" ] && command -v apt-get >/dev/null; then
