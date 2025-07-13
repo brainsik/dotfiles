@@ -24,7 +24,7 @@ upgrade_formulas() {
 	# tailscale
 	if [[ -n $(brew outdated --formula tailscale) ]]; then
 		set -x
-		sudo chown -R "$USER": /opt/homebrew/Cellar/tailscale
+		sudo chown -R "$USER": "$HOMEBREW_PREFIX/Cellar/tailscale"
 		brew upgrade --formula tailscale
 		sudo -E brew services restart tailscale
 		set +x
