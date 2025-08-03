@@ -48,5 +48,5 @@ brew missing || read -rp '<enter> to continue'
 upgrade_casks
 upgrade_formulas
 brew cleanup -s
-brew missing
-brew doctor
+brew missing || read -rp '<enter> to continue'
+brew doctor || read -rp '<enter> to continue'
