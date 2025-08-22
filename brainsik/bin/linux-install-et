@@ -20,4 +20,4 @@ echo "🤖 [et] Disabling telemetry"
 sudo perl -i -pe 's/telemetry = true/telemetry = false/;' /etc/et.cfg
 sudo systemctl restart et
 
-echo "✅ Eternal Terminal installed"
+echo "✅ Eternal Terminal installed."
