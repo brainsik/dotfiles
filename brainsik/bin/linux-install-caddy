@@ -12,14 +12,18 @@ echo "🤖 [caddy] Installing required packages"
 sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
 
 echo "🤖 [caddy] Configuring apt repo"
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' \
+  | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+chmod o+r /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' \
+  | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+chmod o+r /etc/apt/sources.list.d/caddy-stable.list
 
 echo "🤖 [caddy] Installing apt packages"
 sudo apt update
 sudo apt install caddy
 
-sysctl_conf=/etc/sysctl.d/local-caddy.conf
+sysctl_conf=/etc/sysctl.d/99-local-caddy.conf
 echo "⚙️ [caddy] Creating sysctl config: $sysctl_conf"
 cat <<EOF | sudo tee "$sysctl_conf"
 # https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes
@@ -27,4 +31,4 @@ net.core.rmem_max = 7500000
 net.core.wmem_max = 7500000
 EOF
 
-echo "✅ Caddy installed"
+echo "✅ Caddy installed."
