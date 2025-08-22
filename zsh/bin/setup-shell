@@ -41,3 +41,5 @@ fi
 if [[ $os = Darwin ]] && ! [[ -e ~/iCloud ]]; then
     ln -s Library/Mobile\ Documents/com\~apple\~CloudDocs ~/iCloud
 fi
+
+echo "✅ $0 finished."
