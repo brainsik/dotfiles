@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 #
-# Installs the Eternal Terminal package
+# Installs the Eternal Terminal (et) package
 #
 set -eu -o pipefail
-codename=$(lsb_release -cs 2>/dev/null)
+codename=$(lsb_release --codename --short 2>/dev/null)
 
 echo "💾 Installing Eternal Terminal (et) …"
 
 echo "🤖 [et] Configuring apt repo"
-echo "deb https://github.com/MisterTea/debian-et/raw/master/debian-source/ $codename main" | sudo tee -a /etc/apt/sources.list.d/et.list
-curl -sSL https://github.com/MisterTea/debian-et/raw/master/et.gpg | sudo tee /etc/apt/trusted.gpg.d/et.gpg >/dev/null
+curl -sSL https://github.com/MisterTea/debian-et/raw/master/et.gpg | sudo tee /usr/share/keyrings/et.gpg >/dev/null
+echo "# Eternal Terminal packages for debian trixie" | sudo tee -a /etc/apt/sources.list.d/et.list
+echo "deb [signed-by=/usr/share/keyrings/et.gpg] https://mistertea.github.io/debian-et/debian-source/ $codename main" | sudo tee -a /etc/apt/sources.list.d/et.list
 
 echo "🤖 [et] Installing apt packages"
 sudo apt update
