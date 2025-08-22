@@ -28,5 +28,6 @@ cat <<EOF | sudo tee "$sysctl_conf"
 net.core.rmem_max = 7500000
 net.core.wmem_max = 7500000
 EOF
+sudo sysctl -p /etc/sysctl.d/99-local-caddy.conf
 
 echo "✅ Caddy installed."
