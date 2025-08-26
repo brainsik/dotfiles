@@ -7,6 +7,10 @@ codename=$(lsb_release --codename --short 2>/dev/null)
 
 echo "💾 Installing Eternal Terminal (et) …"
 
+echo "🤖 [caddy] Installing required packages"
+sudo apt update
+sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+
 echo "🤖 [et] Configuring apt repo"
 curl -sSL https://github.com/MisterTea/debian-et/raw/master/et.gpg | sudo tee /usr/share/keyrings/et.gpg >/dev/null
 echo "# Eternal Terminal packages for debian trixie" | sudo tee -a /etc/apt/sources.list.d/et.list

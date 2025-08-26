@@ -9,6 +9,7 @@ set -eu -o pipefail
 echo "💾 Installing Caddy …"
 
 echo "🤖 [caddy] Installing required packages"
+sudo apt update
 sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
 
 echo "🤖 [caddy] Configuring apt repo"
