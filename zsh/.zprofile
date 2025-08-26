@@ -24,6 +24,15 @@ fi
 export MANPATH="$HOME/man:$HOME/.local/man:$HOME/usr/man:$MANPATH"
 
 #
+# Snap
+#
+
+[[ -d /snap/bin ]] && path=(
+  /snap/bin
+  $path
+)
+
+#
 # Homebrew
 #
 
