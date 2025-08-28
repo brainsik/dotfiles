@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+# Install tofuutils/tenv on Debian
+#
+# https://github.com/tofuutils/tenv
+#
+set -eu -o pipefail
+keyrings="/usr/share/keyrings"
+
+# Configure cloudsmith source.list URL
+# shellcheck disable=SC1091
+. /etc/os-release
+config_deb_params="distro=$ID&codename=$VERSION_CODENAME&arch=$(uname -m)"
+
+
+echo "💾 Installing tenv …"
+
+echo "🤖 [tenv] Installing required packages"
+sudo apt update
+sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+
+echo "🤖 [tenv] Configuring apt repo"
+curl -1sLf 'https://dl.cloudsmith.io/public/tofuutils/tenv/gpg.8ACD4386ADD982F6.key' \
+  | sudo gpg --dearmor -o "$keyrings/tofuutils-tenv-archive-keyring.gpg"
+curl -1sLf "https://dl.cloudsmith.io/public/tofuutils/tenv/config.deb.txt?$config_deb_params" \
+  | sudo tee /etc/apt/sources.list.d/tofuutils-tenv.list
+
+echo "🤖 [tenv] Installing apt packages"
+sudo apt update
+sudo apt install tenv
+
+echo "✅ tenv installed."
