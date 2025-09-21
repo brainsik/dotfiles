@@ -138,7 +138,6 @@ alias tarnm='tar --no-mac-metadata --no-xattrs'
 #
 
 alias tf=tofu
-alias terraform=tofu
 
 #
 # macOS
@@ -147,7 +146,12 @@ alias terraform=tofu
 if [[ "$OSTYPE" == darwin* ]]; then
   alias dnsflush='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
   alias firefox='/Applications/Firefox.app/Contents/MacOS/firefox'
+  alias vivaldi='/Applications/Vivaldi.app/Contents/MacOS/Vivaldi'
   if ! whence tailscale >/dev/null; then
     alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
+  fi
+  # Remove when wcurl ships with macOS
+  if ! whence wcurl >/dev/null; then
+    alias wcurl="$HOMEBREW_PREFIX/opt/curl/bin/wcurl"
   fi
 fi
