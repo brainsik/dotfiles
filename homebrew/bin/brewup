@@ -4,17 +4,6 @@ set -eu -o pipefail
 # See the custom `brew` script that keeps Homebrew happy.
 
 upgrade_casks() {
-	set +x
-
-	# librewolf
-	if [[ -n $(brew outdated --cask --greedy librewolf) ]]; then
-		set -x
-		brew reinstall --no-quarantine --cask librewolf
-		set +x
-	fi
-
-	# everything else
-	set -x
 	brew upgrade --cask --greedy
 }
 
