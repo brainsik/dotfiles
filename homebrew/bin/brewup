@@ -10,20 +10,19 @@ upgrade_casks() {
 update_formula_service() {
   formula=$1
 
-	if [[ -n $(brew outdated --formula "$formula") ]]; then
-		set -x
-		sudo chown -R "$USER": "$HOMEBREW_PREFIX/Cellar/$formula"
-		brew upgrade --formula "$formula"
-		sudo -E brew services restart "$formula"
-		set +x
-	fi
+  set -x
+  sudo chown -R "$USER": "$HOMEBREW_PREFIX/Cellar/$formula"
+  brew upgrade --formula "$formula"
+  sudo -E brew services restart "$formula"
+  set +x
 }
 
-upgrade_formulas() {
+upgrade_formulae() {
+  # services
   set +x
-
-  update_formula_service tailscale
-  update_formula_service et
+  for svc in $(brew outdated --formula tailscale --formula et | cut -f1); do
+    update_formula_service "$svc"
+  done
 
 	# everything else
 	set -x
@@ -35,7 +34,7 @@ brew update
 brew doctor || read -rp '<enter> to continue'
 brew missing || read -rp '<enter> to continue'
 upgrade_casks
-upgrade_formulas
+upgrade_formulae
 brew cleanup -s
 brew missing || read -rp '<enter> to continue'
 brew doctor || read -rp '<enter> to continue'
