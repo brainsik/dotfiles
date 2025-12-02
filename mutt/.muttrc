@@ -20,5 +20,7 @@ bind pager [ half-up
 
 set index_format="%4C %Z %{%b %d} %-15.15L %-30.30t (%?l?%4l&%4c?) %s"
 
-auto_view text/html                                      # view html automatically
-alternative_order text/plain text/enriched text/html     # save html for last
+# https://gitlab.com/grobian/html2text
+set allow_ansi=yes      # html2text -ansi rich rendering
+auto_view text/html
+alternative_order text/html  text/plain

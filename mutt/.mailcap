@@ -1,1 +1,2 @@
-text/html; lynx -force_html %s
+# https://gitlab.com/grobian/html2text
+text/html; html2text -ansi -links -from_encoding %{charset} -width ${COLUMNS:-80} '%s'; copiousoutput; description=HTML Text; nametemplate=%s.html
