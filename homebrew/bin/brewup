@@ -21,7 +21,7 @@ upgrade_formulae() {
   # services
   set +x
   for svc in $(brew outdated --formula tailscale --formula et | cut -f1); do
-    update_formula_service "$svc"
+    update_formula_service "$(basename "$svc")"
   done
 
 	# everything else
