@@ -154,4 +154,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
   if ! whence wcurl >/dev/null; then
     alias wcurl="$HOMEBREW_PREFIX/opt/curl/bin/wcurl"
   fi
+  # Remove when curl shipping with macOS supports http3?
+  alias curl="$HOMEBREW_PREFIX/opt/curl/bin/curl"
 fi
