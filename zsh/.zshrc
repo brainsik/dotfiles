@@ -144,6 +144,7 @@ alias tf=tofu
 #
 
 if [[ "$OSTYPE" == darwin* ]]; then
+  alias yt='open -a YouTube -u'
   alias dnsflush='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
   alias firefox='/Applications/Firefox.app/Contents/MacOS/firefox'
   alias vivaldi='/Applications/Vivaldi.app/Contents/MacOS/Vivaldi'
