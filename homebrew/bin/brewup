@@ -24,9 +24,9 @@ upgrade_formulae() {
     update_formula_service "$(basename "$svc")"
   done
 
-	# everything else
-	set -x
-	brew upgrade
+  # everything else
+  set -x
+  brew upgrade
 }
 
 set -x
