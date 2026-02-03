@@ -7,7 +7,7 @@ codename=$(lsb_release --codename --short 2>/dev/null)
 
 echo "💾 Installing Eternal Terminal (et) …"
 
-echo "🤖 [caddy] Installing required packages"
+echo "🤖 [et] Installing required packages"
 sudo apt update
 sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
 
