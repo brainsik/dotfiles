@@ -13,7 +13,7 @@ sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https cu
 
 echo "🤖 [et] Configuring apt repo"
 curl -sSL https://github.com/MisterTea/debian-et/raw/master/et.gpg | sudo tee /usr/share/keyrings/et.gpg >/dev/null
-echo "# Eternal Terminal packages for debian trixie" | sudo tee -a /etc/apt/sources.list.d/et.list
+echo "# Eternal Terminal packages for debian $codename" | sudo tee /etc/apt/sources.list.d/et.list
 echo "deb [signed-by=/usr/share/keyrings/et.gpg] https://mistertea.github.io/debian-et/debian-source/ $codename main" | sudo tee -a /etc/apt/sources.list.d/et.list
 
 echo "🤖 [et] Installing apt packages"
