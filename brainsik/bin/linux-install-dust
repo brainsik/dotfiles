@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# Installs the latest version of dust (du-dust) on Linux.
+# - https://github.com/bootandy/dust
+#
+set -eu -o pipefail
+repo="bootandy/dust"
+libc="gnu"
+exec "$HOME/bin/linux-install-ghrepo-release-binary" "$repo" "$libc"
