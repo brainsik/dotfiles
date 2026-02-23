@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# Installs the latest version of Jujutsu on Linux.
+# - https://github.com/jj-vcs/jj
+#
+set -eu -o pipefail
+repo="jj-vcs/jj"
+libc="musl"
+exec "$HOME/bin/linux-install-ghrepo-release-binary" "$repo" "$libc"
