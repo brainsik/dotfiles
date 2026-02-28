@@ -38,6 +38,7 @@
 	co = checkout
 	dc = diff --cached
 	dif = diff
+  pus = push
 	pf = push --force-with-lease
 	st = status
 	stat = status
