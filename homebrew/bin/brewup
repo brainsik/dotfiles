@@ -8,12 +8,18 @@ upgrade_casks() {
 }
 
 update_formula_service() {
-  formula=$1
+  local formula=$1
+
+  # only restart services currently running (= "true")
+  local should_restart
+  should_restart="$(sudo -E brew services info "$formula" --json | jq -r '.[].running')"
 
   set -x
   sudo chown -R "$USER": "$HOMEBREW_PREFIX/Cellar/$formula"
   brew upgrade --formula "$formula"
-  sudo -E brew services restart "$formula"
+  if [[ "$should_restart" = "true" ]]; then
+      sudo -E brew services restart "$formula"
+  fi
   set +x
 }
 
