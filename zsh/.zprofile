@@ -67,6 +67,8 @@ fi
 # Node
 #
 
+[[ -d "$HOME/.nvm" ]] && [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+
 [[ -d /usr/local/share/npm/bin ]] && path=(
   /usr/local/share/npm/bin
   $path
@@ -76,10 +78,6 @@ fi
   "$HOME/.npm-global/bin"
   $path
 )
-
-if command -v nodenv >/dev/null; then
-  eval "$(nodenv init -)"
-fi
 
 #
 # Ruby
