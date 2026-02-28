@@ -15,8 +15,9 @@ filetype plugin indent on
 " TODO: Pick a leader key
 " let mapleader = ","
 
-" Security
+" Disable fraught modeline processing: CVE-2002-1377, CVE-2007-2438, CVE-2016-1248
 set modelines=0
+set nomodeline
 
 " Show line numbers
 set number
