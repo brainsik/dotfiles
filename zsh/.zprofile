@@ -46,6 +46,13 @@ fi
 # Golang
 #
 
+if [[ -d /usr/local/go/bin ]]; then
+  path=(
+    /usr/local/go/bin
+    $path
+  )
+fi
+
 if [[ -d "$HOME/src/go" ]]; then
   export GOPATH="$HOME/src/go"
   path=(
