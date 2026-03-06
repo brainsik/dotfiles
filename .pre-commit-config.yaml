@@ -9,14 +9,15 @@ repos:
       - id: trailing-whitespace
         exclude: ".p10k.zsh"
 
-  - repo: https://github.com/detailyang/pre-commit-shell
-    rev: 1.0.5
+
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1
     hooks:
-      - id: shell-lint
+      - id: shellcheck
+        args: [-x]
         exclude: ".p10k.zsh"
 
-
   - repo: https://github.com/rvben/rumdl-pre-commit
-    rev: v0.1.10
+    rev: v0.1.42
     hooks:
       - id: rumdl
