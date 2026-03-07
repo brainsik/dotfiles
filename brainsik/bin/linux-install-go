@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -eu -o pipefail
+
+version="${1:-}"
+if [[ -z "$version" ]];then
+  echo "Usage: $0 <version>"
+  exit 1
+fi
+
+machine=$(uname -m)
+case $(uname -m) in
+aarch64)
+  arch="arm64" ;;
+x86_64)
+  arch="amd64" ;;
+*)
+  echo "Unknown architecture: $machine"
+  exit 1
+;;
+esac
+
+tarball="go$version.linux-$arch.tar.gz"
+url="https://go.dev/dl/$tarball"
+
+tmpd=$(mktemp -d)
+trap 'rm -rf $tmpd' EXIT
+
+set -x
+src="$tmpd/$tarball"
+curl --proto '=https' --tlsv1.3 -Lf -o "$src" "$url"
+
+sudo rm -rf /usr/local/go
+sudo mkdir /usr/local/go
+sudo chown "$USER": /usr/local/go
+
+tar -C /usr/local -xzf "$src"
