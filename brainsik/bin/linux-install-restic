@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+#
+# Installs the latest version of Restic on Linux into /usr/local.
+#
+set -eu -o pipefail
+echo "💾 Installing restic …"
+repo="restic/restic"
+
+arch=$(uname -m)
+[[ "$arch" = "aarch64" ]] && arch="arm64"
+
+tag=$(curl -fsSL "https://api.github.com/repos/$repo/releases/latest" | python3 -c "import json,sys;obj=json.load(sys.stdin);print(obj['tag_name']) if 'tag_name' in obj else sys.exit(f\"Error: {obj['message']}\");")
+file="restic_${tag#v}_linux_${arch}.bz2"
+
+tmpdir=$(mktemp -d)
+trap 'rm -rf "$tmpdir"' EXIT
+cd "$tmpdir"
+
+# download
+dlurl="https://github.com/$repo/releases/download/$tag"
+for url in \
+    "$dlurl/$file" \
+    "$dlurl/SHA256SUMS" \
+    "$dlurl/SHA256SUMS.asc" \
+    https://restic.net/gpg-key-alex.asc; do
+        echo "* Downloading $url"
+        curl -fLO --progress-bar "$url"
+done
+
+# verify
+gpg -q --no-default-keyring --keyring ./keyring.gpg --import gpg-key-alex.asc
+if ! gpg --no-default-keyring --keyring ./keyring.gpg --list-keys CF8F18F2844575973F79D4E191A6868BD3F7A907; then
+    echo "⚠️ Expected GPG key not found."
+    exit 1
+fi
+gpg -q --no-default-keyring --keyring ./keyring.gpg --verify SHA256SUMS.asc SHA256SUMS
+grep -F -- "$file" SHA256SUMS > sum
+[[ -s sum ]]
+sha256sum -c sum
+
+# install
+bzcat "$file" > restic
+sudo install -m 0755 restic /usr/local/bin/restic
+
+# fin
+/usr/local/bin/restic version
