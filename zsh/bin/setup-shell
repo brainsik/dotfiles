@@ -12,20 +12,21 @@ brew_install() {
 
 # Install core shell tooling.
 if [[ $os = Darwin ]]; then
-    brew_install git bash curl tree fd ripgrep jq
+    brew_install git bash curl fd ripgrep jq tree
 
 elif [[ $os = Linux ]]; then
     if ! command -v jq >/dev/null; then
-        sudo apt install curl tree fd-find ripgrep
+        sudo apt install curl fd-find ripgrep tree zsh
     fi
 fi
 
 # Install interface improvements.
 if [[ $os = Darwin ]]; then
     brew_type="--cask" brew_install font-fira-code-nerd-font ghostty
-    brew_install starship lsd less git-delta
+    brew_install starship lsd less bat git-delta
 
 elif [[ $os = Linux ]]; then
+    sudo apt install bat
     if ! command -v starship >/dev/null; then
         "$HOME/bin/linux-install-starship"
     fi
