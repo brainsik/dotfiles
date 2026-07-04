@@ -27,6 +27,9 @@ export MANPATH="$HOME/man:$HOME/.local/man:$HOME/usr/man:$MANPATH"
 # Homebrew
 #
 
+# Disable cleanup as we do it at the end of the `brewup` script.
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+
 # Even though we do this in .zshenv, we need to do it again in .zprofile to
 # ensure Homebrew is before paths like /usr/bin. On macOS, /etc/zprofile
 # will eval `/usr/libexec/path_helper -s` which results in Homebrew coming
