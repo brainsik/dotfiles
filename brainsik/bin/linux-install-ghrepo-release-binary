@@ -3,7 +3,6 @@
 # Installs the latest unknown-linux binary from the give GitHub repo.
 #
 set -eu -o pipefail
-set -x
 
 if [[ -z "${1:-}" ]]; then
 	echo "Usage: $0 <user/repo>"
