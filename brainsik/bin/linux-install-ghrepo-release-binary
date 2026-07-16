@@ -4,8 +4,8 @@
 #
 set -eu -o pipefail
 
-if [[ -z "${1:-}" ]]; then
-	echo "Usage: $0 <user/repo>"
+if [[ -z "${1:-$LI_REPO}" ]]; then
+	echo "Usage: $0 <user/repo> <libc>"
 	exit 1
 fi
 repo="${LI_REPO:-$1}"
