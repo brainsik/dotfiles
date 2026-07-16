@@ -3,29 +3,36 @@
 # Installs the latest unknown-linux binary from the give GitHub repo.
 #
 set -eu -o pipefail
+set -x
 
 if [[ -z "${1:-}" ]]; then
 	echo "Usage: $0 <user/repo>"
 	exit 1
 fi
-repo="$1"
-libc="$2"
+repo="${LI_REPO:-$1}"
+libc="${LI_LIBC:-$2}"
 
 arch=$(uname -m)
 name=$(basename "$repo")
+ext=${LI_EXT:-gz}
 
 echo "💾 Installing $name …"
 tmpdir=$(mktemp -d)
-file="$tmpdir/$name.tar.gz"
+file="$tmpdir/$name.tar.$ext"
 
-tag=$(curl -fsSL "https://api.github.com/repos/$repo/releases/latest" | python3 -c "import json,sys;obj=json.load(sys.stdin);print(obj['tag_name']) if 'tag_name' in obj else sys.exit(f\"Error: {obj['message']}\");")
-url="https://github.com/$repo/releases/download/$tag/$name-$tag-$arch-unknown-linux-$libc.tar.gz"
+dl_tag=$(curl -fsSL "https://api.github.com/repos/$repo/releases/latest" | python3 -c "import json,sys;obj=json.load(sys.stdin);print(obj['tag_name']) if 'tag_name' in obj else sys.exit(f\"Error: {obj['message']}\");")
+tag="-$dl_tag"
+if [[ -n "${LI_NOTAG:-}" ]]; then
+    tag=""
+fi
+
+url="https://github.com/$repo/releases/download/$dl_tag/$name$tag-$arch-unknown-linux-$libc.tar.$ext"
 curl -fL --progress-bar --output "$file" "$url"
 
-tar -xzof "$file" -C "$tmpdir"
+tar -xaof "$file" -C "$tmpdir"
 
-if [[ -s "$tmpdir/$name-$tag-$arch-unknown-linux-$libc/$name" ]]; then
-    binpath="$tmpdir/$name-$tag-$arch-unknown-linux-$libc/$name"
+if [[ -s "$tmpdir/$name$tag-$arch-unknown-linux-$libc/$name" ]]; then
+    binpath="$tmpdir/$name$tag-$arch-unknown-linux-$libc/$name"
 elif [[ -s "$tmpdir/$name" ]]; then
     binpath="$tmpdir/$name"
 else

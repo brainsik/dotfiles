@@ -3,16 +3,7 @@
 # Installs the latest version of Starship on Linux.
 #
 set -eu -o pipefail
-arch=$(uname -m)
-
-echo "💾 Installing starship …"
-file=$(mktemp)
-
-target="$arch-unknown-linux-musl"
-url="https://github.com/starship/starship/releases/latest/download/starship-$target.tar.gz"
-curl -fL --progress-bar --output "$file" "$url"
-
-tar -xzof "$file" -C "$HOME/bin"
-rm -f "$file"
-
-"$HOME/bin/starship" --version
+export LI_REPO="starship/starship"
+export LI_LIBC="musl"
+export LI_NOTAG=1
+exec "$HOME/bin/linux-install-ghrepo-release-binary" "$LI_REPO" "$LI_LIBC"
