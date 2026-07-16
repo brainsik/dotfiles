@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# Installs the latest version of Podlet on Linux.
+#
+set -eu -o pipefail
+export LI_REPO="containers/podlet"
+export LI_LIBC="gnu"
+export LI_EXT="xz"
+export LI_NOTAG=1
+exec "$HOME/bin/linux-install-ghrepo-release-binary" "$LI_REPO" "$LI_LIBC"
