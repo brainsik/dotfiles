@@ -2,4 +2,6 @@
 # shellcheck shell=sh
 # shellcheck disable=all
 
-uptime  # awareness
+if [[ -z "$SUDO_USER" ]]; then
+  uptime  # awareness
+fi
