@@ -1,10 +1,11 @@
 auto-update = check
+mouse-reporting = false
 #scrollback-limit = 20000000
 theme = Dracula+
 font-family = "FiraCode Nerd Font"
 font-feature = "zero"
 font-feature = "ss02"
-background-opacity = 0.9
+background-opacity = 0.85
 background-blur-radius = 12
 window-height = 50
 window-width = 105
