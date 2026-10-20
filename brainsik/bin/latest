@@ -7,7 +7,7 @@ set -eu
 os=$(uname -s)
 arch=$(uname -m)
 
-dashes() { python3 -c 'print("=" * 40);'; }
+dashes() { python3 -c 'print("- " * 30, "\n");'; }
 
 update() { if command -v "$1"; then "$@" && dashes; fi; }
 
