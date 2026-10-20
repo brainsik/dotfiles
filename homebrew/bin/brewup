@@ -12,6 +12,21 @@ update_formula_service() {
 
   # only restart services currently running (= "true")
   local should_restart
+  should_restart="$(brew services info "$formula" --json | jq -r '.[].running')"
+
+  set -x
+  brew upgrade --formula "$formula"
+  if [[ "$should_restart" = "true" ]]; then
+      brew services restart "$formula"
+  fi
+  set +x
+}
+
+update_formula_sudo_service() {
+  local formula=$1
+
+  # only restart services currently running (= "true")
+  local should_restart
   should_restart="$(sudo -E brew services info "$formula" --json | jq -r '.[].running')"
 
   set -x
@@ -26,8 +41,15 @@ update_formula_service() {
 upgrade_formulae() {
   # services
   set +x
-  for svc in $(brew outdated --formula tailscale --formula et | cut -f1); do
-    update_formula_service "$(basename "$svc")"
+
+  if brew tap | grep backrest-tap >/dev/null; then
+    for svc in $(brew outdated --formula backrest | cut -f1); do
+      update_formula_service "$(basename "$svc")"
+    done
+  fi
+
+  for svc in $(brew outdated --formula tailscale | cut -f1); do
+    update_formula_sudo_service "$(basename "$svc")"
   done
 
   # everything else
