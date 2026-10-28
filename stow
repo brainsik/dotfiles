@@ -37,6 +37,12 @@ if [[ $(uname -s) != Darwin ]]; then
 fi
 DEBUG && echo "PACKAGES=$PACKAGES"
 
+# Drop Linux only packages
+if [[ $(uname -s) != Linux ]]; then
+    PACKAGES=$(echo "$PACKAGES" | perl -pe 's/ ?linux//')
+fi
+DEBUG && echo "PACKAGES=$PACKAGES"
+
 # Drop encrypted package if unsupported
 if ! command -v git-crypt >/dev/null; then
     echo "- Skipping encrypted files"
