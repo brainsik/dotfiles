@@ -17,7 +17,6 @@ fi
 mkdir -p ~/.config; chmod 0700 ~/.config
 mkdir -p ~/.gnupg; chmod 0700 ~/.gnupg
 mkdir -p ~/.ssh; chmod 0700 ~/.ssh
-mkdir -p ~/.terminfo
 mkdir -p ~/.tfenv
 mkdir -p ~/.vim
 mkdir -p ~/bin; chmod 0700 ~/bin
